@@ -10,20 +10,28 @@ import Foundation
 import Cocoa
 
 class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
+    let outlineItems: [Any] = [Player(), Team()]
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        return self
+        return outlineItems[index]
     }
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        return 3
+        return outlineItems.count
     }
 
     func outlineView(_ outlineView: NSOutlineView, viewFor viewForTableColumn: NSTableColumn?, item: Any) -> NSView? {
         let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
-        view.textField?.stringValue = "Players"
-        view.imageView = nil
-        
+
+        switch item {
+        case _ where item is Player:
+            view.textField?.stringValue = "Players"
+        case _ where item is Team:
+            view.textField?.stringValue = "Teams"
+        default:
+            return nil
+        }
+
         return view
     }
 
@@ -36,6 +44,8 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
     }
 
     func outlineViewSelectionDidChange(_ notification: Notification) {
-        print("DID CHANGE!")
+        guard let outlineView = notification.object as? NSOutlineView else { return }
+        let selectedIndex = outlineView.selectedRow
+        print(selectedIndex)
     }
 }

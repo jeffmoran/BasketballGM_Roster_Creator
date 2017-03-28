@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8A75658E1E8A05300023C781 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658D1E8A05300023C781 /* OutlineViewController.swift */; };
+		8A7565901E8A0C180023C781 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658F1E8A0C180023C781 /* Player.swift */; };
+		8A7565921E8A0C2D0023C781 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565911E8A0C2D0023C781 /* Team.swift */; };
+		8A7565941E8A0E710023C781 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565931E8A0E710023C781 /* SplitViewController.swift */; };
 		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
 		8AF5B3721E89F23B00D2048F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B3711E89F23B00D2048F /* ViewController.swift */; };
 		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 
 /* Begin PBXFileReference section */
 		8A75658D1E8A05300023C781 /* OutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
+		8A75658F1E8A0C180023C781 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		8A7565911E8A0C2D0023C781 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		8A7565931E8A0E710023C781 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasketballGM Roster Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF5B3711E89F23B00D2048F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,9 @@
 				8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */,
 				8AF5B3711E89F23B00D2048F /* ViewController.swift */,
 				8A75658D1E8A05300023C781 /* OutlineViewController.swift */,
+				8A7565931E8A0E710023C781 /* SplitViewController.swift */,
+				8A75658F1E8A0C180023C781 /* Player.swift */,
+				8A7565911E8A0C2D0023C781 /* Team.swift */,
 				8AF5B3731E89F23B00D2048F /* Assets.xcassets */,
 				8AF5B3751E89F23B00D2048F /* Main.storyboard */,
 				8AF5B3781E89F23B00D2048F /* Info.plist */,
@@ -136,9 +145,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7565901E8A0C180023C781 /* Player.swift in Sources */,
 				8AF5B3721E89F23B00D2048F /* ViewController.swift in Sources */,
 				8A75658E1E8A05300023C781 /* OutlineViewController.swift in Sources */,
+				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
+				8A7565941E8A0E710023C781 /* SplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
