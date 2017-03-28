@@ -13,8 +13,15 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.wantsLayer = true
 
+        // Do any additional setup after loading the view.s
+    }
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+
+        view.layer?.backgroundColor = NSColor.blue.cgColor
     }
 
     override var representedObject: Any? {
@@ -41,6 +48,9 @@ class ViewController: NSViewController {
             }
         }
     }
-    
+
+    @IBAction func saveDocument(_ sender: Any?) {
+        print("SAVING!")
+    }
 }
 
