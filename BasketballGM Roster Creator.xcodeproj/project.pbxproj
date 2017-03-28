@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
+		8AF5B3721E89F23B00D2048F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B3711E89F23B00D2048F /* ViewController.swift */; };
+		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
+		8AF5B3771E89F23B00D2048F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3751E89F23B00D2048F /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasketballGM Roster Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8AF5B3711E89F23B00D2048F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8AF5B3731E89F23B00D2048F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AF5B3761E89F23B00D2048F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8AF5B3781E89F23B00D2048F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8AF5B3691E89F23B00D2048F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8AF5B3631E89F23B00D2048F = {
+			isa = PBXGroup;
+			children = (
+				8AF5B36E1E89F23B00D2048F /* BasketballGM Roster Creator */,
+				8AF5B36D1E89F23B00D2048F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8AF5B36D1E89F23B00D2048F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AF5B36E1E89F23B00D2048F /* BasketballGM Roster Creator */ = {
+			isa = PBXGroup;
+			children = (
+				8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */,
+				8AF5B3711E89F23B00D2048F /* ViewController.swift */,
+				8AF5B3731E89F23B00D2048F /* Assets.xcassets */,
+				8AF5B3751E89F23B00D2048F /* Main.storyboard */,
+				8AF5B3781E89F23B00D2048F /* Info.plist */,
+			);
+			path = "BasketballGM Roster Creator";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8AF5B36B1E89F23B00D2048F /* BasketballGM Roster Creator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AF5B37B1E89F23B00D2048F /* Build configuration list for PBXNativeTarget "BasketballGM Roster Creator" */;
+			buildPhases = (
+				8AF5B3681E89F23B00D2048F /* Sources */,
+				8AF5B3691E89F23B00D2048F /* Frameworks */,
+				8AF5B36A1E89F23B00D2048F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BasketballGM Roster Creator";
+			productName = "BasketballGM Roster Creator";
+			productReference = 8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8AF5B3641E89F23B00D2048F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Jeff Moran";
+				TargetAttributes = {
+					8AF5B36B1E89F23B00D2048F = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = TR5WFN5468;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8AF5B3671E89F23B00D2048F /* Build configuration list for PBXProject "BasketballGM Roster Creator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8AF5B3631E89F23B00D2048F;
+			productRefGroup = 8AF5B36D1E89F23B00D2048F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8AF5B36B1E89F23B00D2048F /* BasketballGM Roster Creator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8AF5B36A1E89F23B00D2048F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */,
+				8AF5B3771E89F23B00D2048F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8AF5B3681E89F23B00D2048F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF5B3721E89F23B00D2048F /* ViewController.swift in Sources */,
+				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8AF5B3751E89F23B00D2048F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AF5B3761E89F23B00D2048F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8AF5B3791E89F23B00D2048F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8AF5B37A1E89F23B00D2048F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		8AF5B37C1E89F23B00D2048F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR5WFN5468;
+				INFOPLIST_FILE = "BasketballGM Roster Creator/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmoran.BasketballGM-Roster-Creator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8AF5B37D1E89F23B00D2048F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR5WFN5468;
+				INFOPLIST_FILE = "BasketballGM Roster Creator/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmoran.BasketballGM-Roster-Creator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8AF5B3671E89F23B00D2048F /* Build configuration list for PBXProject "BasketballGM Roster Creator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AF5B3791E89F23B00D2048F /* Debug */,
+				8AF5B37A1E89F23B00D2048F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AF5B37B1E89F23B00D2048F /* Build configuration list for PBXNativeTarget "BasketballGM Roster Creator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AF5B37C1E89F23B00D2048F /* Debug */,
+				8AF5B37D1E89F23B00D2048F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8AF5B3641E89F23B00D2048F /* Project object */;
+}
