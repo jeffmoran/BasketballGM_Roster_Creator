@@ -9,6 +9,7 @@
 import Cocoa
 
 class PlayerCollectionViewItem: NSCollectionViewItem {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

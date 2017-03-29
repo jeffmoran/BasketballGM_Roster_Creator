@@ -10,20 +10,28 @@ import Cocoa
 
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource {
 
-    private var collectionView: NSCollectionView = {
+    private lazy var collectionView: NSCollectionView = {
         let collectionView = NSCollectionView()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isSelectable = true
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
-        flowLayout.sectionInset = EdgeInsets(top: 30.0, left: 0.0, bottom: 0.0, right: 0.0)
-        flowLayout.minimumInteritemSpacing = 20.0
-        flowLayout.minimumLineSpacing = 20.0
-        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = EdgeInsets(top: 30.0, left: 20.0, bottom: 0.0, right: 20.0)
 
         collectionView.collectionViewLayout = flowLayout
 
         return collectionView
+    }()
+
+    private lazy var scrollView: NSScrollView = {
+        let scrollView = NSScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.documentView = self.collectionView
+
+        return scrollView
     }()
 
     override func viewDidLoad() {
@@ -31,21 +39,18 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
         addSubviews()
         setUpConstraints()
-
-        collectionView.delegate = self
-        collectionView.dataSource = self
     }
-    
+
     private func addSubviews() {
-        view.addSubview(collectionView)
+        view.addSubview(scrollView)
     }
 
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ])
     }
 
@@ -74,9 +79,4 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
         print("Deselected", indexPaths)
     }
-
-    func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexes: IndexSet, with event: NSEvent) -> Bool {
-        return true
-    }
-    
 }
