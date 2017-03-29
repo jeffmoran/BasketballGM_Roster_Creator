@@ -16,6 +16,14 @@ class PlayerDetailViewController: NSViewController {
 
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.darkGray.cgColor
+
+        setUpConstraints()
     }
-    
+
+    private func setUpConstraints() {
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(greaterThanOrEqualToConstant: 400)
+            ])
+    }
+
 }

@@ -27,7 +27,7 @@ class MainWindowController: NSWindowController {
 
     private func setContentViewController() {
         let splitViewController = NSSplitViewController()
-        splitViewController.splitView.dividerStyle = .thick
+        splitViewController.splitView.dividerStyle = .thin
 
         let sideBarController = storyboard?.instantiateController(withIdentifier: "outlineViewController") as! OutlineViewController
         let itemListController = storyboard?.instantiateController(withIdentifier: "itemListCollectionViewController") as! ItemListCollectionViewController

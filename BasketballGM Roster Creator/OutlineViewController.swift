@@ -47,6 +47,15 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         guard let outlineView = notification.object as? NSOutlineView else { return }
         let selectedIndex = outlineView.selectedRow
 
-        print(selectedIndex)
+        switch selectedIndex {
+        case 0:
+            print("Edit players")
+        case 1:
+            print("Edit teams")
+        case 2:
+            print("Edit game values")
+        default:
+            assertionFailure()
+        }
     }
 }

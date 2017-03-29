@@ -12,14 +12,13 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
     private lazy var collectionView: NSCollectionView = {
         let collectionView = NSCollectionView()
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isSelectable = true
         collectionView.delegate = self
         collectionView.dataSource = self
 
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
-        flowLayout.sectionInset = EdgeInsets(top: 30.0, left: 20.0, bottom: 0.0, right: 20.0)
+        flowLayout.sectionInset = EdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 
         collectionView.collectionViewLayout = flowLayout
 
@@ -47,6 +46,8 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
+
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -57,7 +58,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
     // MARK: - NSCollectionViewDataSource
 
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 500
+        return 200
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -74,6 +75,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         print("Selected", indexPaths)
+        collectionView.deselectItems(at: indexPaths)
     }
 
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
