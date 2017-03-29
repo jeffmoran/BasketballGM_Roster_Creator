@@ -46,6 +46,7 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
     func outlineViewSelectionDidChange(_ notification: Notification) {
         guard let outlineView = notification.object as? NSOutlineView else { return }
         let selectedIndex = outlineView.selectedRow
+
         print(selectedIndex)
     }
 }

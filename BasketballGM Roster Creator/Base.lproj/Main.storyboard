@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
@@ -663,7 +663,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="BasketballGM Roster Creator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -681,19 +681,11 @@
         <!--Split View Controller-->
         <scene sceneID="H5F-v0-Sjg">
             <objects>
-                <splitViewController id="IyA-ru-b7S" customClass="SplitViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem id="4bs-9C-jNb"/>
-                        <splitViewItem id="DPL-MB-HGz"/>
-                    </splitViewItems>
+                <splitViewController id="IyA-ru-b7S" sceneMemberID="viewController">
                     <splitView key="splitView" vertical="YES" id="Sg3-gI-a84">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
-                    <connections>
-                        <segue destination="rMw-aO-Fa8" kind="relationship" relationship="splitItems" id="HrO-5v-KxO"/>
-                        <segue destination="dDu-1O-93H" kind="relationship" relationship="splitItems" id="uHs-dk-Hq9"/>
-                    </connections>
                 </splitViewController>
                 <customObject id="e9m-DN-DlW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -702,25 +694,25 @@
         <!--Outline View Controller-->
         <scene sceneID="bez-Tx-IbR">
             <objects>
-                <viewController id="rMw-aO-Fa8" customClass="OutlineViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="outlineViewController" id="rMw-aO-Fa8" customClass="OutlineViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fyO-1m-2Tw">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="398-15-wjp">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="398-15-wjp">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
                                 <clipView key="contentView" drawsBackground="NO" id="UDD-Ya-FTj">
-                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <rect key="frame" x="1" y="1" width="148" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="5" outlineTableColumn="85Q-0r-hcO" id="SWB-fs-0gJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="5" outlineTableColumn="85Q-0r-hcO" id="SWB-fs-0gJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="298"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="445" minWidth="16" maxWidth="1000" id="85Q-0r-hcO">
+                                                <tableColumn width="145" minWidth="16" maxWidth="1000" id="85Q-0r-hcO">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -734,11 +726,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="DataCell" id="sQi-1d-wgk">
-                                                            <rect key="frame" x="1" y="1" width="445" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="145" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7x-eX-lqm">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="447" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="147" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="LZJ-3M-f9G">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -767,8 +759,11 @@
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="QcX-e6-o2a"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="bkU-Ky-XA9">
-                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
+                                    <rect key="frame" x="1" y="283" width="98" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="cK7-Di-80v">
@@ -790,12 +785,12 @@
                 </viewController>
                 <customObject id="ah4-S3-URy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="456"/>
+            <point key="canvasLocation" x="890" y="464"/>
         </scene>
-        <!--View Controller-->
+        <!--Item List Collection View Controller-->
         <scene sceneID="kEr-mk-FEC">
             <objects>
-                <viewController id="dDu-1O-93H" customClass="ViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemListCollectionViewController" id="dDu-1O-93H" customClass="ItemListCollectionViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kf6-Ao-P67">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -803,7 +798,20 @@
                 </viewController>
                 <customObject id="wbc-FQ-8wp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883" y="888"/>
+            <point key="canvasLocation" x="890" y="824"/>
+        </scene>
+        <!--Player Detail View Controller-->
+        <scene sceneID="CJB-sa-Gvb">
+            <objects>
+                <viewController storyboardIdentifier="playerDetailViewController" id="jH0-Up-E2K" customClass="PlayerDetailViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2fD-yw-Wce">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="OFu-AZ-EAl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890" y="1181"/>
         </scene>
     </scenes>
 </document>
