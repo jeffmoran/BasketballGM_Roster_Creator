@@ -14,9 +14,15 @@ enum Position: String {
 
 struct Player {
     var name: String!
-    var team: Team!
-    var position: Position!
+//    var team: Team!
+//    var position: Position!
     var height: Int!
     var weight: Int!
-    var profileURL: String!
+//    var profileURL: String!
+
+    init(_ jsonDict: [String: Any]? = nil) {
+        self.name = jsonDict?["name"] as! String
+        self.height = jsonDict?["hgt"] as? Int ?? 0
+        self.weight = jsonDict?["weight"] as? Int ?? 0
+    }
 }

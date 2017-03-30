@@ -10,7 +10,7 @@ import Foundation
 import Cocoa
 
 class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
-    let outlineItems: [Any] = [Player(), Team()]
+    let outlineItems: [String] = ["Players", "Teams"]
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         return outlineItems[index]
@@ -23,14 +23,7 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
     func outlineView(_ outlineView: NSOutlineView, viewFor viewForTableColumn: NSTableColumn?, item: Any) -> NSView? {
         let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
 
-        switch item {
-        case _ where item is Player:
-            view.textField?.stringValue = "Players"
-        case _ where item is Team:
-            view.textField?.stringValue = "Teams"
-        default:
-            return nil
-        }
+        view.textField?.stringValue = item as! String
 
         return view
     }

@@ -15,6 +15,7 @@
 		8A7565901E8A0C180023C781 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658F1E8A0C180023C781 /* Player.swift */; };
 		8A7565921E8A0C2D0023C781 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565911E8A0C2D0023C781 /* Team.swift */; };
 		8A7565971E8A121B0023C781 /* ItemListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */; };
+		8AC017891E8C96DA008BB81C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC017881E8C96DA008BB81C /* Roster.swift */; };
 		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
 		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
 		8AF5B3771E89F23B00D2048F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3751E89F23B00D2048F /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		8A75658F1E8A0C180023C781 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		8A7565911E8A0C2D0023C781 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCollectionViewController.swift; sourceTree = "<group>"; };
+		8AC017881E8C96DA008BB81C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
 		8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasketballGM Roster Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF5B3731E89F23B00D2048F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				8A75658F1E8A0C180023C781 /* Player.swift */,
 				8A7565911E8A0C2D0023C781 /* Team.swift */,
+				8AC017881E8C96DA008BB81C /* Roster.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
 				8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */,
+				8AC017891E8C96DA008BB81C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

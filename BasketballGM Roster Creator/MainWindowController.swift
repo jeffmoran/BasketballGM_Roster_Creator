@@ -57,6 +57,8 @@ class MainWindowController: NSWindowController {
                 do {
                     guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
 
+                    let roster = Roster(jsonData)
+                    
                 } catch {
                     print(error.localizedDescription)
                 }
