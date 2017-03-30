@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a77-rA-2Q1">
+                    <rect key="frame" x="20" y="146" width="106" height="106"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="2ue-YC-BRP"/>
+                        <constraint firstAttribute="height" constant="106" id="aJD-wG-YHT"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Harden" id="AsT-vU-nTy"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dl-dP-ozx">
+                    <rect key="frame" x="134" y="235" width="328" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="8cH-OB-Rtx">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="a77-rA-2Q1" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="Pe2-cV-S2o"/>
+                <constraint firstItem="a77-rA-2Q1" firstAttribute="top" secondItem="5Dl-dP-ozx" secondAttribute="top" id="XhM-rj-lBA"/>
+                <constraint firstItem="a77-rA-2Q1" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="bot-uC-1Qg"/>
+                <constraint firstItem="5Dl-dP-ozx" firstAttribute="leading" secondItem="a77-rA-2Q1" secondAttribute="trailing" constant="10" id="sFi-56-tQc"/>
+                <constraint firstAttribute="trailing" secondItem="5Dl-dP-ozx" secondAttribute="trailing" constant="20" symbolic="YES" id="t89-o5-DeW"/>
+            </constraints>
+            <point key="canvasLocation" x="-214" y="188"/>
+        </customView>
+        <collectionViewItem id="Nck-nX-908" customClass="TeamCollectionViewItem" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
+            <connections>
+                <outlet property="teamName" destination="5Dl-dP-ozx" id="fcJ-OX-kKW"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="tkD-GO-VbR"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+    <resources>
+        <image name="Harden" width="3925" height="3957"/>
+    </resources>
+</document>

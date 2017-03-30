@@ -21,15 +21,25 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Harden" id="uyb-8r-gfQ"/>
                 </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruX-fX-E1v">
+                    <rect key="frame" x="138" y="92" width="254" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OE7-mg-kXi">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="G2c-2u-fiG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="fXa-PA-32a"/>
                 <constraint firstItem="G2c-2u-fiG" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="k6X-Gc-ove"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="96.5"/>
+            <point key="canvasLocation" x="-37" y="101"/>
         </customView>
         <collectionViewItem id="6Gx-W6-WYC" customClass="PlayerCollectionViewItem" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
             <connections>
+                <outlet property="playerName" destination="ruX-fX-E1v" id="nSy-Hr-ibU"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="klm-ih-dd8"/>
             </connections>
         </collectionViewItem>

@@ -1,16 +1,16 @@
 //
-//  PlayerCollectionViewItem.swift
+//  TeamCollectionViewItem.swift
 //  BasketballGM Roster Creator
 //
-//  Created by Jeff Moran on 3/28/17.
+//  Created by Jeff Moran on 3/29/17.
 //  Copyright © 2017 Jeff Moran. All rights reserved.
 //
 
 import Cocoa
 
-class PlayerCollectionViewItem: NSCollectionViewItem {
+class TeamCollectionViewItem: NSCollectionViewItem {
 
-    @IBOutlet weak var playerName: NSTextField!
+    @IBOutlet weak var teamName: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

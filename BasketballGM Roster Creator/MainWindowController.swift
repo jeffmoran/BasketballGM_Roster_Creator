@@ -45,6 +45,8 @@ class MainWindowController: NSWindowController {
         contentViewController = splitViewController
     }
 
+    var roster: Roster?
+
     @IBAction func openDocument(_ sender: Any?) {
         let panel = NSOpenPanel()
 
@@ -57,12 +59,17 @@ class MainWindowController: NSWindowController {
                 do {
                     guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
 
-                    let roster = Roster(jsonData)
-                    
+                    self.roster = Roster(jsonData)
+                    self.refreshCollectionView(contentMode: .players)
+
                 } catch {
                     print(error.localizedDescription)
                 }
             }
         }
+    }
+
+    func refreshCollectionView(contentMode: ContentMode) {
+        ((self.contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.refreshCollectionView(contentMode: contentMode)
     }
 }

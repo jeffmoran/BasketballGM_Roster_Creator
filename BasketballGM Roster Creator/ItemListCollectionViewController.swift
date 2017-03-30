@@ -8,7 +8,17 @@
 
 import Cocoa
 
+enum ContentMode {
+    case players, teams
+}
+
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource {
+
+    var contentMode: ContentMode = .players
+
+    private var window: MainWindowController {
+        return view.window?.windowController as! MainWindowController
+    }
 
     private lazy var collectionView: NSCollectionView = {
         let collectionView = NSCollectionView()
@@ -17,7 +27,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
         collectionView.dataSource = self
 
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
+        flowLayout.itemSize = NSSize(width: 260.0, height: 140.0)
         flowLayout.sectionInset = EdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 
         collectionView.collectionViewLayout = flowLayout
@@ -55,20 +65,48 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
             ])
     }
 
+    func refreshCollectionView(contentMode: ContentMode) {
+        self.contentMode = contentMode
+        collectionView.reloadData()
+    }
+
     // MARK: - NSCollectionViewDataSource
 
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 200
+        switch contentMode {
+        case .players:
+            return window.roster?.players.count ?? 0
+        case .teams:
+            return window.roster?.teams.count ?? 0
+        }
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: "PlayerCollectionViewItem", for: indexPath)
+        var item = NSCollectionViewItem()
 
-        guard let collectionViewItem = item as? PlayerCollectionViewItem else { return item }
+        switch contentMode {
+        case .players:
+            item = collectionView.makeItem(withIdentifier: "PlayerCollectionViewItem", for: indexPath)
 
-        print("Returning item for item at index \(indexPath.item)")
-        
-        return collectionViewItem
+            guard let collectionViewItem = item as? PlayerCollectionViewItem else { return item }
+
+            if let player = window.roster?.players[indexPath.item] {
+                collectionViewItem.playerName.stringValue = player.name
+            }
+
+            return collectionViewItem
+
+        case .teams:
+            item = collectionView.makeItem(withIdentifier: "TeamCollectionViewItem", for: indexPath)
+
+            guard let collectionViewItem = item as? TeamCollectionViewItem else { return item }
+
+            if let team = window.roster?.teams[indexPath.item] {
+                collectionViewItem.teamName.stringValue = team.region + " " + team.name
+            }
+
+            return collectionViewItem
+        }
     }
 
     // MARK: - NSCollectionViewDelegate
@@ -77,7 +115,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
         print("Selected", indexPaths)
         collectionView.deselectItems(at: indexPaths)
     }
-
+    
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
         print("Deselected", indexPaths)
     }

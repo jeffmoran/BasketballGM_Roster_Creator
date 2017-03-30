@@ -10,6 +10,10 @@ import Foundation
 import Cocoa
 
 class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
+    private var window: MainWindowController {
+        return view.window?.windowController as! MainWindowController
+    }
+
     let outlineItems: [String] = ["Players", "Teams"]
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
@@ -36,6 +40,24 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         return false
     }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+
+        selectFirstItem()
+    }
+
+    /// To select "Players" on first load.
+    private func selectFirstItem() {
+        // Would like to have this in viewDidLoad but certain things
+        // aren't fully loaded yet so it doesn't quite work as well.
+        // revisit later.
+
+        let index = IndexSet(integer: 0)
+        let outlineView = sourceItemView as? NSOutlineView
+
+        outlineView?.selectRowIndexes(index, byExtendingSelection: false)
+    }
+
     func outlineViewSelectionDidChange(_ notification: Notification) {
         guard let outlineView = notification.object as? NSOutlineView else { return }
         let selectedIndex = outlineView.selectedRow
@@ -43,8 +65,10 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         switch selectedIndex {
         case 0:
             print("Edit players")
+            window.refreshCollectionView(contentMode: .players)
         case 1:
             print("Edit teams")
+            window.refreshCollectionView(contentMode: .teams)
         case 2:
             print("Edit game values")
         default:
