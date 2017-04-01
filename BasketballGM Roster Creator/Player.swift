@@ -9,7 +9,7 @@
 import Foundation
 
 enum Position: String {
-    case pg, sg, sf, pf, c
+    case pointGuard, shootingGuard, smallForward, powerForward, center
 }
 
 struct Player {
@@ -25,10 +25,10 @@ struct Player {
         self.height = jsonDict?["hgt"] as? Int ?? 0
         self.weight = jsonDict?["weight"] as? Int ?? 0
         self.profileURL = jsonDict?["imgURL"] as? String ?? ""
-        self.teamID =  jsonDict?["tid"] as? Int ?? -1
+        self.teamID = jsonDict?["tid"] as? Int ?? -1
     }
 
     var team: Team? {
-        return API.shared.getTeamWith(teamID) ?? nil
+        return API.shared.getTeamWith(teamID)
     }
 }

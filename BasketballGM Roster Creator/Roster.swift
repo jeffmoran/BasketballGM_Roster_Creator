@@ -13,15 +13,15 @@ struct Roster {
     var players: [Player] = [Player]()
 
     init(_ jsonDict: [String: Any]) {
-        let jsonTeams =  jsonDict["teams"] as? [[String: Any]]
-        let jsonPlayers =  jsonDict["players"] as? [[String: Any]]
+        guard let jsonTeams = jsonDict["teams"] as? [[String: Any]] else { return }
+        guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { return }
 
-        for team in jsonTeams! {
+        for team in jsonTeams {
             teams.append(Team(team))
         }
 
-        for player in jsonPlayers! {
+        for player in jsonPlayers {
             players.append(Player(player))
-        }        
+        }
     }
 }

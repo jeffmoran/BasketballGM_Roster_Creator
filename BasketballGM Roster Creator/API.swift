@@ -61,6 +61,6 @@ struct API {
     func getTeamWith(_ teamID: Int) -> Team? {
         return getAllTeams()?.first(where: { $0.teamID == teamID })
     }
-    
+
     // MARK: - Other
 }

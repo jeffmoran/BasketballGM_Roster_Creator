@@ -20,10 +20,10 @@ extension NSImageView {
 
             guard let image = NSImage(data: data) else { return }
 
-            DispatchQueue.main.async() { _ in
+            DispatchQueue.main.async { _ in
                 self.image = image
             }
-            }.resume()
+        }.resume()
     }
 
     func downloadedFrom(link: String) {
@@ -31,7 +31,7 @@ extension NSImageView {
             //TODO: If returning, set placeholder image instead
             return
         }
-        
+
         downloadedFrom(url: url)
     }
 }

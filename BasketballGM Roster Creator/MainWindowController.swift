@@ -29,18 +29,20 @@ class MainWindowController: NSWindowController {
         let splitViewController = NSSplitViewController()
         splitViewController.splitView.dividerStyle = .thin
 
-        let sideBarController = storyboard?.instantiateController(withIdentifier: "outlineViewController") as! OutlineViewController
-        let itemListController = storyboard?.instantiateController(withIdentifier: "itemListCollectionViewController") as! ItemListCollectionViewController
+        if let sideBarController = storyboard?.instantiateController(withIdentifier: "outlineViewController") as? OutlineViewController {
+            let sideBarSplitView = NSSplitViewItem(viewController: sideBarController)
+            splitViewController.addSplitViewItem(sideBarSplitView)
+        }
 
-        let playerDetailViewController = storyboard?.instantiateController(withIdentifier: "playerDetailViewController") as! PlayerDetailViewController
+        if  let itemListController = storyboard?.instantiateController(withIdentifier: "itemListCollectionViewController") as? ItemListCollectionViewController {
+            let itemSplitView = NSSplitViewItem(viewController: itemListController)
+            splitViewController.addSplitViewItem(itemSplitView)
+        }
 
-        let sideBarSplitView = NSSplitViewItem(viewController: sideBarController)
-        let itemSplitView = NSSplitViewItem(viewController: itemListController)
-        let playerDetailsplitView = NSSplitViewItem(viewController: playerDetailViewController)
-
-        splitViewController.addSplitViewItem(sideBarSplitView)
-        splitViewController.addSplitViewItem(itemSplitView)
-        splitViewController.addSplitViewItem(playerDetailsplitView)
+        if let playerDetailViewController = storyboard?.instantiateController(withIdentifier: "playerDetailViewController") as? PlayerDetailViewController {
+            let playerDetailsplitView = NSSplitViewItem(viewController: playerDetailViewController)
+            splitViewController.addSplitViewItem(playerDetailsplitView)
+        }
 
         contentViewController = splitViewController
     }
@@ -51,7 +53,7 @@ class MainWindowController: NSWindowController {
         panel.begin { result in
             if result == NSFileHandlingPanelOKButton {
                 guard let url = panel.urls.first else { return }
-                
+
                 API.shared.getRosterFrom(url) {
                     self.refreshCollectionViewWith(.players)
                 }

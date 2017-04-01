@@ -1,0 +1,22 @@
+disabled_rules:
+- line_length
+opt_in_rules:
+- force_unwrapping
+- private_outlet
+- empty_count
+- vertical_whitespace
+- closure_spacing
+- explicit_init
+- overridden_super_call
+- redundant_nil_coalesing
+- closure_spacing
+- nimble_operator
+- redundant_nil_coalescing
+- operator_usage_whitespace
+- prohibited_super_call
+- closure_end_indentation
+- first_where
+- object_literal
+- explicit_type_interface
+- valid_docs
+excluded:

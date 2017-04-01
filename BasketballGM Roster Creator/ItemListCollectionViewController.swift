@@ -12,13 +12,12 @@ enum ContentMode {
     case players, teams
 }
 
-
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource {
 
     var contentMode: ContentMode = .players
 
-    private var window: MainWindowController {
-        return view.window?.windowController as! MainWindowController
+    private var window: MainWindowController? {
+        return view.window?.windowController as? MainWindowController
     }
 
     private lazy var collectionView: NSCollectionView = {
@@ -62,7 +61,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
 
@@ -92,13 +91,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
             guard let collectionViewItem = item as? PlayerCollectionViewItem else { return item }
 
             if let player = API.shared.getPlayerAt(indexPath.item) {
-                collectionViewItem.playerName.stringValue = player.name
-                collectionViewItem.playerProfileImageView.downloadedFrom(link: player.profileURL)
-
-                let playerTeamRegion = player.team?.region ?? "Free"
-                let playerTeamName = player.team?.name ?? "Agent"
-
-                collectionViewItem.playerTeamName.stringValue = playerTeamRegion + " " + playerTeamName
+                collectionViewItem.player = player
             }
 
             return collectionViewItem
@@ -109,8 +102,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
             guard let collectionViewItem = item as? TeamCollectionViewItem else { return item }
 
             if let team = API.shared.getTeamAt(indexPath.item) {
-                collectionViewItem.teamName.stringValue = team.region + " " + team.name
-                collectionViewItem.teamImageView.downloadedFrom(link: team.imageURL)
+                collectionViewItem.team = team
             }
 
             return collectionViewItem
@@ -123,7 +115,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
         print("Selected", indexPaths)
         collectionView.deselectItems(at: indexPaths)
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
         print("Deselected", indexPaths)
     }

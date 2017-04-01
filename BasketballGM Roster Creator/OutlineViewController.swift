@@ -10,8 +10,8 @@ import Foundation
 import Cocoa
 
 class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
-    private var window: MainWindowController {
-        return view.window?.windowController as! MainWindowController
+    private var window: MainWindowController? {
+        return view.window?.windowController as? MainWindowController
     }
 
     let outlineItems: [String] = ["Players", "Teams"]
@@ -25,9 +25,10 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
     }
 
     func outlineView(_ outlineView: NSOutlineView, viewFor viewForTableColumn: NSTableColumn?, item: Any) -> NSView? {
-        let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
+        guard let item = item as? String else { return nil }
+        guard let view = outlineView.make(withIdentifier: "DataCell", owner: self) as? NSTableCellView else { return nil }
 
-        view.textField?.stringValue = item as! String
+        view.textField?.stringValue = item
 
         return view
     }
@@ -65,10 +66,10 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         switch selectedIndex {
         case 0:
             print("Edit players")
-            window.refreshCollectionViewWith(.players)
+            window?.refreshCollectionViewWith(.players)
         case 1:
             print("Edit teams")
-            window.refreshCollectionViewWith(.teams)
+            window?.refreshCollectionViewWith(.teams)
         case 2:
             print("Edit game values")
         default:

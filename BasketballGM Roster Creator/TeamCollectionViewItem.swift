@@ -10,8 +10,17 @@ import Cocoa
 
 class TeamCollectionViewItem: NSCollectionViewItem {
 
-    @IBOutlet weak var teamName: NSTextField!
-    @IBOutlet weak var teamImageView: NSImageView!
+    var team: Team? {
+        didSet {
+            guard let team = team else { return }
+
+            teamName.stringValue = team.name
+            teamImageView.downloadedFrom(link: team.imageURL)
+        }
+    }
+
+    @IBOutlet weak private var teamName: NSTextField!
+    @IBOutlet weak private var teamImageView: NSImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

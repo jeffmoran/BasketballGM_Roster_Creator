@@ -10,10 +10,23 @@ import Cocoa
 
 class PlayerCollectionViewItem: NSCollectionViewItem {
 
-    @IBOutlet weak var playerName: NSTextField!
-    @IBOutlet weak var playerTeamName: NSTextField!
-    @IBOutlet weak var playerProfileImageView: NSImageView!
-    
+    var player: Player? {
+        didSet {
+            guard let player = player else { return }
+
+            let playerTmRegion = player.team?.region ?? "Free"
+            let playerTmName = player.team?.name ?? "Agent"
+
+            playerName.stringValue = player.name
+            playerProfileImageView.downloadedFrom(link: player.profileURL)
+            playerTeamName.stringValue = playerTmRegion + " " + playerTmName
+        }
+    }
+
+    @IBOutlet weak private var playerName: NSTextField!
+    @IBOutlet weak private var playerTeamName: NSTextField!
+    @IBOutlet weak private var playerProfileImageView: NSImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,5 +41,5 @@ class PlayerCollectionViewItem: NSCollectionViewItem {
 
         playerProfileImageView.image = nil
     }
-    
+
 }
