@@ -12,13 +12,26 @@ enum ContentMode {
     case players, teams
 }
 
-class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource {
+class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSSearchFieldDelegate {
 
     var contentMode: ContentMode = .players
 
     private var window: MainWindowController? {
         return view.window?.windowController as? MainWindowController
     }
+
+    private var filteredPlayers: [Player]?
+
+    private lazy var searchField: NSSearchField = {
+        let searchField = NSSearchField()
+        searchField.translatesAutoresizingMaskIntoConstraints = false
+        searchField.centersPlaceholder = false
+        searchField.delegate = self
+        searchField.sendsSearchStringImmediately = true
+        searchField.placeholderString = "Players"
+
+        return searchField
+    }()
 
     private lazy var collectionView: NSCollectionView = {
         let collectionView = NSCollectionView()
@@ -51,6 +64,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
     }
 
     private func addSubviews() {
+        view.addSubview(searchField)
         view.addSubview(scrollView)
     }
 
@@ -58,7 +72,12 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
         NSLayoutConstraint.activate([
             view.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
 
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            searchField.topAnchor.constraint(equalTo: view.topAnchor),
+            searchField.leftAnchor.constraint(equalTo: view.leftAnchor),
+            searchField.rightAnchor.constraint(equalTo: view.rightAnchor),
+            searchField.heightAnchor.constraint(equalToConstant: 50),
+
+            scrollView.topAnchor.constraint(equalTo: searchField.bottomAnchor),
             scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -67,6 +86,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
     func refreshCollectionViewWith(_ contentMode: ContentMode) {
         self.contentMode = contentMode
+
         collectionView.reloadData()
     }
 
@@ -75,7 +95,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         switch contentMode {
         case .players:
-            return API.shared.getNumberOfPlayers()
+            return filteredPlayers?.count ?? 0
         case .teams:
             return API.shared.getNumberOfTeams()
         }
@@ -90,7 +110,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
             guard let collectionViewItem = item as? PlayerCollectionViewItem else { return item }
 
-            if let player = API.shared.getPlayerAt(indexPath.item) {
+            if let player = filteredPlayers?[indexPath.item] {
                 collectionViewItem.player = player
             }
 
@@ -119,4 +139,23 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
         print("Deselected", indexPaths)
     }
+
+    // MARK: - NSSearchFieldDelegate
+
+    override func controlTextDidChange(_ obj: Notification) {
+        if obj.object as? NSSearchField == searchField {
+            let searchString = self.searchField.stringValue
+
+            filteredPlayers = API.shared.getAllPlayers()?.filter({ player in
+                return player.name.uppercased().contains(searchString.uppercased())
+            })
+
+            if searchString.isEmpty {
+                filteredPlayers = API.shared.getAllPlayers()
+            }
+
+            collectionView.reloadData()
+        }
+    }
+
 }

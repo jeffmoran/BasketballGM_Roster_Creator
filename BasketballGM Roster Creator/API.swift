@@ -32,7 +32,7 @@ struct API {
 
     // MARK: - Players
 
-    private func getAllPlayers() -> [Player]? {
+    func getAllPlayers() -> [Player]? {
         return roster?.players
     }
 
@@ -46,7 +46,7 @@ struct API {
 
     // MARK: - Teams
 
-    private func getAllTeams() -> [Team]? {
+    func getAllTeams() -> [Team]? {
         return roster?.teams
     }
 
