@@ -65,7 +65,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
             ])
     }
 
-    func refreshCollectionView(contentMode: ContentMode) {
+    func refreshCollectionViewWith(_ contentMode: ContentMode) {
         self.contentMode = contentMode
         collectionView.reloadData()
     }
@@ -75,9 +75,9 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         switch contentMode {
         case .players:
-            return window.roster?.players.count ?? 0
+            return API.shared.getNumberOfPlayers()
         case .teams:
-            return window.roster?.teams.count ?? 0
+            return API.shared.getNumberOfTeams()
         }
     }
 
@@ -90,7 +90,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
             guard let collectionViewItem = item as? PlayerCollectionViewItem else { return item }
 
-            if let player = window.roster?.players[indexPath.item] {
+            if let player = API.shared.getPlayerAt(indexPath.item) {
                 collectionViewItem.playerName.stringValue = player.name
             }
 
@@ -101,7 +101,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
             guard let collectionViewItem = item as? TeamCollectionViewItem else { return item }
 
-            if let team = window.roster?.teams[indexPath.item] {
+            if let team = API.shared.getTeamAt(indexPath.item) {
                 collectionViewItem.teamName.stringValue = team.region + " " + team.name
             }
 

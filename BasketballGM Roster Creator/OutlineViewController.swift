@@ -65,10 +65,10 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         switch selectedIndex {
         case 0:
             print("Edit players")
-            window.refreshCollectionView(contentMode: .players)
+            window.refreshCollectionViewWith(.players)
         case 1:
             print("Edit teams")
-            window.refreshCollectionView(contentMode: .teams)
+            window.refreshCollectionViewWith(.teams)
         case 2:
             print("Edit game values")
         default:

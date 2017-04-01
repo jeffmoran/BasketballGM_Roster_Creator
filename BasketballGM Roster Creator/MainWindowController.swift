@@ -45,31 +45,21 @@ class MainWindowController: NSWindowController {
         contentViewController = splitViewController
     }
 
-    var roster: Roster?
-
     @IBAction func openDocument(_ sender: Any?) {
         let panel = NSOpenPanel()
 
         panel.begin { result in
             if result == NSFileHandlingPanelOKButton {
                 guard let url = panel.urls.first else { return }
-
-                guard let data = NSData(contentsOf: url) as Data? else { return }
-
-                do {
-                    guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
-
-                    self.roster = Roster(jsonData)
-                    self.refreshCollectionView(contentMode: .players)
-
-                } catch {
-                    print(error.localizedDescription)
+                
+                API.shared.getRosterFrom(url) {
+                    self.refreshCollectionViewWith(.players)
                 }
             }
         }
     }
 
-    func refreshCollectionView(contentMode: ContentMode) {
-        ((self.contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.refreshCollectionView(contentMode: contentMode)
+    func refreshCollectionViewWith(_ contentMode: ContentMode) {
+        ((self.contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.refreshCollectionViewWith(contentMode)
     }
 }
