@@ -21,8 +21,6 @@ struct API {
         do {
             guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
 
-            //                    API.shared.
-            //                    self.roster = Roster(jsonData)
             roster = Roster(jsonData)
 
         } catch {
@@ -58,6 +56,10 @@ struct API {
 
     func getNumberOfTeams() -> Int {
         return getAllTeams()?.count ?? 0
+    }
+
+    func getTeamWith(_ teamID: Int) -> Team? {
+        return getAllTeams()?.first(where: { $0.teamID == teamID })
     }
     
     // MARK: - Other

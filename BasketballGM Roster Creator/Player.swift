@@ -13,16 +13,22 @@ enum Position: String {
 }
 
 struct Player {
-    var name: String!
-//    var team: Team!
+    var name: String
+    var teamID: Int
 //    var position: Position!
-    var height: Int!
-    var weight: Int!
-//    var profileURL: String!
+    var height: Int
+    var weight: Int
+    var profileURL: String
 
     init(_ jsonDict: [String: Any]? = nil) {
-        self.name = jsonDict?["name"] as! String
+        self.name = jsonDict?["name"] as? String ?? ""
         self.height = jsonDict?["hgt"] as? Int ?? 0
         self.weight = jsonDict?["weight"] as? Int ?? 0
+        self.profileURL = jsonDict?["imgURL"] as? String ?? ""
+        self.teamID =  jsonDict?["tid"] as? Int ?? -1
+    }
+
+    var team: Team? {
+        return API.shared.getTeamWith(teamID) ?? nil
     }
 }

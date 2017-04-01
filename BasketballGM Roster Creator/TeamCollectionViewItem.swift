@@ -11,7 +11,8 @@ import Cocoa
 class TeamCollectionViewItem: NSCollectionViewItem {
 
     @IBOutlet weak var teamName: NSTextField!
-    
+    @IBOutlet weak var teamImageView: NSImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,5 +21,11 @@ class TeamCollectionViewItem: NSCollectionViewItem {
         view.layer?.borderColor = NSColor.blue.cgColor
         view.layer?.borderWidth = 5.0
     }
-    
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        teamImageView.image = nil
+    }
+
 }

@@ -12,6 +12,7 @@
 		8A25E4C71E8B46FC005D4940 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */; };
 		8A25E4CE1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4CC1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift */; };
 		8A25E4CF1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A25E4CD1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib */; };
+		8A2F1EF11E90289300F44AF8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F1EF01E90289300F44AF8 /* Extensions.swift */; };
 		8A75658E1E8A05300023C781 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658D1E8A05300023C781 /* OutlineViewController.swift */; };
 		8A7565901E8A0C180023C781 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658F1E8A0C180023C781 /* Player.swift */; };
 		8A7565921E8A0C2D0023C781 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565911E8A0C2D0023C781 /* Team.swift */; };
@@ -30,6 +31,7 @@
 		8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
 		8A25E4CC1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewItem.swift; sourceTree = "<group>"; };
 		8A25E4CD1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerCollectionViewItem.xib; sourceTree = "<group>"; };
+		8A2F1EF01E90289300F44AF8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A75658D1E8A05300023C781 /* OutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		8A75658F1E8A0C180023C781 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		8A7565911E8A0C2D0023C781 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				8A0EB8E11E901C0F00EF2BCE /* API.swift */,
+				8A2F1EF01E90289300F44AF8 /* Extensions.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				8A25E4C71E8B46FC005D4940 /* PlayerDetailViewController.swift in Sources */,
 				8AC0178C1E8CAE75008BB81C /* TeamCollectionViewItem.swift in Sources */,
 				8A25E4CE1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift in Sources */,
+				8A2F1EF11E90289300F44AF8 /* Extensions.swift in Sources */,
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
 				8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */,

@@ -37,10 +37,11 @@
                 <constraint firstItem="5Dl-dP-ozx" firstAttribute="leading" secondItem="a77-rA-2Q1" secondAttribute="trailing" constant="10" id="sFi-56-tQc"/>
                 <constraint firstAttribute="trailing" secondItem="5Dl-dP-ozx" secondAttribute="trailing" constant="20" symbolic="YES" id="t89-o5-DeW"/>
             </constraints>
-            <point key="canvasLocation" x="-214" y="188"/>
+            <point key="canvasLocation" x="-674" y="173"/>
         </customView>
         <collectionViewItem id="Nck-nX-908" customClass="TeamCollectionViewItem" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
             <connections>
+                <outlet property="teamImageView" destination="a77-rA-2Q1" id="Adh-AC-Upt"/>
                 <outlet property="teamName" destination="5Dl-dP-ozx" id="fcJ-OX-kKW"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="tkD-GO-VbR"/>
             </connections>

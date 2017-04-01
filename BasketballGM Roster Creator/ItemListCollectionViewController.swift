@@ -12,6 +12,7 @@ enum ContentMode {
     case players, teams
 }
 
+
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource {
 
     var contentMode: ContentMode = .players
@@ -27,7 +28,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
         collectionView.dataSource = self
 
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 260.0, height: 140.0)
+        flowLayout.itemSize = NSSize(width: 280.0, height: 130.0)
         flowLayout.sectionInset = EdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 
         collectionView.collectionViewLayout = flowLayout
@@ -92,6 +93,12 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
             if let player = API.shared.getPlayerAt(indexPath.item) {
                 collectionViewItem.playerName.stringValue = player.name
+                collectionViewItem.playerProfileImageView.downloadedFrom(link: player.profileURL)
+
+                let playerTeamRegion = player.team?.region ?? "Free"
+                let playerTeamName = player.team?.name ?? "Agent"
+
+                collectionViewItem.playerTeamName.stringValue = playerTeamRegion + " " + playerTeamName
             }
 
             return collectionViewItem
@@ -103,6 +110,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
             if let team = API.shared.getTeamAt(indexPath.item) {
                 collectionViewItem.teamName.stringValue = team.region + " " + team.name
+                collectionViewItem.teamImageView.downloadedFrom(link: team.imageURL)
             }
 
             return collectionViewItem

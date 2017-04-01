@@ -17,6 +17,7 @@ struct Team {
     var abbreviation: String
     var population: Int
     var strategy: String //enum?
+    var imageURL: String
 
     init(_ jsonDict: [String: Any]) {
         self.teamID = jsonDict["tid"] as! Int
@@ -27,5 +28,6 @@ struct Team {
         self.abbreviation = jsonDict["abbrev"] as! String
         self.population = jsonDict["pop"] as! Int
         self.strategy = jsonDict["strategy"] as! String
+        self.imageURL = jsonDict["imgURL"] as? String ?? ""
     }
 }
