@@ -50,7 +50,9 @@ class MainWindowController: NSWindowController {
     @IBAction func openDocument(_ sender: Any?) {
         let panel = NSOpenPanel()
 
-        panel.begin { result in
+        guard let window = window else { return }
+
+        panel.beginSheetModal(for: window) { result in
             if result == NSFileHandlingPanelOKButton {
                 guard let url = panel.urls.first else { return }
 
