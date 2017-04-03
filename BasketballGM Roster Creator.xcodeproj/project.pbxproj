@@ -20,6 +20,8 @@
 		8AC017891E8C96DA008BB81C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC017881E8C96DA008BB81C /* Roster.swift */; };
 		8AC0178C1E8CAE75008BB81C /* TeamCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */; };
 		8AC0178D1E8CAE75008BB81C /* TeamCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */; };
+		8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC449081E919A35000ACDB1 /* NumberFormatter.swift */; };
+		8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */; };
 		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
 		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
 		8AF5B3771E89F23B00D2048F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3751E89F23B00D2048F /* Main.storyboard */; };
@@ -28,17 +30,19 @@
 /* Begin PBXFileReference section */
 		8A0EB8E11E901C0F00EF2BCE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
+		8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		8A25E4CC1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewItem.swift; sourceTree = "<group>"; };
 		8A25E4CD1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerCollectionViewItem.xib; sourceTree = "<group>"; };
 		8A2F1EF01E90289300F44AF8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A75658D1E8A05300023C781 /* OutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		8A75658F1E8A0C180023C781 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		8A7565911E8A0C2D0023C781 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCollectionViewController.swift; sourceTree = "<group>"; };
+		8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCollectionViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		8AC017881E8C96DA008BB81C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
 		8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewItem.swift; sourceTree = "<group>"; };
 		8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewItem.xib; sourceTree = "<group>"; };
+		8AC449081E919A35000ACDB1 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTextField.swift; sourceTree = "<group>"; };
 		8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasketballGM Roster Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF5B3731E89F23B00D2048F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			children = (
 				8A0EB8E11E901C0F00EF2BCE /* API.swift */,
 				8A2F1EF01E90289300F44AF8 /* Extensions.swift */,
+				8AC449081E919A35000ACDB1 /* NumberFormatter.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 				8A25E4CD1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib */,
 				8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */,
 				8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */,
+				8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -121,6 +127,7 @@
 				8AF5B36D1E89F23B00D2048F /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		8AF5B36D1E89F23B00D2048F /* Products */ = {
 			isa = PBXGroup;
@@ -244,8 +251,10 @@
 				8AC0178C1E8CAE75008BB81C /* TeamCollectionViewItem.swift in Sources */,
 				8A25E4CE1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift in Sources */,
 				8A2F1EF11E90289300F44AF8 /* Extensions.swift in Sources */,
+				8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */,
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
+				8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */,
 				8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */,
 				8AC017891E8C96DA008BB81C /* Roster.swift in Sources */,
 			);
