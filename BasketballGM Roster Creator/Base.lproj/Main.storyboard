@@ -669,6 +669,30 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="687" height="401"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="B63E9DB7-FF2A-4BB1-A9BF-7F295194ECBE" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Hz7-tp-qJr">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="7428B809-CA1F-4011-830C-280D70801833" label="Open" paletteLabel="Open" tag="-1" image="NSFolder" id="zPo-If-jwG">
+                                    <connections>
+                                        <action selector="openRoster:" target="B8D-0N-5wS" id="h6m-Kd-xag"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="1B2A4E3A-76F5-4C4A-B16D-A03C47C0B446" label="Import" paletteLabel="Import" tag="-1" image="NSMultipleDocuments" id="Zng-Uc-HEy">
+                                    <connections>
+                                        <action selector="importRoster:" target="B8D-0N-5wS" id="vap-f2-ag3"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E4F14B79-5288-4366-80EC-8CA956325ABF" label="Export" paletteLabel="Export" tag="-1" image="NSShareTemplate" id="HiY-Nb-ciB">
+                                    <connections>
+                                        <action selector="exportRoster:" target="B8D-0N-5wS" id="9on-bG-YEB"/>
+                                    </connections>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="zPo-If-jwG"/>
+                                <toolbarItem reference="Zng-Uc-HEy"/>
+                                <toolbarItem reference="HiY-Nb-ciB"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                     </window>
                     <connections>
                         <segue destination="IyA-ru-b7S" kind="relationship" relationship="window.shadowedContentViewController" id="pLL-9w-aU3"/>
@@ -852,4 +876,9 @@
             <point key="canvasLocation" x="751" y="1279.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSFolder" width="32" height="32"/>
+        <image name="NSMultipleDocuments" width="32" height="32"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
+    </resources>
 </document>
