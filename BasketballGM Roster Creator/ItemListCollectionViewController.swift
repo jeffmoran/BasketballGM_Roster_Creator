@@ -21,6 +21,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	}
 
 	private var filteredPlayers: [Player]?
+	private var filteredTeams: [Team]?
 
 	private lazy var searchField: NSSearchField = {
 		let searchField = NSSearchField()
@@ -28,7 +29,6 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		searchField.centersPlaceholder = false
 		searchField.delegate = self
 		searchField.sendsSearchStringImmediately = true
-		searchField.placeholderString = "Players"
 
 		return searchField
 	}()
@@ -87,7 +87,11 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	func refreshCollectionViewWith(_ contentMode: ContentMode) {
 		self.contentMode = contentMode
 
+		searchField.placeholderString = contentMode == .players ? "Players" : "Teams"
+		searchField.stringValue = ""
+
 		filteredPlayers = API.shared.getAllPlayers()
+		filteredTeams = API.shared.getAllTeams()
 
 		collectionView.reloadData()
 	}
@@ -99,7 +103,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		case .players:
 			return filteredPlayers?.count ?? 0
 		case .teams:
-			return API.shared.getNumberOfTeams()
+			return filteredTeams?.count ?? 0
 		}
 	}
 
@@ -123,7 +127,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 			guard let collectionViewItem = item as? TeamCollectionViewItem else { return item }
 
-			if let team = API.shared.getTeamAt(indexPath.item) {
+			if let team = filteredTeams?[indexPath.item] {
 				collectionViewItem.team = team
 			}
 
@@ -169,8 +173,13 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 				return player.name.uppercased().contains(searchString.uppercased())
 			})
 
+			filteredTeams = API.shared.getAllTeams()?.filter({ team in
+				return team.region.uppercased().contains(searchString.uppercased()) || team.name.uppercased().contains(searchString.uppercased())
+			})
+
 			if searchString.isEmpty {
 				filteredPlayers = API.shared.getAllPlayers()
+				filteredTeams = API.shared.getAllTeams()
 			}
 
 			collectionView.reloadData()
