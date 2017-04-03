@@ -87,6 +87,8 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	func refreshCollectionViewWith(_ contentMode: ContentMode) {
 		self.contentMode = contentMode
 
+		filteredPlayers = API.shared.getAllPlayers()
+
 		collectionView.reloadData()
 	}
 
