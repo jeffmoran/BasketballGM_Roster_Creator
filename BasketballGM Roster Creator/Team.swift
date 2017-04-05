@@ -30,4 +30,8 @@ struct Team {
         self.strategy = jsonDict["strategy"] as? String
         self.imageURL = jsonDict["imgURL"] as? String ?? ""
     }
+
+	static var freeAgentTeam: Team {
+		return Team(["": ""])
+	}
 }

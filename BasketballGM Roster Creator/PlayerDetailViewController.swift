@@ -16,6 +16,9 @@ class PlayerDetailViewController: NSViewController {
 
 			updateTeamPopUpButton()
 
+			playerImageView.downloadedFrom(link: player.profileURL)
+			playerImageTextField.stringValue = player.profileURL
+
 			playerNameTextField.stringValue = player.name
 			playerNameTextField.becomeFirstResponder()
 
@@ -30,12 +33,25 @@ class PlayerDetailViewController: NSViewController {
 			if let playerTeam = player.team {
 				playerTeamPopUpButton.selectItem(withTitle: playerTeam.region + " " + playerTeam.name)
 			} else {
-
+				print("Free agent/draft prospect?")
 			}
 		}
 	}
 
 	@IBOutlet weak private var scrollView: NSScrollView!
+
+	lazy private var playerImageView: NSImageView = {
+		let imageView = NSImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+
+		return imageView
+	}()
+
+	lazy private var playerImageTextField: PlayerTextField = {
+		let textField = PlayerTextField()
+
+		return textField
+	}()
 
 	lazy private var playerNameLabel: PlayerLabel = {
 		let label = PlayerLabel()
@@ -143,31 +159,43 @@ class PlayerDetailViewController: NSViewController {
 	// MARK: - Private
 
 	private func addSubviews() {
-		scrollView.contentView.addSubview(playerNameLabel)
-		scrollView.contentView.addSubview(playerNameTextField)
+		scrollView.documentView?.addSubview(playerImageView)
+		scrollView.documentView?.addSubview(playerImageTextField)
 
-		scrollView.contentView.addSubview(playerAgeLabel)
-		scrollView.contentView.addSubview(playerAgeTextField)
+		scrollView.documentView?.addSubview(playerNameLabel)
+		scrollView.documentView?.addSubview(playerNameTextField)
 
-		scrollView.contentView.addSubview(playerHometownLabel)
-		scrollView.contentView.addSubview(playerHometownTextField)
+		scrollView.documentView?.addSubview(playerAgeLabel)
+		scrollView.documentView?.addSubview(playerAgeTextField)
 
-		scrollView.contentView.addSubview(playerHeightLabel)
-		scrollView.contentView.addSubview(playerHeightTextField)
+		scrollView.documentView?.addSubview(playerHometownLabel)
+		scrollView.documentView?.addSubview(playerHometownTextField)
 
-		scrollView.contentView.addSubview(playerWeightLabel)
-		scrollView.contentView.addSubview(playerWeightTextField)
+		scrollView.documentView?.addSubview(playerHeightLabel)
+		scrollView.documentView?.addSubview(playerHeightTextField)
 
-		scrollView.contentView.addSubview(playerTeamLabel)
-		scrollView.contentView.addSubview(playerTeamPopUpButton)
+		scrollView.documentView?.addSubview(playerWeightLabel)
+		scrollView.documentView?.addSubview(playerWeightTextField)
+
+		scrollView.documentView?.addSubview(playerTeamLabel)
+		scrollView.documentView?.addSubview(playerTeamPopUpButton)
 	}
 
 	private func setUpConstraints() {
 		NSLayoutConstraint.activate([
 			view.widthAnchor.constraint(greaterThanOrEqualToConstant: 400),
 
-			playerNameLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20),
-			playerNameLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+			playerImageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20),
+			playerImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+			playerImageView.heightAnchor.constraint(equalToConstant: 200),
+			playerImageView.widthAnchor.constraint(equalTo: playerImageView.heightAnchor),
+
+			playerImageTextField.leftAnchor.constraint(equalTo: playerImageView.rightAnchor, constant: 10),
+			playerImageTextField.bottomAnchor.constraint(equalTo: playerImageView.bottomAnchor),
+			playerImageTextField.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -20),
+
+			playerNameLabel.leftAnchor.constraint(equalTo: playerImageView.leftAnchor),
+			playerNameLabel.topAnchor.constraint(equalTo: playerImageView.bottomAnchor, constant: 8),
 
 			playerNameTextField.leftAnchor.constraint(equalTo: playerNameLabel.rightAnchor, constant: 10),
 			playerNameTextField.bottomAnchor.constraint(equalTo: playerNameLabel.bottomAnchor),

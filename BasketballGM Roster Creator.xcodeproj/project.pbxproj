@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A080B9A1E9340D7001815E1 /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080B991E9340D7001815E1 /* Draft.swift */; };
 		8A0EB8E21E901C0F00EF2BCE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EB8E11E901C0F00EF2BCE /* API.swift */; };
 		8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */; };
 		8A25E4C71E8B46FC005D4940 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */; };
@@ -22,12 +23,14 @@
 		8AC0178D1E8CAE75008BB81C /* TeamCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */; };
 		8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC449081E919A35000ACDB1 /* NumberFormatter.swift */; };
 		8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */; };
+		8AF242681E94A06A00908FF7 /* Injury.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF242671E94A06A00908FF7 /* Injury.swift */; };
 		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
 		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
 		8AF5B3771E89F23B00D2048F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3751E89F23B00D2048F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A080B991E9340D7001815E1 /* Draft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
 		8A0EB8E11E901C0F00EF2BCE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -43,6 +46,7 @@
 		8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewItem.xib; sourceTree = "<group>"; };
 		8AC449081E919A35000ACDB1 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTextField.swift; sourceTree = "<group>"; };
+		8AF242671E94A06A00908FF7 /* Injury.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injury.swift; sourceTree = "<group>"; };
 		8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasketballGM Roster Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF5B3731E89F23B00D2048F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				8A75658F1E8A0C180023C781 /* Player.swift */,
 				8A7565911E8A0C2D0023C781 /* Team.swift */,
 				8AC017881E8C96DA008BB81C /* Roster.swift */,
+				8A080B991E9340D7001815E1 /* Draft.swift */,
+				8AF242671E94A06A00908FF7 /* Injury.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A080B9A1E9340D7001815E1 /* Draft.swift in Sources */,
 				8A0EB8E21E901C0F00EF2BCE /* API.swift in Sources */,
 				8A7565971E8A121B0023C781 /* ItemListCollectionViewController.swift in Sources */,
 				8A7565901E8A0C180023C781 /* Player.swift in Sources */,
@@ -250,6 +257,7 @@
 				8A25E4C71E8B46FC005D4940 /* PlayerDetailViewController.swift in Sources */,
 				8AC0178C1E8CAE75008BB81C /* TeamCollectionViewItem.swift in Sources */,
 				8A25E4CE1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift in Sources */,
+				8AF242681E94A06A00908FF7 /* Injury.swift in Sources */,
 				8A2F1EF11E90289300F44AF8 /* Extensions.swift in Sources */,
 				8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */,
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,

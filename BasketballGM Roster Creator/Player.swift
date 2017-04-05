@@ -32,6 +32,8 @@ struct Player {
 	var weight: Int
 	var profileURL: String
 	var born: [String: Any]
+	var draft: Draft
+	var injury: Injury
 
 	init(_ jsonDict: [String: Any]? = nil) {
 		self.name = jsonDict?["name"] as? String ?? ""
@@ -44,6 +46,12 @@ struct Player {
 		self.position = Position(rawValue: (position))
 
 		self.born = jsonDict?["born"] as? [String: Any] ?? [:]
+
+		let draft = jsonDict?["draft"] as? [String: Any] ?? [:]
+		self.draft = Draft(draft)
+
+		let injury = jsonDict?["injury"] as? [String: Any] ?? [:]
+		self.injury = Injury(injury)
 	}
 
 	var team: Team? {
