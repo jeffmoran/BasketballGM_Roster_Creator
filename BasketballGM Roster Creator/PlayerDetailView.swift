@@ -45,7 +45,7 @@ class PlayerDetailView: NSView {
 			if let playerTeam = player.team {
 				playerTeamPopUpButton.selectItem(withTitle: playerTeam.region + " " + playerTeam.name)
 			} else {
-				print("Free agent/draft prospect?")
+				Swift.print("Free agent/draft prospect?")
 			}
 		}
 	}
