@@ -41,7 +41,8 @@ class PlayerDetailView: NSView {
 
 			playerAgeTextField.stringValue = String(player.age)
 			playerHometownTextField.stringValue = player.hometown
-
+			playerCollegeTextField.stringValue = player.college
+			
 			if let playerTeam = player.team {
 				playerTeamPopUpButton.selectItem(withTitle: playerTeam.region + " " + playerTeam.name)
 			} else {
@@ -68,7 +69,8 @@ class PlayerDetailView: NSView {
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		stackView.alignment = .right
 		stackView.orientation = .vertical
-		stackView.distribution = .fillProportionally
+		stackView.distribution = .fillEqually
+
 		return stackView
 	}()
 
@@ -77,7 +79,7 @@ class PlayerDetailView: NSView {
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		stackView.alignment = .left
 		stackView.orientation = .vertical
-		stackView.distribution = .fillProportionally
+		stackView.distribution = .fillEqually
 
 		return stackView
 	}()
@@ -119,6 +121,19 @@ class PlayerDetailView: NSView {
 	}()
 
 	lazy private var playerHometownTextField: PlayerTextField = {
+		let textField = PlayerTextField()
+
+		return textField
+	}()
+
+	lazy private var playerCollegeLabel: PlayerLabel = {
+		let label = PlayerLabel()
+		label.stringValue = "College"
+
+		return label
+	}()
+
+	lazy private var playerCollegeTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		return textField
@@ -212,6 +227,7 @@ class PlayerDetailView: NSView {
 		playerAttributeLabelStackView.addArrangedSubview(playerNameLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerAgeLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerHometownLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerCollegeLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerHeightLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerWeightLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerTeamLabel)
@@ -220,6 +236,7 @@ class PlayerDetailView: NSView {
 		playerAttributeTextFieldStackView.addArrangedSubview(playerNameTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerAgeTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerHometownTextField)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerCollegeTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerHeightTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerWeightTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerTeamPopUpButton)
