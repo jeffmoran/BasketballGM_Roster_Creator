@@ -35,6 +35,7 @@ struct Player {
 	var draft: Draft
 	var injury: Injury
 	var college: String
+	var contract: Contract
 
 	init(_ jsonDict: [String: Any]? = nil) {
 		self.name = jsonDict?["name"] as? String ?? ""
@@ -55,6 +56,9 @@ struct Player {
 
 		let injury = jsonDict?["injury"] as? [String: Any] ?? [:]
 		self.injury = Injury(injury)
+
+		let contract = jsonDict?["contract"] as? [String: Any] ?? [:]
+		self.contract = Contract(contract)
 	}
 
 	var team: Team? {

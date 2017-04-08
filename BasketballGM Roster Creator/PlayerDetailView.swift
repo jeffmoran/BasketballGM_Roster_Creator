@@ -42,7 +42,10 @@ class PlayerDetailView: NSView {
 			playerAgeTextField.stringValue = String(player.age)
 			playerHometownTextField.stringValue = player.hometown
 			playerCollegeTextField.stringValue = player.college
-			
+
+			playerContractAmountTextField.stringValue = player.contract.amountInMillions
+			playerContractExpirationTextField.stringValue = player.contract.expirationString
+
 			if let playerTeam = player.team {
 				playerTeamPopUpButton.selectItem(withTitle: playerTeam.region + " " + playerTeam.name)
 			} else {
@@ -199,6 +202,25 @@ class PlayerDetailView: NSView {
 		return popUpButton
 	}()
 
+	lazy private var playerContractLabel: PlayerLabel = {
+		let label = PlayerLabel()
+		label.stringValue = "Contract"
+
+		return label
+	}()
+
+	lazy private var playerContractAmountTextField: PlayerTextField = {
+		let textField = PlayerTextField()
+		textField.placeholderString = "Contract Amount"
+		return textField
+	}()
+
+	lazy private var playerContractExpirationTextField: PlayerTextField = {
+		let textField = PlayerTextField()
+		textField.placeholderString = "Contract Expiration"
+		return textField
+	}()
+
 	convenience init() {
 		self.init(frame: .zero)
 
@@ -230,8 +252,8 @@ class PlayerDetailView: NSView {
 		playerAttributeLabelStackView.addArrangedSubview(playerCollegeLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerHeightLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerWeightLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerTeamLabel)
 		playerAttributeLabelStackView.addArrangedSubview(playerPositionLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerTeamLabel)
 
 		playerAttributeTextFieldStackView.addArrangedSubview(playerNameTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerAgeTextField)
@@ -239,8 +261,12 @@ class PlayerDetailView: NSView {
 		playerAttributeTextFieldStackView.addArrangedSubview(playerCollegeTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerHeightTextField)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerWeightTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerTeamPopUpButton)
 		playerAttributeTextFieldStackView.addArrangedSubview(playerPositionPopUpButton)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerTeamPopUpButton)
+
+		addSubview(playerContractLabel)
+		addSubview(playerContractAmountTextField)
+		addSubview(playerContractExpirationTextField)
 	}
 
 	func setUpConstraints() {
@@ -264,14 +290,26 @@ class PlayerDetailView: NSView {
 
 			playerAttributeLabelStackView.topAnchor.constraint(equalTo: playerImageView.bottomAnchor, constant: 8),
 			playerAttributeLabelStackView.leftAnchor.constraint(equalTo: playerImageView.leftAnchor),
-			playerAttributeLabelStackView.widthAnchor.constraint(equalToConstant: 150),
+			playerAttributeLabelStackView.widthAnchor.constraint(equalToConstant: 120),
 
 			playerAttributeTextFieldStackView.topAnchor.constraint(equalTo: playerAttributeLabelStackView.topAnchor),
 			playerAttributeTextFieldStackView.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor, constant: 10),
 			playerAttributeTextFieldStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
 			playerAttributeTextFieldStackView.bottomAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor),
 
-			bottomAnchor.constraint(equalTo: playerAttributeTextFieldStackView.bottomAnchor, constant: 20)
+			playerContractLabel.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.leftAnchor),
+			playerContractLabel.topAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor, constant: 30),
+			playerContractLabel.rightAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor),
+
+			playerContractAmountTextField.leftAnchor.constraint(equalTo: playerContractLabel.rightAnchor, constant: 10),
+			playerContractAmountTextField.topAnchor.constraint(equalTo: playerContractLabel.topAnchor),
+			playerContractAmountTextField.widthAnchor.constraint(equalTo: playerContractExpirationTextField.widthAnchor),
+
+			playerContractExpirationTextField.leftAnchor.constraint(equalTo: playerContractAmountTextField.rightAnchor, constant: 10),
+			playerContractExpirationTextField.topAnchor.constraint(equalTo: playerContractLabel.topAnchor),
+			playerContractExpirationTextField.rightAnchor.constraint(equalTo: playerAttributeTextFieldStackView.rightAnchor),
+
+			bottomAnchor.constraint(equalTo: playerContractExpirationTextField.bottomAnchor, constant: 20)
 			])
 	}
 }

@@ -24,6 +24,7 @@
 		8AC0178D1E8CAE75008BB81C /* TeamCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */; };
 		8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC449081E919A35000ACDB1 /* NumberFormatter.swift */; };
 		8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */; };
+		8AD2513B1E995F7E0035693D /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2513A1E995F7E0035693D /* Contract.swift */; };
 		8AF242681E94A06A00908FF7 /* Injury.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF242671E94A06A00908FF7 /* Injury.swift */; };
 		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
 		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewItem.xib; sourceTree = "<group>"; };
 		8AC449081E919A35000ACDB1 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTextField.swift; sourceTree = "<group>"; };
+		8AD2513A1E995F7E0035693D /* Contract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		8AF242671E94A06A00908FF7 /* Injury.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injury.swift; sourceTree = "<group>"; };
 		8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasketballGM Roster Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,13 +122,22 @@
 		8A7565951E8A11620023C781 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8A75658F1E8A0C180023C781 /* Player.swift */,
-				8A7565911E8A0C2D0023C781 /* Team.swift */,
 				8AC017881E8C96DA008BB81C /* Roster.swift */,
-				8A080B991E9340D7001815E1 /* Draft.swift */,
-				8AF242671E94A06A00908FF7 /* Injury.swift */,
+				8A7565911E8A0C2D0023C781 /* Team.swift */,
+				8AD2513C1E995FC80035693D /* Player */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		8AD2513C1E995FC80035693D /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				8A75658F1E8A0C180023C781 /* Player.swift */,
+				8A080B991E9340D7001815E1 /* Draft.swift */,
+				8AF242671E94A06A00908FF7 /* Injury.swift */,
+				8AD2513A1E995F7E0035693D /* Contract.swift */,
+			);
+			name = Player;
 			sourceTree = "<group>";
 		};
 		8AF5B3631E89F23B00D2048F = {
@@ -267,6 +278,7 @@
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
 				8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */,
+				8AD2513B1E995F7E0035693D /* Contract.swift in Sources */,
 				8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */,
 				8AC017891E8C96DA008BB81C /* Roster.swift in Sources */,
 			);
