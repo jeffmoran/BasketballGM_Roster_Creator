@@ -37,7 +37,7 @@ class PlayerDetailView: NSView {
 			playerWeightTextField.stringValue = String(player.weight)
 			playerHeightTextField.stringValue = String(player.height)
 
-			//            playerPositionPopUpButton.selectItem(withTitle: player.position.rawValue)
+			playerPositionPopUpButton.selectItem(withTitle: player.position.rawValue)
 
 			playerAgeTextField.stringValue = String(player.age)
 			playerHometownTextField.stringValue = player.hometown
@@ -61,6 +61,25 @@ class PlayerDetailView: NSView {
 		let textField = PlayerTextField()
 
 		return textField
+	}()
+
+	lazy private var playerAttributeLabelStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.alignment = .right
+		stackView.orientation = .vertical
+		stackView.distribution = .fillProportionally
+		return stackView
+	}()
+
+	lazy private var playerAttributeTextFieldStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.alignment = .left
+		stackView.orientation = .vertical
+		stackView.distribution = .fillProportionally
+
+		return stackView
 	}()
 
 	lazy private var playerNameLabel: PlayerLabel = {
@@ -136,6 +155,13 @@ class PlayerDetailView: NSView {
 		return textField
 	}()
 
+	lazy private var playerPositionLabel: PlayerLabel = {
+		let label = PlayerLabel()
+		label.stringValue = "Position"
+
+		return label
+	}()
+
 	lazy private var playerPositionPopUpButton: NSPopUpButton = {
 		let popUpButton = NSPopUpButton()
 		let positions = Position.allPositions
@@ -180,23 +206,24 @@ class PlayerDetailView: NSView {
 		addSubview(playerImageView)
 		addSubview(playerImageTextField)
 
-		addSubview(playerNameLabel)
-		addSubview(playerNameTextField)
+		addSubview(playerAttributeLabelStackView)
+		addSubview(playerAttributeTextFieldStackView)
 
-		addSubview(playerAgeLabel)
-		addSubview(playerAgeTextField)
+		playerAttributeLabelStackView.addArrangedSubview(playerNameLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerAgeLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerHometownLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerHeightLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerWeightLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerTeamLabel)
+		playerAttributeLabelStackView.addArrangedSubview(playerPositionLabel)
 
-		addSubview(playerHometownLabel)
-		addSubview(playerHometownTextField)
-
-		addSubview(playerHeightLabel)
-		addSubview(playerHeightTextField)
-
-		addSubview(playerWeightLabel)
-		addSubview(playerWeightTextField)
-
-		addSubview(playerTeamLabel)
-		addSubview(playerTeamPopUpButton)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerNameTextField)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerAgeTextField)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerHometownTextField)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerHeightTextField)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerWeightTextField)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerTeamPopUpButton)
+		playerAttributeTextFieldStackView.addArrangedSubview(playerPositionPopUpButton)
 	}
 
 	func setUpConstraints() {
@@ -218,54 +245,16 @@ class PlayerDetailView: NSView {
 			playerImageTextField.bottomAnchor.constraint(equalTo: playerImageView.bottomAnchor),
 			playerImageTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
 
-			playerNameLabel.leftAnchor.constraint(equalTo: playerImageView.leftAnchor),
-			playerNameLabel.topAnchor.constraint(equalTo: playerImageView.bottomAnchor, constant: 8),
+			playerAttributeLabelStackView.topAnchor.constraint(equalTo: playerImageView.bottomAnchor, constant: 8),
+			playerAttributeLabelStackView.leftAnchor.constraint(equalTo: playerImageView.leftAnchor),
+			playerAttributeLabelStackView.widthAnchor.constraint(equalToConstant: 150),
 
-			playerNameTextField.leftAnchor.constraint(equalTo: playerNameLabel.rightAnchor, constant: 10),
-			playerNameTextField.bottomAnchor.constraint(equalTo: playerNameLabel.bottomAnchor),
-			playerNameTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+			playerAttributeTextFieldStackView.topAnchor.constraint(equalTo: playerAttributeLabelStackView.topAnchor),
+			playerAttributeTextFieldStackView.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor, constant: 10),
+			playerAttributeTextFieldStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+			playerAttributeTextFieldStackView.bottomAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor),
 
-			playerAgeLabel.leftAnchor.constraint(equalTo: playerNameLabel.leftAnchor),
-			playerAgeLabel.topAnchor.constraint(equalTo: playerNameLabel.bottomAnchor, constant: 8),
-			playerAgeLabel.rightAnchor.constraint(equalTo: playerNameLabel.rightAnchor),
-
-			playerAgeTextField.leftAnchor.constraint(equalTo: playerNameTextField.leftAnchor),
-			playerAgeTextField.bottomAnchor.constraint(equalTo: playerAgeLabel.bottomAnchor),
-			playerAgeTextField.rightAnchor.constraint(equalTo: playerNameTextField.rightAnchor),
-
-			playerHometownLabel.leftAnchor.constraint(equalTo: playerNameLabel.leftAnchor),
-			playerHometownLabel.topAnchor.constraint(equalTo: playerAgeLabel.bottomAnchor, constant: 8),
-			playerHometownLabel.rightAnchor.constraint(equalTo: playerNameLabel.rightAnchor),
-
-			playerHometownTextField.leftAnchor.constraint(equalTo: playerNameTextField.leftAnchor),
-			playerHometownTextField.bottomAnchor.constraint(equalTo: playerHometownLabel.bottomAnchor),
-			playerHometownTextField.rightAnchor.constraint(equalTo: playerNameTextField.rightAnchor),
-
-			playerHeightLabel.leftAnchor.constraint(equalTo: playerNameLabel.leftAnchor),
-			playerHeightLabel.topAnchor.constraint(equalTo: playerHometownLabel.bottomAnchor, constant: 8),
-			playerHeightLabel.rightAnchor.constraint(equalTo: playerNameLabel.rightAnchor),
-
-			playerHeightTextField.leftAnchor.constraint(equalTo: playerNameTextField.leftAnchor),
-			playerHeightTextField.bottomAnchor.constraint(equalTo: playerHeightLabel.bottomAnchor),
-			playerHeightTextField.rightAnchor.constraint(equalTo: playerNameTextField.rightAnchor),
-
-			playerWeightLabel.leftAnchor.constraint(equalTo: playerNameLabel.leftAnchor),
-			playerWeightLabel.topAnchor.constraint(equalTo: playerHeightLabel.bottomAnchor, constant: 8),
-			playerWeightLabel.rightAnchor.constraint(equalTo: playerNameLabel.rightAnchor),
-
-			playerWeightTextField.leftAnchor.constraint(equalTo: playerNameTextField.leftAnchor),
-			playerWeightTextField.bottomAnchor.constraint(equalTo: playerWeightLabel.bottomAnchor),
-			playerWeightTextField.rightAnchor.constraint(equalTo: playerNameTextField.rightAnchor),
-
-			playerTeamLabel.leftAnchor.constraint(equalTo: playerNameLabel.leftAnchor),
-			playerTeamLabel.topAnchor.constraint(equalTo: playerWeightLabel.bottomAnchor, constant: 8),
-			playerTeamLabel.rightAnchor.constraint(equalTo: playerNameLabel.rightAnchor),
-
-			playerTeamPopUpButton.leftAnchor.constraint(equalTo: playerNameTextField.leftAnchor),
-			playerTeamPopUpButton.bottomAnchor.constraint(equalTo:  playerTeamLabel.bottomAnchor),
-			playerTeamPopUpButton.rightAnchor.constraint(equalTo: playerNameTextField.rightAnchor),
-
-			bottomAnchor.constraint(equalTo: playerTeamPopUpButton.bottomAnchor, constant: 20)
+			bottomAnchor.constraint(equalTo: playerAttributeTextFieldStackView.bottomAnchor, constant: 20)
 			])
 	}
 }
