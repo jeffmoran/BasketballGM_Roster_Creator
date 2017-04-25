@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <collectionViewItem id="4lD-Zp-rli" customClass="DraftPickCollectionViewItem" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
+            <connections>
+                <outlet property="team" destination="WbX-L7-GEk" id="m89-BB-4S7"/>
+                <outlet property="view" destination="NLd-IM-UnW" id="398-Xp-aCa"/>
+            </connections>
+        </collectionViewItem>
+        <customView id="NLd-IM-UnW">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="275"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbX-L7-GEk">
+                    <rect key="frame" x="18" y="238" width="331" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="VVq-sf-4PJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="WbX-L7-GEk" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="20" symbolic="YES" id="TTd-8K-toP"/>
+                <constraint firstAttribute="trailing" secondItem="WbX-L7-GEk" secondAttribute="trailing" constant="20" symbolic="YES" id="pdj-Ly-W9f"/>
+                <constraint firstItem="WbX-L7-GEk" firstAttribute="leading" secondItem="NLd-IM-UnW" secondAttribute="leading" constant="20" symbolic="YES" id="pvi-o2-2fu"/>
+            </constraints>
+            <point key="canvasLocation" x="107.5" y="164.5"/>
+        </customView>
+    </objects>
+</document>

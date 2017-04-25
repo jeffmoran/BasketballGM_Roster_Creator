@@ -11,10 +11,12 @@ import Foundation
 struct Roster {
     var teams: [Team] = [Team]()
     var players: [Player] = [Player]()
+	var draftPicks: [DraftPick] = [DraftPick]()
 
     init(_ jsonDict: [String: Any]) {
         guard let jsonTeams = jsonDict["teams"] as? [[String: Any]] else { return }
         guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { return }
+		guard let jsonDraftPicks = jsonDict["draftPicks"] as? [[String: Any]] else { return }
 
         for team in jsonTeams {
             teams.append(Team(team))
@@ -23,5 +25,9 @@ struct Roster {
         for player in jsonPlayers {
             players.append(Player(player))
         }
+
+		for draftPick in jsonDraftPicks {
+			draftPicks.append(DraftPick(draftPick))
+		}
     }
 }

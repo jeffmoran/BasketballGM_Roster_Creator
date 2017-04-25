@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Draft {
+struct DraftPick {
 	var teamID: Int
 	var round: Int
 	var pick: Int

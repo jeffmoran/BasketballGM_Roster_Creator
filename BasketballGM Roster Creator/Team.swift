@@ -34,4 +34,8 @@ struct Team {
 	static var freeAgentTeam: Team {
 		return Team(["": ""])
 	}
+
+	var fullTeamName: String {
+		return region + " " + name
+	}
 }

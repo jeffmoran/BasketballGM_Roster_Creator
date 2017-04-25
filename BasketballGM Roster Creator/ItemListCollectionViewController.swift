@@ -9,12 +9,12 @@
 import Cocoa
 
 enum ContentMode {
-	case players, teams
+	case players, teams, draftPicks
 }
 
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSSearchFieldDelegate {
 
-	var contentMode: ContentMode = .players
+	private var contentMode: ContentMode = .players
 
 	private var window: MainWindowController? {
 		return view.window?.windowController as? MainWindowController
@@ -22,6 +22,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 	private var filteredPlayers: [Player]?
 	private var filteredTeams: [Team]?
+	private var filteredDraftPicks: [DraftPick]?
 
 	private lazy var searchField: NSSearchField = {
 		let searchField = NSSearchField()
@@ -92,6 +93,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 		filteredPlayers = API.shared.getAllPlayers()
 		filteredTeams = API.shared.getAllTeams()
+		filteredDraftPicks = API.shared.getAllDraftPicks()
 
 		collectionView.reloadData()
 	}
@@ -104,6 +106,8 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			return filteredPlayers?.count ?? 0
 		case .teams:
 			return filteredTeams?.count ?? 0
+		case .draftPicks:
+			return filteredDraftPicks?.count ?? 0
 		}
 	}
 
@@ -132,6 +136,16 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			}
 
 			return collectionViewItem
+		case .draftPicks:
+			item = collectionView.makeItem(withIdentifier: "DraftPickCollectionViewItem", for: indexPath)
+
+			guard let collectionViewItem = item as? DraftPickCollectionViewItem else { return item }
+
+			if let draftPick = filteredDraftPicks?[indexPath.item] {
+				collectionViewItem.draftPick = draftPick
+			}
+
+			return collectionViewItem
 		}
 	}
 
@@ -154,6 +168,8 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 				detailsViewController?.player = filteredPlayers?[indexPathItem]
 			}
 		case .teams:
+			return
+		case .draftPicks:
 			return
 		}
 

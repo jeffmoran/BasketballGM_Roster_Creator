@@ -14,7 +14,7 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         return view.window?.windowController as? MainWindowController
     }
 
-    let outlineItems: [String] = ["Players", "Teams"]
+    let outlineItems: [String] = ["Players", "Teams", "Draft Picks"]
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         return outlineItems[index]
@@ -71,7 +71,8 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
             print("Edit teams")
             window?.refreshCollectionViewWith(.teams)
         case 2:
-            print("Edit game values")
+            print("Edit draft picks")
+			window?.refreshCollectionViewWith(.draftPicks)
         default:
             assertionFailure()
         }

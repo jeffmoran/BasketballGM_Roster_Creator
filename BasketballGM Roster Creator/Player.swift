@@ -32,7 +32,7 @@ struct Player {
 	var weight: Int
 	var profileURL: String
 	var born: [String: Any]
-	var draft: Draft
+	var draft: DraftPick
 	var injury: Injury
 	var college: String
 	var contract: Contract
@@ -52,7 +52,7 @@ struct Player {
 		self.college = jsonDict?["college"] as? String ?? ""
 
 		let draft = jsonDict?["draft"] as? [String: Any] ?? [:]
-		self.draft = Draft(draft)
+		self.draft = DraftPick(draft)
 
 		let injury = jsonDict?["injury"] as? [String: Any] ?? [:]
 		self.injury = Injury(injury)

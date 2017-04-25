@@ -103,5 +103,13 @@ struct API {
 		return getAllTeams()?.first(where: { $0.teamID == teamID })
 	}
 
-	// MARK: - Other
+	// MARK: - Draft Picks
+
+	func getAllDraftPicks() -> [DraftPick]? {
+		return roster?.draftPicks
+	}
+
+	func getNumberOfDraftPicks() -> Int {
+		return getAllDraftPicks()?.count ?? 0
+	}
 }
