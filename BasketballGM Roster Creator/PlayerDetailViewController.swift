@@ -9,8 +9,6 @@
 import Cocoa
 
 class PlayerDetailViewController: NSViewController {
-
-	var playerID: Int?
 	var player: Player? {
 		didSet {
 			guard let player = player else { return }
@@ -73,7 +71,7 @@ class PlayerDetailViewController: NSViewController {
 
 	func savePlayer() {
 		let player = playerDetailView.getPlayer()
-		API.shared.replacePlayer(at: playerID, playerDict: player)
+		API.shared.replacePlayer(at: self.player?.playerID, playerDict: player)
 	}
 
 }

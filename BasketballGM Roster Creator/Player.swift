@@ -25,6 +25,7 @@ enum Position: String {
 }
 
 struct Player {
+	var playerID: Int?
 	var name: String
 	var teamID: Int
 	var position: Position?

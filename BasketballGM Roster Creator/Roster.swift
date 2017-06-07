@@ -23,8 +23,11 @@ struct Roster {
             teams.append(Team(team))
         }
 
-        for player in jsonPlayers {
-            players.append(Player(player))
+        for (index, playerDict) in jsonPlayers.enumerated() {
+			var player = Player(playerDict)
+			player.playerID = index
+
+            players.append(player)
         }
 
 		for draftPick in jsonDraftPicks {

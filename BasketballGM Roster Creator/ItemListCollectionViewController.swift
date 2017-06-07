@@ -151,7 +151,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 	// MARK: - NSCollectionViewDelegate
 
-	var detailsViewController: PlayerDetailViewController? {
+	var playersDetailsViewController: PlayerDetailViewController? {
 		if let splitViewController = parent as? NSSplitViewController {
 			return splitViewController.childViewControllers[2] as? PlayerDetailViewController
 		} else {
@@ -165,8 +165,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		switch contentMode {
 		case .players:
 			if let indexPathItem = indexPaths.first?.item {
-				detailsViewController?.playerID = indexPaths.first?.item
-				detailsViewController?.player = filteredPlayers?[indexPathItem]
+				playersDetailsViewController?.player = filteredPlayers?[indexPathItem]
 			}
 		case .teams:
 			return
