@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import AppKit
 
 struct API {
 	static var shared: API = API()
 
 	var roster: Roster?
+
+	var mainController: MainWindowController? {
+		return NSApp.mainWindow?.windowController as? MainWindowController
+	}
 
 	// MARK: - Main
 
@@ -22,6 +27,7 @@ struct API {
 			guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
 
 			roster = Roster(jsonData)
+			roster?.rawJSONDict = jsonData
 		} catch {
 			print(error.localizedDescription)
 		}
@@ -39,6 +45,18 @@ struct API {
 		guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
 
 		let filename = url.lastPathComponent
+
+		saveRosterToDisk(jsonData, withFileName: filename)
+	}
+
+	func saveRosterToDisk(_ roster: Any?, withFileName filename: String? = nil) {
+		guard let roster = roster else { return }
+
+		if !JSONSerialization.isValidJSONObject(roster) {
+			assertionFailure("Not a valid JSON object")
+			return
+		}
+
 		let fileManager = FileManager.default
 
 		let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -47,7 +65,9 @@ struct API {
 
 		try? fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
 
-		let fileUrl = directory.appendingPathComponent("\(filename)")
+		let title = NSApp.mainWindow?.title
+
+		let fileUrl = directory.appendingPathComponent("\(filename ?? title ?? "roster.json")")
 
 		var json: Data!
 		var isDirectory: ObjCBool = false
@@ -57,7 +77,7 @@ struct API {
 		}
 
 		do {
-			json = try JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted)
+			json = try JSONSerialization.data(withJSONObject: roster, options: .prettyPrinted)
 		} catch {
 			assertionFailure(error.localizedDescription)
 			return
@@ -83,6 +103,26 @@ struct API {
 
 	func getNumberOfPlayers() -> Int {
 		return getAllPlayers()?.count ?? 0
+	}
+
+	mutating func replacePlayer(at playerID: Int?, playerDict: [String: Any]) {
+		guard let allPlayers = getAllPlayers() else { return }
+		guard let playerID = playerID else { return }
+
+		for index in allPlayers.indices where playerID == index {
+			var players = roster?.rawJSONDict["players"] as? [[String: Any]]
+			players?[index] = playerDict
+
+			roster?.rawJSONDict["players"] = players
+		}
+
+		guard let roster = roster?.rawJSONDict else { return }
+
+		self.roster = Roster(roster)
+
+		saveRosterToDisk(roster)
+
+		mainController?.refreshCollectionViewWith(.players)
 	}
 
 	// MARK: - Teams

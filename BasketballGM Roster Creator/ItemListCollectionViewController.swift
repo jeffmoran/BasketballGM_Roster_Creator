@@ -165,6 +165,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		switch contentMode {
 		case .players:
 			if let indexPathItem = indexPaths.first?.item {
+				detailsViewController?.playerID = indexPaths.first?.item
 				detailsViewController?.player = filteredPlayers?[indexPathItem]
 			}
 		case .teams:

@@ -10,6 +10,7 @@ import Cocoa
 
 class PlayerDetailViewController: NSViewController {
 
+	var playerID: Int?
 	var player: Player? {
 		didSet {
 			guard let player = player else { return }
@@ -34,10 +35,9 @@ class PlayerDetailViewController: NSViewController {
 	}()
 
 	lazy private var saveButton: NSButton = {
-		let button = NSButton()
+		let button = NSButton(title: "Save", target: self, action: #selector(savePlayer))
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.title = "Save"
-		button.bezelStyle = NSBezelStyle.rounded
+		button.bezelStyle = .rounded
 
 		return button
 	}()
@@ -69,6 +69,11 @@ class PlayerDetailViewController: NSViewController {
 			])
 
 		playerDetailView.setUpConstraints()
+	}
+
+	func savePlayer() {
+		let player = playerDetailView.getPlayer()
+		API.shared.replacePlayer(at: playerID, playerDict: player)
 	}
 
 }

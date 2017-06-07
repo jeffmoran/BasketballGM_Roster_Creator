@@ -9,6 +9,7 @@
 import Foundation
 
 struct Roster {
+	var rawJSONDict: [String: Any] = [String: Any]()
     var teams: [Team] = [Team]()
     var players: [Player] = [Player]()
 	var draftPicks: [DraftPick] = [DraftPick]()

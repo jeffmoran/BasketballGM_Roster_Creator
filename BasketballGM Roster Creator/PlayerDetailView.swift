@@ -11,7 +11,7 @@ import Cocoa
 
 class PlayerDetailView: NSView {
 
-	// MARK: - Propoerties
+	// MARK: - Properties
 
 	var player: Player? {
 		didSet {
@@ -311,5 +311,16 @@ class PlayerDetailView: NSView {
 
 			bottomAnchor.constraint(equalTo: playerContractExpirationTextField.bottomAnchor, constant: 20)
 			])
+	}
+
+	func getPlayer() -> [String: Any] {
+		var player: [String: Any] = [String: Any]()
+
+		player["name"] = playerNameTextField.stringValue
+		player["height"] = playerWeightTextField.stringValue
+
+		// TODO: Add rest of player properties here
+
+		return player
 	}
 }
