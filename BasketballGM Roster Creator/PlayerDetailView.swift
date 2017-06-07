@@ -6,7 +6,6 @@
 //  Copyright © 2017 Jeff Moran. All rights reserved.
 //
 
-import Foundation
 import Cocoa
 
 class PlayerDetailView: NSView {
@@ -37,7 +36,7 @@ class PlayerDetailView: NSView {
 			playerWeightTextField.stringValue = String(player.weight)
 			playerHeightTextField.stringValue = String(player.height)
 
-			playerPositionPopUpButton.selectItem(withTitle: player.position.rawValue)
+			playerPositionPopUpButton.selectItem(withTitle: player.position?.rawValue ?? "")
 
 			playerAgeTextField.stringValue = String(player.age)
 			playerHometownTextField.stringValue = player.hometown

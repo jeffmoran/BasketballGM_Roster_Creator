@@ -27,7 +27,7 @@ enum Position: String {
 struct Player {
 	var name: String
 	var teamID: Int
-	var position: Position!
+	var position: Position?
 	var height: Int
 	var weight: Int
 	var profileURL: String

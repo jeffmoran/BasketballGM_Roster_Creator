@@ -6,7 +6,6 @@
 //  Copyright © 2017 Jeff Moran. All rights reserved.
 //
 
-import Foundation
 import Cocoa
 
 class PlayerTextField: NSTextField {

@@ -187,11 +187,11 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			let searchString = self.searchField.stringValue
 
 			filteredPlayers = API.shared.getAllPlayers()?.filter({ player in
-				return player.name.uppercased().contains(searchString.uppercased())
+				player.name.uppercased().contains(searchString.uppercased())
 			})
 
 			filteredTeams = API.shared.getAllTeams()?.filter({ team in
-				return team.region.uppercased().contains(searchString.uppercased()) || team.name.uppercased().contains(searchString.uppercased())
+				team.region.uppercased().contains(searchString.uppercased()) || team.name.uppercased().contains(searchString.uppercased())
 			})
 
 			if searchString.isEmpty {

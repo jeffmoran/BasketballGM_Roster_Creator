@@ -19,4 +19,10 @@ opt_in_rules:
 - object_literal
 - explicit_type_interface
 - valid_docs
+- fatal_error_message
+- implicit_return
+- implicitly_unwrapped_optional
+- multiline_parameters
+- no_extension_access_modifier
+- sorted_imports
 excluded:
