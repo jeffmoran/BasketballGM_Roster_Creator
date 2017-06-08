@@ -30,8 +30,8 @@ struct Roster {
             players.append(player)
         }
 
-		if let draftPicks = jsonDraftPicks {
-			for draftPick in draftPicks {
+		if let jsonDraftPicks = jsonDraftPicks {
+			for draftPick in jsonDraftPicks {
 				draftPicks.append(DraftPick(draftPick))
 			}
 		}
