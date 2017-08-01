@@ -19,18 +19,18 @@ struct API {
 
 	// MARK: - Main
 
-	mutating func getRosterFrom(_ url: URL, completion: (() -> Void)? = nil) {
+	mutating func getRosterFrom(_ url: URL, completion: () -> Void) {
 		guard let data = NSData(contentsOf: url) as Data? else { return }
 
 		do {
 			guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
 
 			roster = Roster(jsonData)
+
+			completion()
 		} catch {
 			print(error.localizedDescription)
 		}
-
-		completion?()
 	}
 
 	/// Imports the roster JSON file and saves it to the the ~/Documents/BasketballGM_Rosters directory

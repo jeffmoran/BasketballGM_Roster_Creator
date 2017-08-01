@@ -25,7 +25,7 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
 
     func outlineView(_ outlineView: NSOutlineView, viewFor viewForTableColumn: NSTableColumn?, item: Any) -> NSView? {
         guard let item = item as? String else { return nil }
-        guard let view = outlineView.make(withIdentifier: "DataCell", owner: self) as? NSTableCellView else { return nil }
+        guard let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"), owner: self) as? NSTableCellView else { return nil }
 
         view.textField?.stringValue = item
 

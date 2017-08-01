@@ -29,17 +29,17 @@ class MainWindowController: NSWindowController {
 		let splitViewController = NSSplitViewController()
 		splitViewController.splitView.dividerStyle = .thin
 
-		if let sideBarController = storyboard?.instantiateController(withIdentifier: "outlineViewController") as? OutlineViewController {
+		if let sideBarController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "outlineViewController")) as? OutlineViewController {
 			let sideBarSplitView = NSSplitViewItem(viewController: sideBarController)
 			splitViewController.addSplitViewItem(sideBarSplitView)
 		}
 
-		if  let itemListController = storyboard?.instantiateController(withIdentifier: "itemListCollectionViewController") as? ItemListCollectionViewController {
+		if  let itemListController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "itemListCollectionViewController")) as? ItemListCollectionViewController {
 			let itemSplitView = NSSplitViewItem(viewController: itemListController)
 			splitViewController.addSplitViewItem(itemSplitView)
 		}
 
-		if let playerDetailViewController = storyboard?.instantiateController(withIdentifier: "playerDetailViewController") as? PlayerDetailViewController {
+		if let playerDetailViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "playerDetailViewController")) as? PlayerDetailViewController {
 			let playerDetailsplitView = NSSplitViewItem(viewController: playerDetailViewController)
 			splitViewController.addSplitViewItem(playerDetailsplitView)
 		}
@@ -56,7 +56,7 @@ class MainWindowController: NSWindowController {
 		guard let window = window else { return }
 
 		panel.beginSheetModal(for: window) { result in
-			if result == NSFileHandlingPanelOKButton {
+			if result.rawValue == NSFileHandlingPanelOKButton {
 				guard let url = panel.urls.first else { return }
 
 				API.shared.importRoster(url)
@@ -81,7 +81,7 @@ class MainWindowController: NSWindowController {
 		guard let window = window else { return }
 
 		panel.beginSheetModal(for: window) { result in
-			if result == NSFileHandlingPanelOKButton {
+			if result.rawValue == NSFileHandlingPanelOKButton {
 				guard let url = panel.urls.first else { return }
 
 				API.shared.getRosterFrom(url) {

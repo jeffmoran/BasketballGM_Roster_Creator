@@ -14,7 +14,10 @@ class PlayerDetailView: NSView {
 
 	var player: Player? {
 		didSet {
-			guard let player = player else { return }
+			guard let player = player else {
+				// TODO: Show "no player selected" screen
+				return
+			}
 
 			var teams: [String] = [String]()
 
@@ -53,83 +56,90 @@ class PlayerDetailView: NSView {
 		}
 	}
 
-	lazy private var playerImageView: NSImageView = {
+	private lazy var playerImageView: NSImageView = {
 		let imageView = NSImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.imageScaling = .scaleProportionallyUpOrDown
 
 		return imageView
 	}()
 
-	lazy private var playerImageTextField: PlayerTextField = {
+	private lazy var playerAttributeLabelStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.alignment = .right
+		stackView.orientation = .vertical
+		stackView.distribution = .equalSpacing
+		stackView.spacing = 4.0
+
+		stackView.addArrangedSubview(playerImageLabel)
+		stackView.addArrangedSubview(playerNameLabel)
+		stackView.addArrangedSubview(playerAgeLabel)
+		stackView.addArrangedSubview(playerHometownLabel)
+		stackView.addArrangedSubview(playerCollegeLabel)
+		stackView.addArrangedSubview(playerHeightLabel)
+		stackView.addArrangedSubview(playerWeightLabel)
+		stackView.addArrangedSubview(playerPositionLabel)
+		stackView.addArrangedSubview(playerTeamLabel)
+
+		return stackView
+	}()
+
+	private lazy var playerAttributeTextFieldStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.alignment = .left
+		stackView.orientation = .vertical
+		stackView.distribution = .equalSpacing
+		stackView.spacing = 4.0
+
+		stackView.addArrangedSubview(playerImageTextField)
+		stackView.addArrangedSubview(playerNameTextField)
+		stackView.addArrangedSubview(playerAgeTextField)
+		stackView.addArrangedSubview(playerHometownTextField)
+		stackView.addArrangedSubview(playerCollegeTextField)
+		stackView.addArrangedSubview(playerHeightTextField)
+		stackView.addArrangedSubview(playerWeightTextField)
+		stackView.addArrangedSubview(playerPositionPopUpButton)
+		stackView.addArrangedSubview(playerTeamPopUpButton)
+
+		return stackView
+	}()
+
+	private lazy var playerImageLabel: PlayerLabel = {
+		let label = PlayerLabel()
+		label.stringValue = "Image URL"
+
+		return label
+	}()
+
+	private lazy var playerImageTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		return textField
 	}()
 
-	lazy private var playerAttributeLabelStackView: NSStackView = {
-		let stackView = NSStackView()
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.alignment = .right
-		stackView.orientation = .vertical
-		stackView.distribution = .fillEqually
-		stackView.wantsLayer = true
-		stackView.layer?.backgroundColor = NSColor.red.cgColor
-
-		stackView.addArrangedSubview(self.playerNameLabel)
-		stackView.addArrangedSubview(self.playerAgeLabel)
-		stackView.addArrangedSubview(self.playerHometownLabel)
-		stackView.addArrangedSubview(self.playerCollegeLabel)
-		stackView.addArrangedSubview(self.playerHeightLabel)
-		stackView.addArrangedSubview(self.playerWeightLabel)
-		stackView.addArrangedSubview(self.playerPositionLabel)
-		stackView.addArrangedSubview(self.playerTeamLabel)
-		stackView.setClippingResistancePriority(NSLayoutPriorityDefaultHigh, for: .vertical)
-
-		return stackView
-	}()
-
-	lazy private var playerAttributeTextFieldStackView: NSStackView = {
-		let stackView = NSStackView()
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.alignment = .left
-		stackView.orientation = .vertical
-		stackView.distribution = .fillEqually
-		stackView.wantsLayer = true
-		stackView.layer?.backgroundColor = NSColor.blue.cgColor
-
-		stackView.addArrangedSubview(self.playerNameTextField)
-		stackView.addArrangedSubview(self.playerAgeTextField)
-		stackView.addArrangedSubview(self.playerHometownTextField)
-		stackView.addArrangedSubview(self.playerCollegeTextField)
-		stackView.addArrangedSubview(self.playerHeightTextField)
-		stackView.addArrangedSubview(self.playerWeightTextField)
-		stackView.addArrangedSubview(self.playerPositionPopUpButton)
-		stackView.addArrangedSubview(self.playerTeamPopUpButton)
-
-		return stackView
-	}()
-
-	lazy private var playerNameLabel: PlayerLabel = {
+	private lazy var playerNameLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Name"
 
 		return label
 	}()
 
-	lazy private var playerNameTextField: PlayerTextField = {
+	private lazy var playerNameTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		return textField
 	}()
 
-	lazy private var playerAgeLabel: PlayerLabel = {
+	private lazy var playerAgeLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Age"
 
 		return label
 	}()
 
-	lazy private var playerAgeTextField: PlayerTextField = {
+	private lazy var playerAgeTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		let numberFormatter = OnlyIntegerValueFormatter()
@@ -138,40 +148,40 @@ class PlayerDetailView: NSView {
 		return textField
 	}()
 
-	lazy private var playerHometownLabel: PlayerLabel = {
+	private lazy var playerHometownLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Hometown"
 
 		return label
 	}()
 
-	lazy private var playerHometownTextField: PlayerTextField = {
+	private lazy var playerHometownTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		return textField
 	}()
 
-	lazy private var playerCollegeLabel: PlayerLabel = {
+	private lazy var playerCollegeLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "College"
 
 		return label
 	}()
 
-	lazy private var playerCollegeTextField: PlayerTextField = {
+	private lazy var playerCollegeTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		return textField
 	}()
 
-	lazy private var playerHeightLabel: PlayerLabel = {
+	private lazy var playerHeightLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Height"
 
 		return label
 	}()
 
-	lazy private var playerHeightTextField: PlayerTextField = {
+	private lazy var playerHeightTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 		let numberFormatter = OnlyIntegerValueFormatter()
 		textField.formatter = numberFormatter
@@ -179,14 +189,14 @@ class PlayerDetailView: NSView {
 		return textField
 	}()
 
-	lazy private var playerWeightLabel: PlayerLabel = {
+	private lazy var playerWeightLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Weight"
 
 		return label
 	}()
 
-	lazy private var playerWeightTextField: PlayerTextField = {
+	private lazy var playerWeightTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
 		let numberFormatter = OnlyIntegerValueFormatter()
@@ -195,14 +205,14 @@ class PlayerDetailView: NSView {
 		return textField
 	}()
 
-	lazy private var playerPositionLabel: PlayerLabel = {
+	private lazy var playerPositionLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Position"
 
 		return label
 	}()
 
-	lazy private var playerPositionPopUpButton: NSPopUpButton = {
+	private lazy var playerPositionPopUpButton: NSPopUpButton = {
 		let popUpButton = NSPopUpButton()
 		let positions = Position.allPositions
 		popUpButton.addItems(withTitles: positions)
@@ -210,28 +220,28 @@ class PlayerDetailView: NSView {
 		return popUpButton
 	}()
 
-	lazy private var playerTeamLabel: PlayerLabel = {
+	private lazy var playerTeamLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Team"
 
 		return label
 	}()
 
-	lazy private var playerTeamPopUpButton: NSPopUpButton = {
+	private lazy var playerTeamPopUpButton: NSPopUpButton = {
 		let popUpButton = NSPopUpButton()
 		popUpButton.translatesAutoresizingMaskIntoConstraints = false
 
 		return popUpButton
 	}()
 
-	lazy private var playerContractLabel: PlayerLabel = {
+	private lazy var playerContractLabel: PlayerLabel = {
 		let label = PlayerLabel()
 		label.stringValue = "Contract"
 
 		return label
 	}()
 
-	lazy private var playerContractAmountTextField: PlayerTextField = {
+	private lazy var playerContractAmountTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 		textField.placeholderString = "Contract Amount"
 
@@ -241,7 +251,7 @@ class PlayerDetailView: NSView {
 		return textField
 	}()
 
-	lazy private var playerContractExpirationTextField: PlayerTextField = {
+	private lazy var playerContractExpirationTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 		textField.placeholderString = "Contract Expiration"
 
@@ -292,20 +302,16 @@ class PlayerDetailView: NSView {
 			widthAnchor.constraint(greaterThanOrEqualToConstant: 400),
 
 			playerImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
-			playerImageView.topAnchor.constraint(equalTo: topAnchor),
+			playerImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+			playerImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
 			playerImageView.heightAnchor.constraint(equalToConstant: 200),
-			playerImageView.widthAnchor.constraint(equalTo: playerImageView.heightAnchor),
-
-			playerImageTextField.leftAnchor.constraint(equalTo: playerImageView.rightAnchor, constant: 10),
-			playerImageTextField.bottomAnchor.constraint(equalTo: playerImageView.bottomAnchor),
-			playerImageTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
 
 			playerAttributeLabelStackView.topAnchor.constraint(equalTo: playerImageView.bottomAnchor, constant: 8),
 			playerAttributeLabelStackView.leftAnchor.constraint(equalTo: playerImageView.leftAnchor),
 			playerAttributeLabelStackView.widthAnchor.constraint(equalToConstant: 120),
 
 			playerAttributeTextFieldStackView.topAnchor.constraint(equalTo: playerAttributeLabelStackView.topAnchor),
-			playerAttributeTextFieldStackView.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor, constant: 10),
+			playerAttributeTextFieldStackView.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor, constant: 5),
 			playerAttributeTextFieldStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
 			playerAttributeTextFieldStackView.bottomAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor),
 
@@ -328,8 +334,8 @@ class PlayerDetailView: NSView {
 	func getPlayer() -> Player? {
 		var player = self.player
 
-		player?.name = playerNameTextField.stringValue
 		player?.profileURL = playerImageTextField.stringValue
+		player?.name = playerNameTextField.stringValue
 		player?.age = Int(playerAgeTextField.stringValue) ?? 0
 		player?.hometown = playerHometownTextField.stringValue
 		player?.height = Int(playerHeightTextField.stringValue) ?? 0

@@ -10,6 +10,14 @@ import Cocoa
 
 enum ContentMode {
 	case players, teams, draftPicks
+
+	var collectionViewItemID: String {
+		switch self {
+		case .players: return "PlayerCollectionViewItem"
+		case .teams: return "TeamCollectionViewItem"
+		case .draftPicks: return "DraftPickCollectionViewItem"
+		}
+	}
 }
 
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSSearchFieldDelegate {
@@ -91,11 +99,15 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		searchField.placeholderString = contentMode == .players ? "Players" : "Teams"
 		searchField.stringValue = ""
 
-		filteredPlayers = API.shared.getAllPlayers()
-		filteredTeams = API.shared.getAllTeams()
-		filteredDraftPicks = API.shared.getAllDraftPicks()
+		let when = DispatchTime.now() + 0.1
 
-		collectionView.reloadData()
+		DispatchQueue.main.asyncAfter(deadline: when) {
+			self.filteredPlayers = API.shared.getAllPlayers()
+			self.filteredTeams = API.shared.getAllTeams()
+			self.filteredDraftPicks = API.shared.getAllDraftPicks()
+
+			self.collectionView.reloadData()
+		}
 	}
 
 	// MARK: - NSCollectionViewDataSource
@@ -114,38 +126,36 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 		var item = NSCollectionViewItem()
 
+		let identifier = NSUserInterfaceItemIdentifier(rawValue: contentMode.collectionViewItemID)
+
 		switch contentMode {
 		case .players:
-			item = collectionView.makeItem(withIdentifier: "PlayerCollectionViewItem", for: indexPath)
-
-			guard let collectionViewItem = item as? PlayerCollectionViewItem else { return item }
+			guard let collectionViewItem = collectionView.makeItem(withIdentifier: identifier, for: indexPath) as? PlayerCollectionViewItem else { return item }
 
 			if let player = filteredPlayers?[indexPath.item] {
 				collectionViewItem.player = player
 			}
 
-			return collectionViewItem
+			item = collectionViewItem
 		case .teams:
-			item = collectionView.makeItem(withIdentifier: "TeamCollectionViewItem", for: indexPath)
-
-			guard let collectionViewItem = item as? TeamCollectionViewItem else { return item }
+			guard let collectionViewItem = collectionView.makeItem(withIdentifier: identifier, for: indexPath) as? TeamCollectionViewItem else { return item }
 
 			if let team = filteredTeams?[indexPath.item] {
 				collectionViewItem.team = team
 			}
 
-			return collectionViewItem
+			item = collectionViewItem
 		case .draftPicks:
-			item = collectionView.makeItem(withIdentifier: "DraftPickCollectionViewItem", for: indexPath)
-
-			guard let collectionViewItem = item as? DraftPickCollectionViewItem else { return item }
+			guard let collectionViewItem = collectionView.makeItem(withIdentifier: identifier, for: indexPath) as? DraftPickCollectionViewItem else { return item }
 
 			if let draftPick = filteredDraftPicks?[indexPath.item] {
 				collectionViewItem.draftPick = draftPick
 			}
 
-			return collectionViewItem
+			item = collectionViewItem
 		}
+
+		return item
 	}
 
 	// MARK: - NSCollectionViewDelegate
@@ -159,8 +169,6 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	}
 
 	func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-		collectionView.deselectItems(at: indexPaths)
-
 		switch contentMode {
 		case .players:
 			if let indexPathItem = indexPaths.first?.item {
@@ -171,11 +179,10 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		case .draftPicks:
 			return
 		}
-
 	}
 
 	func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
-		print("Deselected", indexPaths)
+		playersDetailsViewController?.player = nil
 	}
 
 	// MARK: - NSSearchFieldDelegate

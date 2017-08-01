@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
@@ -13,40 +15,51 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruX-fX-E1v">
-                    <rect key="frame" x="118" y="99" width="354" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OE7-mg-kXi">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9W-i9-RRL">
-                    <rect key="frame" x="118" y="72" width="354" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="wt1-eW-uNF">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-2u-fiG">
-                    <rect key="frame" x="5" y="10" width="110" height="110"/>
+                    <rect key="frame" x="10" y="10" width="110" height="110"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="110" id="3FI-84-cEA"/>
-                        <constraint firstAttribute="height" constant="110" id="kjP-PD-jby"/>
+                        <constraint firstAttribute="width" secondItem="G2c-2u-fiG" secondAttribute="height" multiplier="1:1" id="gO7-Cm-0iv"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Harden" id="uyb-8r-gfQ"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="uyb-8r-gfQ"/>
                 </imageView>
+                <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOF-6j-GLO">
+                    <rect key="frame" x="128" y="68" width="332" height="52"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ruX-fX-E1v">
+                            <rect key="frame" x="-2" y="26" width="59" height="26"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OE7-mg-kXi">
+                                <font key="font" size="21" name="HelveticaNeue-Bold"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E9W-i9-RRL">
+                            <rect key="frame" x="-2" y="0.0" width="48" height="26"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="wt1-eW-uNF">
+                                <font key="font" size="17" name="HelveticaNeue-Medium"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="ruX-fX-E1v" firstAttribute="top" secondItem="G2c-2u-fiG" secondAttribute="top" constant="4" id="2dj-K9-gji"/>
-                <constraint firstItem="ruX-fX-E1v" firstAttribute="leading" secondItem="G2c-2u-fiG" secondAttribute="trailing" constant="5" id="OPm-VG-KVT"/>
-                <constraint firstItem="E9W-i9-RRL" firstAttribute="top" secondItem="ruX-fX-E1v" secondAttribute="bottom" constant="10" id="UY1-f3-lJj"/>
-                <constraint firstItem="E9W-i9-RRL" firstAttribute="leading" secondItem="ruX-fX-E1v" secondAttribute="leading" id="aGz-Mp-qG3"/>
-                <constraint firstItem="G2c-2u-fiG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="5" id="fXa-PA-32a"/>
-                <constraint firstItem="E9W-i9-RRL" firstAttribute="trailing" secondItem="ruX-fX-E1v" secondAttribute="trailing" id="hLO-ay-FhI"/>
+                <constraint firstItem="nOF-6j-GLO" firstAttribute="leading" secondItem="G2c-2u-fiG" secondAttribute="trailing" constant="8" symbolic="YES" id="0mr-eL-JCQ"/>
+                <constraint firstItem="nOF-6j-GLO" firstAttribute="top" secondItem="G2c-2u-fiG" secondAttribute="top" id="8Z9-6R-SeC"/>
+                <constraint firstItem="G2c-2u-fiG" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="FRB-Nw-fTX"/>
+                <constraint firstAttribute="bottom" secondItem="G2c-2u-fiG" secondAttribute="bottom" constant="10" id="ZfC-cP-S4h"/>
+                <constraint firstItem="G2c-2u-fiG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="fXa-PA-32a"/>
                 <constraint firstItem="G2c-2u-fiG" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="mXg-iA-5i0"/>
-                <constraint firstAttribute="trailing" secondItem="ruX-fX-E1v" secondAttribute="trailing" constant="10" id="tsL-E7-hra"/>
+                <constraint firstAttribute="trailing" secondItem="nOF-6j-GLO" secondAttribute="trailing" constant="20" symbolic="YES" id="ypo-pJ-ryp"/>
             </constraints>
             <point key="canvasLocation" x="-37" y="100.5"/>
         </customView>
@@ -59,7 +72,4 @@
             </connections>
         </collectionViewItem>
     </objects>
-    <resources>
-        <image name="Harden" width="3925" height="3957"/>
-    </resources>
 </document>

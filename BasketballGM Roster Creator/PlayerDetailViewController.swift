@@ -11,13 +11,11 @@ import Cocoa
 class PlayerDetailViewController: NSViewController {
 	var player: Player? {
 		didSet {
-			guard let player = player else { return }
-
 			playerDetailView.player = player
 		}
 	}
 
-	lazy private var scrollView: NSScrollView = {
+	private lazy var scrollView: NSScrollView = {
 		let scrollView = NSScrollView()
 		scrollView.translatesAutoresizingMaskIntoConstraints = false
 		scrollView.documentView = self.playerDetailView
@@ -25,14 +23,14 @@ class PlayerDetailViewController: NSViewController {
 		return scrollView
 	}()
 
-	lazy private var playerDetailView: PlayerDetailView = {
+	private lazy var playerDetailView: PlayerDetailView = {
 		let view = PlayerDetailView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 
 		return view
 	}()
 
-	lazy private var saveButton: NSButton = {
+	private lazy var saveButton: NSButton = {
 		let button = NSButton(title: "Save", target: self, action: #selector(savePlayer))
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.bezelStyle = .rounded
@@ -42,7 +40,6 @@ class PlayerDetailViewController: NSViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do view setup here.
 
 		addSubviews()
 		setUpConstraints()
@@ -69,9 +66,8 @@ class PlayerDetailViewController: NSViewController {
 		playerDetailView.setUpConstraints()
 	}
 
-	func savePlayer() {
+	@objc func savePlayer() {
 		guard let player = playerDetailView.getPlayer() else { return }
 		API.shared.replacePlayer(at: self.player?.playerID, with: player)
 	}
-
 }
