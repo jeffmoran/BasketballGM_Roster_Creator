@@ -27,11 +27,11 @@ class PlayerTextField: NSTextField {
 class PlayerLabel: NSTextField {
     convenience init() {
         self.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
+
+		translatesAutoresizingMaskIntoConstraints = false
         isEditable = false
         isBordered = false
-        font = NSFont.systemFont(ofSize: 20)
-//        backgroundColor = nil
+        font = NSFont(name: "HelveticaNeue-Bold", size: 20)
         alignment = .right
     }
 

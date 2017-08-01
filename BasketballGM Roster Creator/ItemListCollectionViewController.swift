@@ -49,8 +49,8 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		collectionView.dataSource = self
 
 		let flowLayout = NSCollectionViewFlowLayout()
-		flowLayout.itemSize = NSSize(width: 280.0, height: 130.0)
-		flowLayout.sectionInset = EdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
+		flowLayout.itemSize = NSSize(width: 350.0, height: 110.0)
+		flowLayout.sectionInset = NSEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 
 		collectionView.collectionViewLayout = flowLayout
 
