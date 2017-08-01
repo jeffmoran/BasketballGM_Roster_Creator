@@ -93,6 +93,6 @@ class MainWindowController: NSWindowController {
 	}
 
 	func refreshCollectionViewWith(_ contentMode: ContentMode) {
-		((self.contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.refreshCollectionViewWith(contentMode)
+		((contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.refreshCollectionViewWith(contentMode)
 	}
 }

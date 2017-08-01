@@ -70,8 +70,8 @@ class PlayerDetailViewController: NSViewController {
 	}
 
 	func savePlayer() {
-		let player = playerDetailView.getPlayer()
-		API.shared.replacePlayer(at: self.player?.playerID, playerDict: player)
+		guard let player = playerDetailView.getPlayer() else { return }
+		API.shared.replacePlayer(at: self.player?.playerID, with: player)
 	}
 
 }

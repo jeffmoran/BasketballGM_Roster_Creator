@@ -10,7 +10,7 @@ import Cocoa
 
 extension NSImageView {
     private func downloadedFrom(url: URL) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { data, response, error in
 			guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200 else { self.setPlaceholderImage() ; return }
 
             guard let mimeType = response?.mimeType, mimeType.hasPrefix("image") else { self.setPlaceholderImage() ; return }

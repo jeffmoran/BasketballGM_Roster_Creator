@@ -72,6 +72,18 @@ class PlayerDetailView: NSView {
 		stackView.alignment = .right
 		stackView.orientation = .vertical
 		stackView.distribution = .fillEqually
+		stackView.wantsLayer = true
+		stackView.layer?.backgroundColor = NSColor.red.cgColor
+
+		stackView.addArrangedSubview(self.playerNameLabel)
+		stackView.addArrangedSubview(self.playerAgeLabel)
+		stackView.addArrangedSubview(self.playerHometownLabel)
+		stackView.addArrangedSubview(self.playerCollegeLabel)
+		stackView.addArrangedSubview(self.playerHeightLabel)
+		stackView.addArrangedSubview(self.playerWeightLabel)
+		stackView.addArrangedSubview(self.playerPositionLabel)
+		stackView.addArrangedSubview(self.playerTeamLabel)
+		stackView.setClippingResistancePriority(NSLayoutPriorityDefaultHigh, for: .vertical)
 
 		return stackView
 	}()
@@ -82,6 +94,17 @@ class PlayerDetailView: NSView {
 		stackView.alignment = .left
 		stackView.orientation = .vertical
 		stackView.distribution = .fillEqually
+		stackView.wantsLayer = true
+		stackView.layer?.backgroundColor = NSColor.blue.cgColor
+
+		stackView.addArrangedSubview(self.playerNameTextField)
+		stackView.addArrangedSubview(self.playerAgeTextField)
+		stackView.addArrangedSubview(self.playerHometownTextField)
+		stackView.addArrangedSubview(self.playerCollegeTextField)
+		stackView.addArrangedSubview(self.playerHeightTextField)
+		stackView.addArrangedSubview(self.playerWeightTextField)
+		stackView.addArrangedSubview(self.playerPositionPopUpButton)
+		stackView.addArrangedSubview(self.playerTeamPopUpButton)
 
 		return stackView
 	}()
@@ -211,12 +234,20 @@ class PlayerDetailView: NSView {
 	lazy private var playerContractAmountTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 		textField.placeholderString = "Contract Amount"
+
+		let numberFormatter = OnlyIntegerValueFormatter()
+		textField.formatter = numberFormatter
+
 		return textField
 	}()
 
 	lazy private var playerContractExpirationTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 		textField.placeholderString = "Contract Expiration"
+
+		let numberFormatter = OnlyIntegerValueFormatter()
+		textField.formatter = numberFormatter
+
 		return textField
 	}()
 
@@ -244,24 +275,6 @@ class PlayerDetailView: NSView {
 
 		addSubview(playerAttributeLabelStackView)
 		addSubview(playerAttributeTextFieldStackView)
-
-		playerAttributeLabelStackView.addArrangedSubview(playerNameLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerAgeLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerHometownLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerCollegeLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerHeightLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerWeightLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerPositionLabel)
-		playerAttributeLabelStackView.addArrangedSubview(playerTeamLabel)
-
-		playerAttributeTextFieldStackView.addArrangedSubview(playerNameTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerAgeTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerHometownTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerCollegeTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerHeightTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerWeightTextField)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerPositionPopUpButton)
-		playerAttributeTextFieldStackView.addArrangedSubview(playerTeamPopUpButton)
 
 		addSubview(playerContractLabel)
 		addSubview(playerContractAmountTextField)
@@ -312,11 +325,19 @@ class PlayerDetailView: NSView {
 			])
 	}
 
-	func getPlayer() -> [String: Any] {
-		var player: [String: Any] = [String: Any]()
+	func getPlayer() -> Player? {
+		var player = self.player
 
-		player["name"] = playerNameTextField.stringValue
-		player["height"] = playerWeightTextField.stringValue
+		player?.name = playerNameTextField.stringValue
+		player?.profileURL = playerImageTextField.stringValue
+		player?.age = Int(playerAgeTextField.stringValue) ?? 0
+		player?.hometown = playerHometownTextField.stringValue
+		player?.height = Int(playerHeightTextField.stringValue) ?? 0
+		player?.weight = Int(playerWeightTextField.stringValue) ?? 0
+		player?.teamID = playerTeamPopUpButton.indexOfSelectedItem
+		player?.position = Position(rawValue: playerPositionPopUpButton.selectedItem?.title ?? "")
+		player?.contract.amountInMillions = playerContractAmountTextField.stringValue
+		player?.contract.expirationString = playerContractExpirationTextField.stringValue
 
 		// TODO: Add rest of player properties here
 

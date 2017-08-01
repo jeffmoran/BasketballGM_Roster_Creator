@@ -67,16 +67,30 @@ struct Player {
 	}
 
 	var age: Int {
-		let playerBornYear = born["year"] as? Int ?? 0
+		get {
+			let date = Date()
+			let calendar = Calendar.current
+			let currentYear = calendar.component(.year, from: date)
 
-		let date = Date()
-		let calendar = Calendar.current
-		let currentYear = calendar.component(.year, from: date)
+			let playerBornYear = born["year"] as? Int ?? 0
 
-		return currentYear - playerBornYear
+			return currentYear - playerBornYear
+		}
+		set {
+			let date = Date()
+			let calendar = Calendar.current
+			let currentYear = calendar.component(.year, from: date)
+
+			born["year"] = currentYear - newValue
+		}
 	}
 
 	var hometown: String {
-		return born ["loc"] as? String ?? ""
+		get {
+			return born ["loc"] as? String ?? ""
+		}
+		set {
+			born["loc"] = newValue
+		}
 	}
 }

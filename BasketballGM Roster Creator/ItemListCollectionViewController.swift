@@ -125,7 +125,6 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			}
 
 			return collectionViewItem
-
 		case .teams:
 			item = collectionView.makeItem(withIdentifier: "TeamCollectionViewItem", for: indexPath)
 
@@ -185,13 +184,9 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		if obj.object as? NSSearchField == searchField {
 			let searchString = self.searchField.stringValue
 
-			filteredPlayers = API.shared.getAllPlayers()?.filter({ player in
-				player.name.uppercased().contains(searchString.uppercased())
-			})
+			filteredPlayers = API.shared.getAllPlayers()?.filter { $0.name.uppercased().contains(searchString.uppercased()) }
 
-			filteredTeams = API.shared.getAllTeams()?.filter({ team in
-				team.region.uppercased().contains(searchString.uppercased()) || team.name.uppercased().contains(searchString.uppercased())
-			})
+			filteredTeams = API.shared.getAllTeams()?.filter { $0.region.uppercased().contains(searchString.uppercased()) || $0.name.uppercased().contains(searchString.uppercased()) }
 
 			if searchString.isEmpty {
 				filteredPlayers = API.shared.getAllPlayers()
