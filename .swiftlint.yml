@@ -25,4 +25,6 @@ opt_in_rules:
 - multiline_parameters
 - no_extension_access_modifier
 - sorted_imports
+- let_var_whitespace
+- trailing_closure
 excluded:
