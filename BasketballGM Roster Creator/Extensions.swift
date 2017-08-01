@@ -32,7 +32,9 @@ extension NSImageView {
     }
 
 	private func setPlaceholderImage() {
-		// TODO: Use actual placeholder
-		self.image = nil
+		DispatchQueue.main.async {
+			// TODO: Use actual placeholder
+			self.image = nil
+		}
 	}
 }
