@@ -109,6 +109,24 @@ struct API {
 		return getAllPlayers()?[index]
 	}
 
+	mutating func removePlayer(at playerID: Int?) {
+		guard var allPlayers = getAllPlayers() else { return }
+		guard let playerID = playerID else { return }
+
+		allPlayers.remove(at: playerID)
+
+		let allPlayersAdjusted: [Player] = allPlayers.enumerated().map { index, player in
+			var player = player
+			player.playerID = index
+
+			return player
+		}
+
+		roster?.players = allPlayersAdjusted
+
+		mainController?.refreshCollectionViewWith(.players)
+	}
+
 	mutating func replacePlayer(at playerID: Int?, with player: Player) {
 		guard let allPlayers = getAllPlayers() else { return }
 		guard let playerID = playerID else { return }

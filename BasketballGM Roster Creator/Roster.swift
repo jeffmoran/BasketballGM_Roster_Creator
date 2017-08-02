@@ -18,9 +18,9 @@ struct Roster {
         guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { return }
 		let jsonDraftPicks = jsonDict["draftPicks"] as? [[String: Any]]
 
-        for team in jsonTeams {
-            teams.append(Team(team))
-        }
+		jsonTeams.forEach {
+			teams.append(Team($0))
+		}
 
         for (index, playerDict) in jsonPlayers.enumerated() {
 			var player = Player(playerDict)
@@ -30,8 +30,8 @@ struct Roster {
         }
 
 		if let jsonDraftPicks = jsonDraftPicks {
-			for draftPick in jsonDraftPicks {
-				draftPicks.append(DraftPick(draftPick))
+			jsonDraftPicks.forEach {
+				draftPicks.append(DraftPick($0))
 			}
 		}
     }

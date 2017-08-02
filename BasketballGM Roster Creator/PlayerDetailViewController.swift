@@ -30,6 +30,14 @@ class PlayerDetailViewController: NSViewController {
 		return view
 	}()
 
+	private lazy var deleteButton: NSButton = {
+		let button = NSButton(title: "Delete", target: self, action: #selector(deletePlayer))
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.bezelStyle = .rounded
+
+		return button
+	}()
+
 	private lazy var saveButton: NSButton = {
 		let button = NSButton(title: "Save", target: self, action: #selector(savePlayer))
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +57,7 @@ class PlayerDetailViewController: NSViewController {
 
 	private func addSubviews() {
 		view.addSubview(scrollView)
+		view.addSubview(deleteButton)
 		view.addSubview(saveButton)
 	}
 
@@ -59,11 +68,20 @@ class PlayerDetailViewController: NSViewController {
 			scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
 			scrollView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -5),
 
+			deleteButton.rightAnchor.constraint(equalTo: saveButton.leftAnchor, constant: -5),
+			deleteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
+
 			saveButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5),
-			saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5)
+			saveButton.bottomAnchor.constraint(equalTo: deleteButton.bottomAnchor)
 			])
 
 		playerDetailView.setUpConstraints()
+	}
+
+	@objc func deletePlayer() {
+		API.shared.removePlayer(at: self.player?.playerID)
+
+		player = nil
 	}
 
 	@objc func savePlayer() {
