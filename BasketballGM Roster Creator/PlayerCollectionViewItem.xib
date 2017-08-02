@@ -54,9 +54,9 @@
             </subviews>
             <constraints>
                 <constraint firstItem="nOF-6j-GLO" firstAttribute="leading" secondItem="G2c-2u-fiG" secondAttribute="trailing" constant="8" symbolic="YES" id="0mr-eL-JCQ"/>
-                <constraint firstItem="nOF-6j-GLO" firstAttribute="top" secondItem="G2c-2u-fiG" secondAttribute="top" id="8Z9-6R-SeC"/>
                 <constraint firstItem="G2c-2u-fiG" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="FRB-Nw-fTX"/>
                 <constraint firstAttribute="bottom" secondItem="G2c-2u-fiG" secondAttribute="bottom" constant="10" id="ZfC-cP-S4h"/>
+                <constraint firstItem="nOF-6j-GLO" firstAttribute="centerY" secondItem="G2c-2u-fiG" secondAttribute="centerY" id="eYp-pW-lkk"/>
                 <constraint firstItem="G2c-2u-fiG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="fXa-PA-32a"/>
                 <constraint firstItem="G2c-2u-fiG" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="mXg-iA-5i0"/>
                 <constraint firstAttribute="trailing" secondItem="nOF-6j-GLO" secondAttribute="trailing" constant="20" symbolic="YES" id="ypo-pJ-ryp"/>
