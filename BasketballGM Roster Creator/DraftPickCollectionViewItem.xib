@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,29 +12,51 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <collectionViewItem id="4lD-Zp-rli" customClass="DraftPickCollectionViewItem" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
             <connections>
-                <outlet property="team" destination="WbX-L7-GEk" id="m89-BB-4S7"/>
+                <outlet property="draftPickDescription" destination="WbX-L7-GEk" id="KCD-gC-sx5"/>
+                <outlet property="newTeamImageView" destination="hQL-w3-RnU" id="7vH-sM-Ysz"/>
+                <outlet property="originalTeamImageView" destination="KF0-Tv-WA4" id="qoQ-eZ-XxW"/>
                 <outlet property="view" destination="NLd-IM-UnW" id="398-Xp-aCa"/>
             </connections>
         </collectionViewItem>
         <customView id="NLd-IM-UnW">
-            <rect key="frame" x="0.0" y="0.0" width="367" height="275"/>
+            <rect key="frame" x="0.0" y="0.0" width="327" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbX-L7-GEk">
-                    <rect key="frame" x="18" y="238" width="331" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="VVq-sf-4PJ">
-                        <font key="font" metaFont="system"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KF0-Tv-WA4">
+                    <rect key="frame" x="20" y="20" width="62" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KF0-Tv-WA4" secondAttribute="height" multiplier="1:1" id="7XU-B5-agf"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="P9U-sG-Jd3"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hQL-w3-RnU">
+                    <rect key="frame" x="245" y="20" width="62" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hQL-w3-RnU" secondAttribute="height" multiplier="1:1" id="ubz-jk-bcc"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="FPp-7B-SNq"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WbX-L7-GEk">
+                    <rect key="frame" x="88" y="38" width="151" height="26"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="VVq-sf-4PJ">
+                        <font key="font" size="17" name="HelveticaNeue-Medium"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="WbX-L7-GEk" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="20" symbolic="YES" id="TTd-8K-toP"/>
-                <constraint firstAttribute="trailing" secondItem="WbX-L7-GEk" secondAttribute="trailing" constant="20" symbolic="YES" id="pdj-Ly-W9f"/>
-                <constraint firstItem="WbX-L7-GEk" firstAttribute="leading" secondItem="NLd-IM-UnW" secondAttribute="leading" constant="20" symbolic="YES" id="pvi-o2-2fu"/>
+                <constraint firstItem="WbX-L7-GEk" firstAttribute="centerY" secondItem="KF0-Tv-WA4" secondAttribute="centerY" id="1N9-FR-g03"/>
+                <constraint firstAttribute="bottom" secondItem="KF0-Tv-WA4" secondAttribute="bottom" constant="20" symbolic="YES" id="94g-nj-9Fg"/>
+                <constraint firstAttribute="bottom" secondItem="hQL-w3-RnU" secondAttribute="bottom" constant="20" symbolic="YES" id="BG5-eW-7Lz"/>
+                <constraint firstItem="KF0-Tv-WA4" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="20" symbolic="YES" id="Rqt-OM-TDi"/>
+                <constraint firstAttribute="trailing" secondItem="hQL-w3-RnU" secondAttribute="trailing" constant="20" symbolic="YES" id="StO-Ff-GRF"/>
+                <constraint firstItem="hQL-w3-RnU" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="20" symbolic="YES" id="V5R-OI-mPl"/>
+                <constraint firstItem="WbX-L7-GEk" firstAttribute="leading" secondItem="KF0-Tv-WA4" secondAttribute="trailing" constant="8" symbolic="YES" id="cvV-cP-X0I"/>
+                <constraint firstItem="hQL-w3-RnU" firstAttribute="leading" secondItem="WbX-L7-GEk" secondAttribute="trailing" constant="8" symbolic="YES" id="fho-de-3OJ"/>
+                <constraint firstItem="KF0-Tv-WA4" firstAttribute="leading" secondItem="NLd-IM-UnW" secondAttribute="leading" constant="20" symbolic="YES" id="wq0-tP-11T"/>
             </constraints>
-            <point key="canvasLocation" x="107.5" y="164.5"/>
+            <point key="canvasLocation" x="214" y="20"/>
         </customView>
     </objects>
 </document>

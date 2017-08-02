@@ -20,6 +20,7 @@
 		8A7565901E8A0C180023C781 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658F1E8A0C180023C781 /* Player.swift */; };
 		8A7565921E8A0C2D0023C781 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565911E8A0C2D0023C781 /* Team.swift */; };
 		8A7565971E8A121B0023C781 /* ItemListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */; };
+		8AA1636D1F31742D000EF12B /* BaseCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1636C1F31742D000EF12B /* BaseCollectionViewItem.swift */; };
 		8AA74BA41E971B4200D721BA /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA74BA31E971B4200D721BA /* PlayerDetailView.swift */; };
 		8AC017891E8C96DA008BB81C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC017881E8C96DA008BB81C /* Roster.swift */; };
 		8AC0178C1E8CAE75008BB81C /* TeamCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */; };
@@ -47,6 +48,7 @@
 		8A75658F1E8A0C180023C781 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		8A7565911E8A0C2D0023C781 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCollectionViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		8AA1636C1F31742D000EF12B /* BaseCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewItem.swift; sourceTree = "<group>"; };
 		8AA74BA31E971B4200D721BA /* PlayerDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		8AC017881E8C96DA008BB81C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
 		8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -113,12 +115,7 @@
 		8A35E6F91E8B540100686996 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8A25E4CC1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift */,
-				8A25E4CD1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib */,
-				8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */,
-				8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */,
-				8A2809311EAEE6FD00631321 /* DraftPickCollectionViewItem.swift */,
-				8A2809331EAEE79300631321 /* DraftPickCollectionViewItem.xib */,
+				8AA1636B1F317419000EF12B /* Collection View Items */,
 				8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */,
 				8AA74BA31E971B4200D721BA /* PlayerDetailView.swift */,
 			);
@@ -133,6 +130,20 @@
 				8AD2513C1E995FC80035693D /* Player */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		8AA1636B1F317419000EF12B /* Collection View Items */ = {
+			isa = PBXGroup;
+			children = (
+				8AA1636C1F31742D000EF12B /* BaseCollectionViewItem.swift */,
+				8A25E4CC1E8B4BB6005D4940 /* PlayerCollectionViewItem.swift */,
+				8A25E4CD1E8B4BB6005D4940 /* PlayerCollectionViewItem.xib */,
+				8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */,
+				8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */,
+				8A2809311EAEE6FD00631321 /* DraftPickCollectionViewItem.swift */,
+				8A2809331EAEE79300631321 /* DraftPickCollectionViewItem.xib */,
+			);
+			name = "Collection View Items";
 			sourceTree = "<group>";
 		};
 		8AD2513C1E995FC80035693D /* Player */ = {
@@ -282,6 +293,7 @@
 				8A2F1EF11E90289300F44AF8 /* Extensions.swift in Sources */,
 				8AA74BA41E971B4200D721BA /* PlayerDetailView.swift in Sources */,
 				8A2809321EAEE6FD00631321 /* DraftPickCollectionViewItem.swift in Sources */,
+				8AA1636D1F31742D000EF12B /* BaseCollectionViewItem.swift in Sources */,
 				8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */,
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,

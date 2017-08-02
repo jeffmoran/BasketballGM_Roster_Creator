@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,20 +11,20 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="597" height="197"/>
+            <rect key="frame" x="0.0" y="0.0" width="597" height="188"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a77-rA-2Q1">
-                    <rect key="frame" x="20" y="20" width="157" height="157"/>
+                    <rect key="frame" x="20" y="20" width="148" height="148"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="a77-rA-2Q1" secondAttribute="height" multiplier="1:1" id="aEy-hY-YdM"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="AsT-vU-nTy"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dl-dP-ozx">
-                    <rect key="frame" x="185" y="160" width="394" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="8cH-OB-Rtx">
-                        <font key="font" metaFont="system"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Dl-dP-ozx">
+                    <rect key="frame" x="174" y="81" width="405" height="26"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Label" id="8cH-OB-Rtx">
+                        <font key="font" size="21" name="HelveticaNeue-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -32,13 +32,13 @@
             </subviews>
             <constraints>
                 <constraint firstItem="a77-rA-2Q1" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="Pe2-cV-S2o"/>
-                <constraint firstItem="a77-rA-2Q1" firstAttribute="top" secondItem="5Dl-dP-ozx" secondAttribute="top" id="XhM-rj-lBA"/>
+                <constraint firstItem="5Dl-dP-ozx" firstAttribute="centerY" secondItem="a77-rA-2Q1" secondAttribute="centerY" id="UCH-HS-dFH"/>
                 <constraint firstAttribute="bottom" secondItem="a77-rA-2Q1" secondAttribute="bottom" constant="20" symbolic="YES" id="aPA-Sz-eLr"/>
                 <constraint firstItem="a77-rA-2Q1" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="bot-uC-1Qg"/>
-                <constraint firstItem="5Dl-dP-ozx" firstAttribute="leading" secondItem="a77-rA-2Q1" secondAttribute="trailing" constant="10" id="sFi-56-tQc"/>
+                <constraint firstItem="5Dl-dP-ozx" firstAttribute="leading" secondItem="a77-rA-2Q1" secondAttribute="trailing" constant="8" symbolic="YES" id="sFi-56-tQc"/>
                 <constraint firstAttribute="trailing" secondItem="5Dl-dP-ozx" secondAttribute="trailing" constant="20" symbolic="YES" id="t89-o5-DeW"/>
             </constraints>
-            <point key="canvasLocation" x="-110.5" y="313.5"/>
+            <point key="canvasLocation" x="74.5" y="283"/>
         </customView>
         <collectionViewItem id="Nck-nX-908" customClass="TeamCollectionViewItem" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
             <connections>
