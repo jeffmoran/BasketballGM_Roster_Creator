@@ -32,6 +32,8 @@
 		8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5B36F1E89F23B00D2048F /* AppDelegate.swift */; };
 		8AF5B3741E89F23B00D2048F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3731E89F23B00D2048F /* Assets.xcassets */; };
 		8AF5B3771E89F23B00D2048F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5B3751E89F23B00D2048F /* Main.storyboard */; };
+		CA0E92DC1F32245B00002D8C /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E92DB1F32245B00002D8C /* Ratings.swift */; };
+		CA0E92DE1F32374B00002D8C /* LabelTextFieldGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E92DD1F32374B00002D8C /* LabelTextFieldGroupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		8AF5B3731E89F23B00D2048F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AF5B3761E89F23B00D2048F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AF5B3781E89F23B00D2048F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0E92DB1F32245B00002D8C /* Ratings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
+		CA0E92DD1F32374B00002D8C /* LabelTextFieldGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextFieldGroupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			children = (
 				8AA1636B1F317419000EF12B /* Collection View Items */,
 				8AC4490A1E91AADC000ACDB1 /* PlayerTextField.swift */,
+				CA0E92DD1F32374B00002D8C /* LabelTextFieldGroupView.swift */,
 				8AA74BA31E971B4200D721BA /* PlayerDetailView.swift */,
 			);
 			name = Views;
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				8A75658F1E8A0C180023C781 /* Player.swift */,
+				CA0E92DB1F32245B00002D8C /* Ratings.swift */,
 				8A080B991E9340D7001815E1 /* Draft.swift */,
 				8AF242671E94A06A00908FF7 /* Injury.swift */,
 				8AD2513A1E995F7E0035693D /* Contract.swift */,
@@ -294,9 +300,11 @@
 				8AA74BA41E971B4200D721BA /* PlayerDetailView.swift in Sources */,
 				8A2809321EAEE6FD00631321 /* DraftPickCollectionViewItem.swift in Sources */,
 				8AA1636D1F31742D000EF12B /* BaseCollectionViewItem.swift in Sources */,
+				CA0E92DC1F32245B00002D8C /* Ratings.swift in Sources */,
 				8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */,
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,
+				CA0E92DE1F32374B00002D8C /* LabelTextFieldGroupView.swift in Sources */,
 				8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */,
 				8AD2513B1E995F7E0035693D /* Contract.swift in Sources */,
 				8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */,

@@ -1,5 +1,6 @@
 disabled_rules:
 - line_length
+- type_body_length
 opt_in_rules:
 - force_unwrapping
 - private_outlet
@@ -27,4 +28,6 @@ opt_in_rules:
 - sorted_imports
 - let_var_whitespace
 - trailing_closure
+- unneeded_parentheses_in_closure_argument
+- vertical_parameter_alignment_on_call
 excluded:

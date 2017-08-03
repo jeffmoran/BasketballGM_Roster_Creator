@@ -68,14 +68,18 @@ class PlayerDetailViewController: NSViewController {
 			scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
 			scrollView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -5),
 
+			playerDetailView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+			playerDetailView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+			playerDetailView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+
+//			playerDetailView.widthAnchor.constraint(greaterThanOrEqualToConstant: 500),
+
 			deleteButton.rightAnchor.constraint(equalTo: saveButton.leftAnchor, constant: -5),
 			deleteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
 
 			saveButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5),
 			saveButton.bottomAnchor.constraint(equalTo: deleteButton.bottomAnchor)
 			])
-
-		playerDetailView.setUpConstraints()
 	}
 
 	@objc func deletePlayer() {
@@ -85,7 +89,7 @@ class PlayerDetailViewController: NSViewController {
 	}
 
 	@objc func savePlayer() {
-		guard let player = playerDetailView.getPlayer() else { return }
+		guard let player = playerDetailView.getAdjustedPlayer() else { return }
 		API.shared.replacePlayer(at: self.player?.playerID, with: player)
 	}
 }

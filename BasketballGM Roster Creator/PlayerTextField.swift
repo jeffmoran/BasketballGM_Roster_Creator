@@ -12,8 +12,8 @@ class PlayerTextField: NSTextField {
     convenience init() {
         self.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        isEditable = true
-    }
+		bezelStyle = .roundedBezel
+	}
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -33,6 +33,7 @@ class PlayerLabel: NSTextField {
         isBordered = false
         font = NSFont(name: "HelveticaNeue-Bold", size: 20)
         alignment = .right
+		drawsBackground = false
     }
 
     override init(frame frameRect: NSRect) {

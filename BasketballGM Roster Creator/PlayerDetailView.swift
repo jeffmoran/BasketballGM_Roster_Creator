@@ -53,6 +53,28 @@ class PlayerDetailView: NSView {
 			} else {
 				Swift.print("Free agent/draft prospect?")
 			}
+
+			// Ratings
+
+			potentialRatingView.value = player.ratings.potential
+
+			heightRatingView.value = player.ratings.height
+			strengthRatingView.value = player.ratings.strength
+			speedRatingView.value = player.ratings.speed
+			jumpingRatingView.value = player.ratings.jumping
+			enduranceRatingView.value = player.ratings.endurance
+
+			insideRatingView.value = player.ratings.inside
+			dunksLayupsRatingView.value = player.ratings.dunking
+			freeThrowsRatingView.value = player.ratings.freeThrow
+			twoPointersRatingView.value = player.ratings.fieldGoal
+			threePointersRatingView.value = player.ratings.threePointer
+
+			blocksRatingView.value = player.ratings.blocking
+			stealsRatingView.value = player.ratings.stealing
+			dribblingRatingView.value = player.ratings.dribbling
+			passingRatingView.value = player.ratings.passing
+			reboundingRatingView.value = player.ratings.rebounding
 		}
 	}
 
@@ -261,10 +283,198 @@ class PlayerDetailView: NSView {
 		return textField
 	}()
 
+	// MARK: - Ratings Subviews
+
+	private lazy var potentialRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.label.stringValue = "Potential"
+
+		return view
+	}()
+
+	// MARK: - Player Ratings - Physical
+
+	private lazy var playerRatingsLabel: PlayerLabel = {
+		let label = PlayerLabel()
+		label.font = NSFont(name: "HelveticaNeue-Bold", size: 30)
+
+		label.stringValue = "Ratings"
+		label.alignment = .left
+
+		return label
+	}()
+
+	private lazy var heightRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Height"
+
+		return view
+	}()
+
+	private lazy var strengthRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Strength"
+
+		return view
+	}()
+
+	private lazy var speedRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Speed"
+
+		return view
+	}()
+
+	private lazy var jumpingRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Jumping"
+
+		return view
+	}()
+
+	private lazy var enduranceRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Endurance"
+
+		return view
+	}()
+
+	private lazy var physicalStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.orientation = .vertical
+		stackView.distribution = .equalSpacing
+		stackView.spacing = 4.0
+
+		stackView.setHuggingPriority(.windowSizeStayPut, for: .horizontal)
+
+		stackView.addArrangedSubview(heightRatingView)
+		stackView.addArrangedSubview(strengthRatingView)
+		stackView.addArrangedSubview(speedRatingView)
+		stackView.addArrangedSubview(jumpingRatingView)
+		stackView.addArrangedSubview(enduranceRatingView)
+
+		return stackView
+	}()
+
+	// MARK: - Player Ratings - Shooting
+
+	private lazy var insideRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Inside"
+
+		return view
+	}()
+
+	private lazy var dunksLayupsRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Dunks/Layups"
+
+		return view
+	}()
+
+	private lazy var freeThrowsRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Free Throws"
+
+		return view
+	}()
+
+	private lazy var twoPointersRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Two Pointers"
+
+		return view
+	}()
+
+	private lazy var threePointersRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Three Pointers"
+
+		return view
+	}()
+
+	private lazy var shootingStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.orientation = .vertical
+		stackView.distribution = .equalSpacing
+		stackView.spacing = 4.0
+
+		stackView.setHuggingPriority(.windowSizeStayPut, for: .horizontal)
+
+		stackView.addArrangedSubview(insideRatingView)
+		stackView.addArrangedSubview(dunksLayupsRatingView)
+		stackView.addArrangedSubview(freeThrowsRatingView)
+		stackView.addArrangedSubview(twoPointersRatingView)
+		stackView.addArrangedSubview(threePointersRatingView)
+
+		return stackView
+	}()
+
+	// MARK: - Player Ratings - Skill
+
+	private lazy var blocksRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Blocks"
+
+		return view
+	}()
+
+	private lazy var stealsRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Steals"
+
+		return view
+	}()
+
+	private lazy var dribblingRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Dribbling"
+
+		return view
+	}()
+
+	private lazy var passingRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Passing"
+
+		return view
+	}()
+
+	private lazy var reboundingRatingView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView()
+		view.label.stringValue = "Rebounding"
+
+		return view
+	}()
+
+	private lazy var skillStackView: NSStackView = {
+		let stackView = NSStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.orientation = .vertical
+		stackView.distribution = .equalSpacing
+		stackView.spacing = 4.0
+
+		stackView.setHuggingPriority(.windowSizeStayPut, for: .horizontal)
+
+		stackView.addArrangedSubview(blocksRatingView)
+		stackView.addArrangedSubview(stealsRatingView)
+		stackView.addArrangedSubview(dribblingRatingView)
+		stackView.addArrangedSubview(passingRatingView)
+		stackView.addArrangedSubview(reboundingRatingView)
+
+		return stackView
+	}()
+
+	// MARK: - Initializers
+
 	convenience init() {
 		self.init(frame: .zero)
 
 		addSubviews()
+		setUpConstraints()
 	}
 
 	override init(frame frameRect: NSRect) {
@@ -279,6 +489,8 @@ class PlayerDetailView: NSView {
 		return true
 	}
 
+	// MARK: - Private Interface
+
 	private func addSubviews() {
 		addSubview(playerImageView)
 		addSubview(playerImageTextField)
@@ -289,18 +501,17 @@ class PlayerDetailView: NSView {
 		addSubview(playerContractLabel)
 		addSubview(playerContractAmountTextField)
 		addSubview(playerContractExpirationTextField)
+
+		addSubview(playerRatingsLabel)
+		addSubview(potentialRatingView)
+
+		addSubview(physicalStackView)
+		addSubview(shootingStackView)
+		addSubview(skillStackView)
 	}
 
-	func setUpConstraints() {
-		guard let superview = superview else { return }
-
+	private func setUpConstraints() {
 		NSLayoutConstraint.activate([
-			topAnchor.constraint(equalTo: superview.topAnchor),
-			leftAnchor.constraint(equalTo: superview.leftAnchor),
-			rightAnchor.constraint(equalTo: superview.rightAnchor),
-
-			widthAnchor.constraint(greaterThanOrEqualToConstant: 400),
-
 			playerImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
 			playerImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
 			playerImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
@@ -312,14 +523,14 @@ class PlayerDetailView: NSView {
 
 			playerAttributeTextFieldStackView.topAnchor.constraint(equalTo: playerAttributeLabelStackView.topAnchor),
 			playerAttributeTextFieldStackView.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor, constant: 5),
-			playerAttributeTextFieldStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+			playerAttributeTextFieldStackView.rightAnchor.constraint(equalTo: playerImageView.rightAnchor),
 			playerAttributeTextFieldStackView.bottomAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor),
 
 			playerContractLabel.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.leftAnchor),
-			playerContractLabel.topAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor, constant: 30),
+			playerContractLabel.topAnchor.constraint(equalTo: playerAttributeLabelStackView.bottomAnchor, constant: 8),
 			playerContractLabel.rightAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor),
 
-			playerContractAmountTextField.leftAnchor.constraint(equalTo: playerContractLabel.rightAnchor, constant: 10),
+			playerContractAmountTextField.leftAnchor.constraint(equalTo: playerAttributeTextFieldStackView.leftAnchor),
 			playerContractAmountTextField.topAnchor.constraint(equalTo: playerContractLabel.topAnchor),
 			playerContractAmountTextField.widthAnchor.constraint(equalTo: playerContractExpirationTextField.widthAnchor),
 
@@ -327,11 +538,33 @@ class PlayerDetailView: NSView {
 			playerContractExpirationTextField.topAnchor.constraint(equalTo: playerContractLabel.topAnchor),
 			playerContractExpirationTextField.rightAnchor.constraint(equalTo: playerAttributeTextFieldStackView.rightAnchor),
 
-			bottomAnchor.constraint(equalTo: playerContractExpirationTextField.bottomAnchor, constant: 20)
+			playerRatingsLabel.leftAnchor.constraint(equalTo: playerImageView.leftAnchor),
+			playerRatingsLabel.rightAnchor.constraint(equalTo: playerImageView.rightAnchor),
+			playerRatingsLabel.topAnchor.constraint(equalTo: playerContractLabel.bottomAnchor, constant: 20),
+
+			potentialRatingView.leftAnchor.constraint(equalTo: playerRatingsLabel.leftAnchor),
+			potentialRatingView.rightAnchor.constraint(equalTo: playerAttributeLabelStackView.rightAnchor),
+			potentialRatingView.topAnchor.constraint(equalTo: playerRatingsLabel.bottomAnchor, constant: 10),
+
+			physicalStackView.leftAnchor.constraint(equalTo: playerAttributeLabelStackView.leftAnchor),
+			physicalStackView.topAnchor.constraint(equalTo: potentialRatingView.bottomAnchor, constant: 10),
+
+			shootingStackView.leftAnchor.constraint(equalTo: physicalStackView.rightAnchor, constant: 30),
+			shootingStackView.topAnchor.constraint(equalTo: physicalStackView.topAnchor),
+			shootingStackView.widthAnchor.constraint(equalTo: physicalStackView.widthAnchor),
+
+			skillStackView.leftAnchor.constraint(equalTo: shootingStackView.rightAnchor, constant: 30),
+			skillStackView.topAnchor.constraint(equalTo: physicalStackView.topAnchor),
+			skillStackView.rightAnchor.constraint(lessThanOrEqualTo: playerImageView.rightAnchor),
+			skillStackView.widthAnchor.constraint(equalTo: shootingStackView.widthAnchor),
+
+			bottomAnchor.constraint(equalTo: skillStackView.bottomAnchor, constant: 20)
 			])
 	}
 
-	func getPlayer() -> Player? {
+	// MARK: - Public Interface
+
+	func getAdjustedPlayer() -> Player? {
 		var player = self.player
 
 		player?.profileURL = playerImageTextField.stringValue
@@ -342,8 +575,26 @@ class PlayerDetailView: NSView {
 		player?.weight = Int(playerWeightTextField.stringValue) ?? 0
 		player?.teamID = playerTeamPopUpButton.indexOfSelectedItem
 		player?.position = Position(rawValue: playerPositionPopUpButton.selectedItem?.title ?? "")
+
 		player?.contract.amountInMillions = playerContractAmountTextField.stringValue
 		player?.contract.expirationString = playerContractExpirationTextField.stringValue
+
+		player?.ratings.potential = potentialRatingView.value
+		player?.ratings.height = heightRatingView.value
+		player?.ratings.strength = strengthRatingView.value
+		player?.ratings.speed = speedRatingView.value
+		player?.ratings.jumping = jumpingRatingView.value
+		player?.ratings.endurance = enduranceRatingView.value
+		player?.ratings.inside = insideRatingView.value
+		player?.ratings.dunking = dunksLayupsRatingView.value
+		player?.ratings.freeThrow = freeThrowsRatingView.value
+		player?.ratings.fieldGoal = twoPointersRatingView.value
+		player?.ratings.threePointer = threePointersRatingView.value
+		player?.ratings.blocking = blocksRatingView.value
+		player?.ratings.stealing = stealsRatingView.value
+		player?.ratings.dribbling = dribblingRatingView.value
+		player?.ratings.passing = passingRatingView.value
+		player?.ratings.rebounding = reboundingRatingView.value
 
 		// TODO: Add rest of player properties here
 
