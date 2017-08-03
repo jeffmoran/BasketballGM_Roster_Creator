@@ -56,25 +56,27 @@ class PlayerDetailView: NSView {
 
 			// Ratings
 
-			potentialRatingView.value = player.ratings.potential
+			potentialRatingView.intValue = player.ratings.potential
 
-			heightRatingView.value = player.ratings.height
-			strengthRatingView.value = player.ratings.strength
-			speedRatingView.value = player.ratings.speed
-			jumpingRatingView.value = player.ratings.jumping
-			enduranceRatingView.value = player.ratings.endurance
+			heightRatingView.intValue = player.ratings.height
+			strengthRatingView.intValue = player.ratings.strength
+			speedRatingView.intValue = player.ratings.speed
+			jumpingRatingView.intValue = player.ratings.jumping
+			enduranceRatingView.intValue = player.ratings.endurance
 
-			insideRatingView.value = player.ratings.inside
-			dunksLayupsRatingView.value = player.ratings.dunking
-			freeThrowsRatingView.value = player.ratings.freeThrow
-			twoPointersRatingView.value = player.ratings.fieldGoal
-			threePointersRatingView.value = player.ratings.threePointer
+			insideRatingView.intValue = player.ratings.inside
+			dunksLayupsRatingView.intValue = player.ratings.dunking
+			freeThrowsRatingView.intValue = player.ratings.freeThrow
+			twoPointersRatingView.intValue = player.ratings.fieldGoal
+			threePointersRatingView.intValue = player.ratings.threePointer
 
-			blocksRatingView.value = player.ratings.blocking
-			stealsRatingView.value = player.ratings.stealing
-			dribblingRatingView.value = player.ratings.dribbling
-			passingRatingView.value = player.ratings.passing
-			reboundingRatingView.value = player.ratings.rebounding
+			blocksRatingView.intValue = player.ratings.blocking
+			stealsRatingView.intValue = player.ratings.stealing
+			dribblingRatingView.intValue = player.ratings.dribbling
+			passingRatingView.intValue = player.ratings.passing
+			reboundingRatingView.intValue = player.ratings.rebounding
+
+			skillsView.stringValue = player.ratings.skillsString
 		}
 	}
 
@@ -286,7 +288,7 @@ class PlayerDetailView: NSView {
 	// MARK: - Ratings Subviews
 
 	private lazy var potentialRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.label.stringValue = "Potential"
 
@@ -306,35 +308,35 @@ class PlayerDetailView: NSView {
 	}()
 
 	private lazy var heightRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Height"
 
 		return view
 	}()
 
 	private lazy var strengthRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Strength"
 
 		return view
 	}()
 
 	private lazy var speedRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Speed"
 
 		return view
 	}()
 
 	private lazy var jumpingRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Jumping"
 
 		return view
 	}()
 
 	private lazy var enduranceRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Endurance"
 
 		return view
@@ -361,35 +363,35 @@ class PlayerDetailView: NSView {
 	// MARK: - Player Ratings - Shooting
 
 	private lazy var insideRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Inside"
 
 		return view
 	}()
 
 	private lazy var dunksLayupsRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Dunks/Layups"
 
 		return view
 	}()
 
 	private lazy var freeThrowsRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Free Throws"
 
 		return view
 	}()
 
 	private lazy var twoPointersRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Two Pointers"
 
 		return view
 	}()
 
 	private lazy var threePointersRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Three Pointers"
 
 		return view
@@ -416,35 +418,35 @@ class PlayerDetailView: NSView {
 	// MARK: - Player Ratings - Skill
 
 	private lazy var blocksRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Blocks"
 
 		return view
 	}()
 
 	private lazy var stealsRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Steals"
 
 		return view
 	}()
 
 	private lazy var dribblingRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Dribbling"
 
 		return view
 	}()
 
 	private lazy var passingRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Passing"
 
 		return view
 	}()
 
 	private lazy var reboundingRatingView: LabelTextFieldGroupView = {
-		let view = LabelTextFieldGroupView()
+		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
 		view.label.stringValue = "Rebounding"
 
 		return view
@@ -466,6 +468,14 @@ class PlayerDetailView: NSView {
 		stackView.addArrangedSubview(reboundingRatingView)
 
 		return stackView
+	}()
+
+	private lazy var skillsView: LabelTextFieldGroupView = {
+		let view = LabelTextFieldGroupView(configuration: .string(placeholder: "3, A, B, Di, Dp, Po, Ps, R"))
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.label.stringValue = "Skills"
+
+		return view
 	}()
 
 	// MARK: - Initializers
@@ -508,6 +518,8 @@ class PlayerDetailView: NSView {
 		addSubview(physicalStackView)
 		addSubview(shootingStackView)
 		addSubview(skillStackView)
+
+		addSubview(skillsView)
 	}
 
 	private func setUpConstraints() {
@@ -558,7 +570,11 @@ class PlayerDetailView: NSView {
 			skillStackView.rightAnchor.constraint(lessThanOrEqualTo: playerImageView.rightAnchor),
 			skillStackView.widthAnchor.constraint(equalTo: shootingStackView.widthAnchor),
 
-			bottomAnchor.constraint(equalTo: skillStackView.bottomAnchor, constant: 20)
+			skillsView.leftAnchor.constraint(equalTo: playerRatingsLabel.leftAnchor),
+			skillsView.rightAnchor.constraint(equalTo: playerRatingsLabel.rightAnchor),
+			skillsView.topAnchor.constraint(equalTo: skillStackView.bottomAnchor, constant: 8),
+
+			bottomAnchor.constraint(equalTo: skillsView.bottomAnchor, constant: 20)
 			])
 	}
 
@@ -579,22 +595,23 @@ class PlayerDetailView: NSView {
 		player?.contract.amountInMillions = playerContractAmountTextField.stringValue
 		player?.contract.expirationString = playerContractExpirationTextField.stringValue
 
-		player?.ratings.potential = potentialRatingView.value
-		player?.ratings.height = heightRatingView.value
-		player?.ratings.strength = strengthRatingView.value
-		player?.ratings.speed = speedRatingView.value
-		player?.ratings.jumping = jumpingRatingView.value
-		player?.ratings.endurance = enduranceRatingView.value
-		player?.ratings.inside = insideRatingView.value
-		player?.ratings.dunking = dunksLayupsRatingView.value
-		player?.ratings.freeThrow = freeThrowsRatingView.value
-		player?.ratings.fieldGoal = twoPointersRatingView.value
-		player?.ratings.threePointer = threePointersRatingView.value
-		player?.ratings.blocking = blocksRatingView.value
-		player?.ratings.stealing = stealsRatingView.value
-		player?.ratings.dribbling = dribblingRatingView.value
-		player?.ratings.passing = passingRatingView.value
-		player?.ratings.rebounding = reboundingRatingView.value
+		player?.ratings.potential = potentialRatingView.intValue
+		player?.ratings.height = heightRatingView.intValue
+		player?.ratings.strength = strengthRatingView.intValue
+		player?.ratings.speed = speedRatingView.intValue
+		player?.ratings.jumping = jumpingRatingView.intValue
+		player?.ratings.endurance = enduranceRatingView.intValue
+		player?.ratings.inside = insideRatingView.intValue
+		player?.ratings.dunking = dunksLayupsRatingView.intValue
+		player?.ratings.freeThrow = freeThrowsRatingView.intValue
+		player?.ratings.fieldGoal = twoPointersRatingView.intValue
+		player?.ratings.threePointer = threePointersRatingView.intValue
+		player?.ratings.blocking = blocksRatingView.intValue
+		player?.ratings.stealing = stealsRatingView.intValue
+		player?.ratings.dribbling = dribblingRatingView.intValue
+		player?.ratings.passing = passingRatingView.intValue
+		player?.ratings.rebounding = reboundingRatingView.intValue
+		player?.ratings.skillsString = skillsView.stringValue
 
 		// TODO: Add rest of player properties here
 

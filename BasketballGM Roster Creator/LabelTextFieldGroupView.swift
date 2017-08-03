@@ -9,12 +9,27 @@
 import Cocoa
 
 class LabelTextFieldGroupView: NSView {
-	var value: Int {
+	enum Configuration {
+		case number(placeholder: String), string(placeholder: String)
+	}
+
+	var configuration: Configuration?
+
+	var intValue: Int {
 		get {
 			return Int(textField.stringValue) ?? 0
 		}
 		set {
 			textField.stringValue = String(newValue)
+		}
+	}
+
+	var stringValue: String {
+		get {
+			return textField.stringValue
+		}
+		set {
+			textField.stringValue = newValue
 		}
 	}
 
@@ -29,18 +44,27 @@ class LabelTextFieldGroupView: NSView {
 
 	private lazy var textField: PlayerTextField = {
 		let textField = PlayerTextField()
-		textField.placeholderString = "0 - 100"
 
-		let numberFormatter = OnlyIntegerValueFormatter()
-		textField.formatter = numberFormatter
+		switch self.configuration {
+		case .number(let placeholder)?:
+			textField.placeholderString = placeholder
+			let numberFormatter = OnlyIntegerValueFormatter()
+			textField.formatter = numberFormatter
+		case .string(let placeholder)?:
+			textField.placeholderString = placeholder
+		case .none:
+			break
+		}
 
 		return textField
 	}()
 
 	// MARK: - Initializers
 
-	convenience init() {
+	convenience init(configuration: Configuration) {
 		self.init(frame: .zero)
+
+		self.configuration = configuration
 
 		addSubviews()
 		setUpConstraints()

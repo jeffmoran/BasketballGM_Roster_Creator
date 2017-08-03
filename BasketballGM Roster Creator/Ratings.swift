@@ -25,7 +25,7 @@ struct Ratings {
 	var passing: Int
 	var rebounding: Int
 	var potential: Int
-	var skills: [String]
+	private var skills: [String]
 
 	init(_ ratingsDict: [String: Any]?) {
 		height = ratingsDict?["hgt"] as? Int ?? 0
@@ -45,5 +45,14 @@ struct Ratings {
 		rebounding = ratingsDict?["reb"] as? Int ?? 0
 		potential = ratingsDict?["pot"] as? Int ?? 0
 		skills = ratingsDict?["skills"] as? [String] ?? [""]
+	}
+
+	var skillsString: String {
+		get {
+			return skills.joined(separator: ", ")
+		}
+		set {
+			skills = newValue.components(separatedBy: ", ")
+		}
 	}
 }
