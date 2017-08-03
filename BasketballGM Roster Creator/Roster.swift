@@ -9,11 +9,14 @@
 import Foundation
 
 struct Roster {
+	var rawDict: [String: Any]
     var teams: [Team] = [Team]()
     var players: [Player] = [Player]()
 	var draftPicks: [DraftPick] = [DraftPick]()
 
     init(_ jsonDict: [String: Any]) {
+		rawDict = jsonDict
+
         guard let jsonTeams = jsonDict["teams"] as? [[String: Any]] else { return }
         guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { return }
 		let jsonDraftPicks = jsonDict["draftPicks"] as? [[String: Any]]
@@ -35,4 +38,8 @@ struct Roster {
 			}
 		}
     }
+
+	func asDictionary() -> [String: Any] {
+		return rawDict
+	}
 }

@@ -57,7 +57,7 @@ struct API {
 		}
 	}
 
-	func saveRosterToDisk(_ roster: Any?, withFileName filename: String? = nil) {
+	func saveRosterToDisk(_ roster: [String: Any]?, withFileName filename: String? = nil) {
 		guard let roster = roster else { return }
 
 		if !JSONSerialization.isValidJSONObject(roster) {
@@ -128,6 +128,7 @@ struct API {
 	}
 
 	mutating func replacePlayer(at playerID: Int?, with player: Player) {
+		guard var roster = roster else { return }
 		guard let allPlayers = getAllPlayers() else { return }
 		guard let playerID = playerID else { return }
 
@@ -136,12 +137,24 @@ struct API {
 
 			allPlayers[index] = player
 
-			roster?.players = allPlayers
+			self.roster?.players = allPlayers
 		}
 
-		// TODO: Fix this
-
-//		saveRosterToDisk(roster)
+//		guard let jsonDictPlayers = roster.rawDict["players"] as? [[String: Any]] else { return }
+//
+//		for index in jsonDictPlayers.indices where playerID == index {
+//			var allPlayers = jsonDictPlayers
+//
+//			allPlayers[index] = player.asDictionary()
+//
+//			roster.rawDict["players"] = allPlayers
+//
+//			self.roster = Roster(roster.rawDict)
+//		}
+//
+//		// TODO: Fix this
+//
+//		saveRosterToDisk(roster.asDictionary())
 
 		mainController?.refreshCollectionViewWith(.players)
 	}

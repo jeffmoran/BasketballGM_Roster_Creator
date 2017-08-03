@@ -98,4 +98,16 @@ struct Player {
 			born["loc"] = newValue
 		}
 	}
+
+	func asDictionary() -> [String: Any] {
+		var dict = [String: Any]()
+
+		dict["tid"] = self.teamID
+		dict["name"] = self.name
+		dict["pos"] = self.position?.rawValue
+
+		// TODO: - Add rest of player properties here
+
+		return dict
+	}
 }
