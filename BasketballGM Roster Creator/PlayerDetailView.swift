@@ -19,17 +19,6 @@ class PlayerDetailView: NSView {
 				return
 			}
 
-			var teams: [String] = [String]()
-
-			if let allTeams = API.shared.getAllTeams() {
-				for team in allTeams {
-					teams.append(team.region + " " + team.name)
-				}
-			}
-
-			playerTeamPopUpButton.removeAllItems()
-			playerTeamPopUpButton.addItems(withTitles: teams)
-
 			playerImageView.downloadedFrom(link: player.profileURL)
 			playerImageTextField.stringValue = player.profileURL
 
@@ -238,8 +227,7 @@ class PlayerDetailView: NSView {
 
 	private lazy var playerPositionPopUpButton: NSPopUpButton = {
 		let popUpButton = NSPopUpButton()
-		let positions = Position.allPositions
-		popUpButton.addItems(withTitles: positions)
+		popUpButton.addItems(withTitles: Position.allPositions)
 
 		return popUpButton
 	}()
@@ -253,7 +241,7 @@ class PlayerDetailView: NSView {
 
 	private lazy var playerTeamPopUpButton: NSPopUpButton = {
 		let popUpButton = NSPopUpButton()
-		popUpButton.translatesAutoresizingMaskIntoConstraints = false
+		popUpButton.addItems(withTitles: Team.allTeamsString)
 
 		return popUpButton
 	}()
@@ -503,7 +491,6 @@ class PlayerDetailView: NSView {
 
 	private func addSubviews() {
 		addSubview(playerImageView)
-		addSubview(playerImageTextField)
 
 		addSubview(playerAttributeLabelStackView)
 		addSubview(playerAttributeTextFieldStackView)

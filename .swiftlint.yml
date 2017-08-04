@@ -10,7 +10,6 @@ opt_in_rules:
 - explicit_init
 - overridden_super_call
 - redundant_nil_coalesing
-- closure_spacing
 - nimble_operator
 - redundant_nil_coalescing
 - operator_usage_whitespace
@@ -22,7 +21,6 @@ opt_in_rules:
 - valid_docs
 - fatal_error_message
 - implicit_return
-- implicitly_unwrapped_optional
 - multiline_parameters
 - no_extension_access_modifier
 - sorted_imports
