@@ -168,6 +168,14 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		}
 	}
 
+	var teamDetailViewController: TeamDetailViewController? {
+		if let splitViewController = parent as? NSSplitViewController {
+			return splitViewController.childViewControllers[2] as? TeamDetailViewController
+		} else {
+			return nil
+		}
+	}
+
 	func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
 		switch contentMode {
 		case .players:
@@ -175,7 +183,9 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 				playersDetailsViewController?.player = filteredPlayers?[indexPathItem]
 			}
 		case .teams:
-			return
+			if let indexPathItem = indexPaths.first?.item {
+				teamDetailViewController?.team = filteredTeams?[indexPathItem]
+			}
 		case .draftPicks:
 			return
 		}
@@ -191,9 +201,9 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		if obj.object as? NSSearchField == searchField {
 			let searchString = self.searchField.stringValue
 
-			filteredPlayers = API.shared.getAllPlayers()?.filter { $0.name.uppercased().contains(searchString.uppercased()) }
+			filteredPlayers = API.shared.getAllPlayers()?.filter { $0.name.uppercased().contains(searchString.uppercased()) || $0.team?.fullTeamName.uppercased().contains(searchString.uppercased()) ?? false }
 
-			filteredTeams = API.shared.getAllTeams()?.filter { $0.region.uppercased().contains(searchString.uppercased()) || $0.name.uppercased().contains(searchString.uppercased()) }
+			filteredTeams = API.shared.getAllTeams()?.filter { $0.fullTeamName.uppercased().contains(searchString.uppercased()) }
 
 			if searchString.isEmpty {
 				filteredPlayers = API.shared.getAllPlayers()

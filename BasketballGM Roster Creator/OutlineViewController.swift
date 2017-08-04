@@ -9,7 +9,7 @@
 import Cocoa
 
 class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
-    private var window: MainWindowController? {
+    private var window: MainWindowController! {
         return view.window?.windowController as? MainWindowController
     }
 
@@ -58,22 +58,29 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
         outlineView?.selectRowIndexes(index, byExtendingSelection: false)
     }
 
-    func outlineViewSelectionDidChange(_ notification: Notification) {
-        guard let outlineView = notification.object as? NSOutlineView else { return }
-        let selectedIndex = outlineView.selectedRow
+	func outlineViewSelectionDidChange(_ notification: Notification) {
+		guard let outlineView = notification.object as? NSOutlineView else { return }
+		let selectedIndex = outlineView.selectedRow
 
-        switch selectedIndex {
-        case 0:
-            print("Edit players")
-            window?.refreshCollectionViewWith(.players)
-        case 1:
-            print("Edit teams")
-            window?.refreshCollectionViewWith(.teams)
-        case 2:
-            print("Edit draft picks")
-			window?.refreshCollectionViewWith(.draftPicks)
-        default:
-            assertionFailure()
-        }
-    }
+		if let splitViewController = parent as? NSSplitViewController {
+			switch selectedIndex {
+			case 0:
+				let playerDetailSplitView = NSSplitViewItem(viewController: window.playerDetailViewController)
+				splitViewController.splitViewItems[2] = playerDetailSplitView
+
+				window?.refreshCollectionViewWith(.players)
+			case 1:
+				let teamDetailSplitView = NSSplitViewItem(viewController: window.teamDetailViewController)
+				splitViewController.splitViewItems[2] = teamDetailSplitView
+
+				window?.refreshCollectionViewWith(.teams)
+			case 2:
+				print("Edit draft picks")
+				window?.refreshCollectionViewWith(.draftPicks)
+			default:
+				assertionFailure()
+			}
+
+		}
+	}
 }

@@ -14,9 +14,9 @@ struct Team {
     var divisionID: Int
     var region: String
     var name: String
-    var abbreviation: String?
-    var population: Int
-    var strategy: String? //enum?
+    var abbreviation: String
+    private var population: Double
+    var strategy: String
     var imageURL: String
 
     init(_ jsonDict: [String: Any]) {
@@ -25,9 +25,9 @@ struct Team {
         self.divisionID = jsonDict["did"] as? Int ?? -1
         self.region = jsonDict["region"] as? String ?? ""
         self.name = jsonDict["name"] as? String ?? ""
-        self.abbreviation = jsonDict["abbrev"] as? String
-        self.population = jsonDict["pop"] as? Int ?? 0
-        self.strategy = jsonDict["strategy"] as? String
+        self.abbreviation = jsonDict["abbrev"] as? String ?? ""
+        self.population = jsonDict["pop"] as? Double ?? 0.0
+        self.strategy = jsonDict["strategy"] as? String ?? ""
         self.imageURL = jsonDict["imgURL"] as? String ?? ""
     }
 
@@ -37,5 +37,23 @@ struct Team {
 
 	var fullTeamName: String {
 		return region + " " + name
+	}
+
+	var populationString: String {
+		return String(population * 1000000)
+	}
+
+	static var allTeamsString: [String] {
+		guard let allTeams = API.shared.getAllTeams() else { return [""] }
+
+		return allTeams.map { $0.fullTeamName }
+	}
+
+	static var allConferences: [String] {
+		return ["Eastern", "Western"]
+	}
+
+	static var allDivisions: [String] {
+		return ["Atlantic", "Central", "Southeast", "Southwest", "Northwest", "Pacific"]
 	}
 }

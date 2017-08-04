@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -693,6 +693,9 @@
                                 <toolbarItem reference="HiY-Nb-ciB"/>
                             </defaultToolbarItems>
                         </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="mwc-mK-SDy"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="IyA-ru-b7S" kind="relationship" relationship="window.shadowedContentViewController" id="pLL-9w-aU3"/>
@@ -709,11 +712,30 @@
                     <splitView key="splitView" vertical="YES" id="Sg3-gI-a84">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="IyA-ru-b7S" id="UdY-yP-Xhp"/>
+                        </connections>
                     </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="Sg3-gI-a84" id="fhs-dV-9jH"/>
+                    </connections>
                 </splitViewController>
                 <customObject id="e9m-DN-DlW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="704"/>
+        </scene>
+        <!--Team Detail View Controller-->
+        <scene sceneID="4RN-jX-Bpv">
+            <objects>
+                <viewController storyboardIdentifier="teamDetailViewController" id="eAJ-0A-HFi" customClass="TeamDetailViewController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="eDl-k2-IB0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="kcl-0i-yme" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1245" y="1180"/>
         </scene>
         <!--Outline View Controller-->
         <scene sceneID="bez-Tx-IbR">
@@ -753,7 +775,7 @@
                                                             <rect key="frame" x="1" y="1" width="145" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7x-eX-lqm">
+                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7x-eX-lqm">
                                                                     <rect key="frame" x="0.0" y="0.0" width="147" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="LZJ-3M-f9G">
                                                                         <font key="font" metaFont="system"/>

@@ -25,6 +25,18 @@ class MainWindowController: NSWindowController {
 		}
 	}
 
+	var playerDetailViewController: PlayerDetailViewController! {
+		let controller = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "playerDetailViewController")) as? PlayerDetailViewController
+
+		return controller
+	}
+
+	var teamDetailViewController: TeamDetailViewController! {
+		let controller = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "teamDetailViewController")) as? TeamDetailViewController
+
+		return controller
+	}
+
 	private func setContentViewController() {
 		let splitViewController = NSSplitViewController()
 		splitViewController.splitView.dividerStyle = .thin
@@ -39,10 +51,8 @@ class MainWindowController: NSWindowController {
 			splitViewController.addSplitViewItem(itemSplitView)
 		}
 
-		if let playerDetailViewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "playerDetailViewController")) as? PlayerDetailViewController {
-			let playerDetailsplitView = NSSplitViewItem(viewController: playerDetailViewController)
-			splitViewController.addSplitViewItem(playerDetailsplitView)
-		}
+		let playerDetailsplitView = NSSplitViewItem(viewController: playerDetailViewController)
+		splitViewController.addSplitViewItem(playerDetailsplitView)
 
 		contentViewController = splitViewController
 	}
