@@ -95,6 +95,8 @@ class MainWindowController: NSWindowController {
 				guard let url = panel.urls.first else { return }
 
 				API.shared.getRosterFrom(url) {
+					((self.contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.initialImport()
+
 					self.refreshCollectionViewWith(.players)
 					window.title = url.lastPathComponent
 				}

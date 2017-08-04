@@ -11,6 +11,14 @@ import Cocoa
 enum ContentMode {
 	case players, teams, draftPicks
 
+	var placeholderString: String {
+		switch self {
+		case .players: return "Search Players"
+		case .teams: return "Search Teams"
+		case .draftPicks: return "Search Draft Picks"
+		}
+	}
+
 	var collectionViewItemID: String {
 		switch self {
 		case .players: return "PlayerCollectionViewItem"
@@ -93,12 +101,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			])
 	}
 
-	func refreshCollectionViewWith(_ contentMode: ContentMode) {
-		self.contentMode = contentMode
-
-		searchField.placeholderString = contentMode == .players ? "Players" : "Teams"
-		searchField.stringValue = ""
-
+	func initialImport() {
 		let when = DispatchTime.now() + 0.1
 
 		DispatchQueue.main.asyncAfter(deadline: when) {
@@ -108,6 +111,27 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 			self.collectionView.reloadData()
 		}
+	}
+
+	private var playersSearchString: String = ""
+	private var teamsSearchString: String = ""
+	private var draftPicksSearchString: String = ""
+
+	func refreshCollectionViewWith(_ contentMode: ContentMode) {
+		self.contentMode = contentMode
+
+		searchField.placeholderString = contentMode.placeholderString
+
+		switch contentMode {
+		case .players:
+			searchField.stringValue = playersSearchString
+		case .teams:
+			searchField.stringValue = teamsSearchString
+		case .draftPicks:
+			searchField.stringValue = draftPicksSearchString
+		}
+
+		collectionView.reloadData()
 	}
 
 	// MARK: - NSCollectionViewDataSource
@@ -198,16 +222,28 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	// MARK: - NSSearchFieldDelegate
 
 	override func controlTextDidChange(_ obj: Notification) {
-		if obj.object as? NSSearchField == searchField {
-			let searchString = self.searchField.stringValue
+		if let searchField = obj.object as? NSSearchField {
+			let searchString = searchField.stringValue
 
-			filteredPlayers = API.shared.getAllPlayers()?.filter { $0.name.uppercased().contains(searchString.uppercased()) || $0.team?.fullTeamName.uppercased().contains(searchString.uppercased()) ?? false }
+			switch contentMode {
+			case .players:
+				playersSearchString = searchString
 
-			filteredTeams = API.shared.getAllTeams()?.filter { $0.fullTeamName.uppercased().contains(searchString.uppercased()) }
+				filteredPlayers = API.shared.getAllPlayers()?.filter { $0.name.uppercased().contains(searchString.uppercased()) || $0.team?.fullTeamName.uppercased().contains(searchString.uppercased()) ?? false }
 
-			if searchString.isEmpty {
-				filteredPlayers = API.shared.getAllPlayers()
-				filteredTeams = API.shared.getAllTeams()
+				if searchString.isEmpty { filteredPlayers = API.shared.getAllPlayers() }
+			case .teams:
+				teamsSearchString = searchString
+
+				filteredTeams = API.shared.getAllTeams()?.filter { $0.fullTeamName.uppercased().contains(searchString.uppercased()) }
+
+				if searchString.isEmpty { filteredTeams = API.shared.getAllTeams() }
+			case .draftPicks:
+				draftPicksSearchString = searchString
+
+				filteredDraftPicks = API.shared.getAllDraftPicks()?.filter { $0.originalTeam.fullTeamName.uppercased().contains(searchString.uppercased()) || $0.destinationTeam.fullTeamName.uppercased().contains(searchString.uppercased()) }
+
+				if searchString.isEmpty { filteredDraftPicks = API.shared.getAllDraftPicks() }
 			}
 
 			collectionView.reloadData()

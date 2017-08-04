@@ -24,11 +24,19 @@ struct DraftPick {
 	}
 
 	var descriptionString: String {
-		guard let originalTeam = API.shared.getTeamWith(originalTeamID) else { return "" }
-		guard let destinationTeam = API.shared.getTeamWith(teamID) else { return "" }
+		guard let originalTeam = originalTeam else { return "" }
+		guard let destinationTeam = destinationTeam else { return "" }
 
 		let suffix: String = round == 1 ? "st" : "nd"
 
 		return "\(originalTeam.abbreviation) \(season) \(round)\(suffix) round pick to \(destinationTeam.abbreviation)"
+	}
+
+	var originalTeam: Team! {
+		return API.shared.getTeamAt(originalTeamID)
+	}
+
+	var destinationTeam: Team! {
+		return API.shared.getTeamAt(teamID)
 	}
 }
