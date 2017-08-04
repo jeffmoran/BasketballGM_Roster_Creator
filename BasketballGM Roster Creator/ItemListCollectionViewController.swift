@@ -30,7 +30,20 @@ enum ContentMode {
 
 class ItemListCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSSearchFieldDelegate {
 
-	private var contentMode: ContentMode = .players
+	private var contentMode: ContentMode = .players {
+		didSet {
+			searchField.placeholderString = contentMode.placeholderString
+
+			switch contentMode {
+			case .players:
+				searchField.stringValue = playersSearchString
+			case .teams:
+				searchField.stringValue = teamsSearchString
+			case .draftPicks:
+				searchField.stringValue = draftPicksSearchString
+			}
+		}
+	}
 
 	private var window: MainWindowController? {
 		return view.window?.windowController as? MainWindowController
@@ -39,6 +52,10 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	private var filteredPlayers: [Player]?
 	private var filteredTeams: [Team]?
 	private var filteredDraftPicks: [DraftPick]?
+
+	private var playersSearchString: String = ""
+	private var teamsSearchString: String = ""
+	private var draftPicksSearchString: String = ""
 
 	private lazy var searchField: NSSearchField = {
 		let searchField = NSSearchField()
@@ -113,23 +130,8 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		}
 	}
 
-	private var playersSearchString: String = ""
-	private var teamsSearchString: String = ""
-	private var draftPicksSearchString: String = ""
-
 	func refreshCollectionViewWith(_ contentMode: ContentMode) {
 		self.contentMode = contentMode
-
-		searchField.placeholderString = contentMode.placeholderString
-
-		switch contentMode {
-		case .players:
-			searchField.stringValue = playersSearchString
-		case .teams:
-			searchField.stringValue = teamsSearchString
-		case .draftPicks:
-			searchField.stringValue = draftPicksSearchString
-		}
 
 		collectionView.reloadData()
 	}
