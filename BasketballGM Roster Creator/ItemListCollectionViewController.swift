@@ -123,7 +123,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 		DispatchQueue.main.asyncAfter(deadline: when) {
 			self.filteredPlayers = API.shared.getAllPlayers()
-			self.filteredTeams = API.shared.getAllTeams()
+			self.filteredTeams = API.shared.getAllTeams(includingFakeTeams: false)
 			self.filteredDraftPicks = API.shared.getAllDraftPicks()
 
 			self.collectionView.reloadData()
@@ -237,9 +237,9 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			case .teams:
 				teamsSearchString = searchString
 
-				filteredTeams = API.shared.getAllTeams()?.filter { $0.fullTeamName.uppercased().contains(searchString.uppercased()) }
+				filteredTeams = API.shared.getAllTeams(includingFakeTeams: false)?.filter { $0.fullTeamName.uppercased().contains(searchString.uppercased()) }
 
-				if searchString.isEmpty { filteredTeams = API.shared.getAllTeams() }
+				if searchString.isEmpty { filteredTeams = API.shared.getAllTeams(includingFakeTeams: false) }
 			case .draftPicks:
 				draftPicksSearchString = searchString
 

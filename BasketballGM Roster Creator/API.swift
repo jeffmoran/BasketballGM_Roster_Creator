@@ -161,20 +161,20 @@ struct API {
 
 	// MARK: - Teams
 
-	func getAllTeams() -> [Team]? {
-		return roster?.teams
+	func getAllTeams(includingFakeTeams: Bool) -> [Team]? {
+		return includingFakeTeams ? roster?.teams : roster?.teams.filter { $0.teamID >= 0 }
 	}
 
 	func getTeamAt(_ index: Int) -> Team? {
-		return getAllTeams()?[index]
+		return getAllTeams(includingFakeTeams: false)?[index]
 	}
 
-	func getNumberOfTeams() -> Int {
-		return getAllTeams()?.count ?? 0
-	}
+//	func getNumberOfTeams() -> Int {
+//		return getAllTeams()?.count ?? 0
+//	}
 
 	func getTeamWith(_ teamID: Int) -> Team? {
-		return getAllTeams()?.first { $0.teamID == teamID }
+		return getAllTeams(includingFakeTeams: true)?.first { $0.teamID == teamID }
 	}
 
 	// MARK: - Draft Picks

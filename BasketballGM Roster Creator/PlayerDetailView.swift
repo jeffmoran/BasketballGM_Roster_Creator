@@ -37,7 +37,10 @@ class PlayerDetailView: NSView {
 			playerContractAmountTextField.stringValue = player.contract.amountInMillions
 			playerContractExpirationTextField.stringValue = player.contract.expirationString
 
+			playerTeamPopUpButton.removeAllItems()
+
 			if let playerTeam = player.team {
+				playerTeamPopUpButton.addItems(withTitles: Team.allTeamsString)
 				playerTeamPopUpButton.selectItem(withTitle: playerTeam.region + " " + playerTeam.name)
 			} else {
 				Swift.print("Free agent/draft prospect?")
@@ -241,7 +244,6 @@ class PlayerDetailView: NSView {
 
 	private lazy var playerTeamPopUpButton: NSPopUpButton = {
 		let popUpButton = NSPopUpButton()
-		popUpButton.addItems(withTitles: Team.allTeamsString)
 
 		return popUpButton
 	}()

@@ -10,6 +10,7 @@ import Foundation
 
 struct Roster {
 	var rawDict: [String: Any]
+	var startingSeason: Int = 2018
     var teams: [Team] = [Team]()
     var players: [Player] = [Player]()
 	var draftPicks: [DraftPick] = [DraftPick]()
@@ -20,6 +21,16 @@ struct Roster {
         guard let jsonTeams = jsonDict["teams"] as? [[String: Any]] else { return }
         guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { return }
 		let jsonDraftPicks = jsonDict["draftPicks"] as? [[String: Any]]
+
+		if let startingSeason = jsonDict["startingSeason"] as? Int {
+			self.startingSeason = startingSeason
+		}
+
+		teams.append(Team.freeAgentTeam)
+		teams.append(Team.upcomingCurrentDraftProspectTeam(with: startingSeason))
+		teams.append(Team.nextYearDraftProspectTeam(with: startingSeason))
+		teams.append(Team.nextNextYearDraftProspectTeam(with: startingSeason))
+		teams.append(Team.retiredPlayersTeam)
 
 		jsonTeams.forEach {
 			teams.append(Team($0))

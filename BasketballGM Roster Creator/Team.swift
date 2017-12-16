@@ -32,7 +32,47 @@ struct Team {
     }
 
 	static var freeAgentTeam: Team {
-		return Team(["": ""])
+		var teamDict: [String: Any] = [String: Any]()
+		teamDict["tid"] = -1
+		teamDict["region"] = "Free"
+		teamDict["name"] = "Agent"
+
+		return Team(teamDict)
+	}
+
+	static func upcomingCurrentDraftProspectTeam(with startingSeason: Int) -> Team {
+		var teamDict: [String: Any] = [String: Any]()
+		teamDict["tid"] = -2
+		teamDict["region"] = String(describing: startingSeason)
+		teamDict["name"] = "Draft Prospect"
+
+		return Team(teamDict)
+	}
+
+	static var retiredPlayersTeam: Team {
+		var teamDict: [String: Any] = [String: Any]()
+		teamDict["tid"] = -3
+		teamDict["region"] = "Retired"
+
+		return Team(teamDict)
+	}
+
+	static func nextYearDraftProspectTeam(with startingSeason: Int) -> Team {
+		var teamDict: [String: Any] = [String: Any]()
+		teamDict["tid"] = -4
+		teamDict["region"] = String(describing: startingSeason + 1)
+		teamDict["name"] = "Draft Prospect"
+
+		return Team(teamDict)
+	}
+
+	static func nextNextYearDraftProspectTeam(with startingSeason: Int) -> Team {
+		var teamDict: [String: Any] = [String: Any]()
+		teamDict["tid"] = -5
+		teamDict["region"] = String(describing: startingSeason + 2)
+		teamDict["name"] = "Draft Prospect"
+
+		return Team(teamDict)
 	}
 
 	var fullTeamName: String {
@@ -44,7 +84,7 @@ struct Team {
 	}
 
 	static var allTeamsString: [String] {
-		guard let allTeams = API.shared.getAllTeams() else { return [""] }
+		guard let allTeams = API.shared.getAllTeams(includingFakeTeams: true) else { return [""] }
 
 		return allTeams.map { $0.fullTeamName }
 	}
