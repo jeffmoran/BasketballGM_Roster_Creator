@@ -57,7 +57,7 @@ class MainWindowController: NSWindowController {
 		contentViewController = splitViewController
 	}
 
-	@IBAction func importRoster(_ sender: Any?) {
+	@IBAction private func importRoster(_ sender: Any?) {
 		let panel = NSOpenPanel()
 
 		panel.allowedFileTypes = ["json"]
@@ -74,11 +74,11 @@ class MainWindowController: NSWindowController {
 		}
 	}
 
-	@IBAction func exportRoster(_ sender: Any?) {
+	@IBAction private func exportRoster(_ sender: Any?) {
 
 	}
 
-	@IBAction func openRoster(_ sender: Any?) {
+	@IBAction private func openRoster(_ sender: Any?) {
 		let panel = NSOpenPanel()
 
 		let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] //as NSURL
