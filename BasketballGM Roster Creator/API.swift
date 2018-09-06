@@ -140,21 +140,21 @@ struct API {
 			self.roster?.players = allPlayers
 		}
 
-//		guard let jsonDictPlayers = roster.rawDict["players"] as? [[String: Any]] else { return }
-//
-//		for index in jsonDictPlayers.indices where playerID == index {
-//			var allPlayers = jsonDictPlayers
-//
-//			allPlayers[index] = player.asDictionary()
-//
-//			roster.rawDict["players"] = allPlayers
-//
-//			self.roster = Roster(roster.rawDict)
-//		}
-//
-//		// TODO: Fix this
-//
-//		saveRosterToDisk(roster.asDictionary())
+		guard let jsonDictPlayers = roster.rawDict["players"] as? [[String: Any]] else { return }
+
+		for index in jsonDictPlayers.indices where playerID == index {
+			var allPlayers = jsonDictPlayers
+
+			allPlayers[index][""] = player.asDictionary()
+
+			roster.rawDict["players"] = allPlayers
+
+			self.roster = Roster(roster.rawDict)
+		}
+
+		// TODO: Fix this
+
+		saveRosterToDisk(roster.asDictionary())
 
 		mainController?.refreshCollectionViewWith(.players)
 	}

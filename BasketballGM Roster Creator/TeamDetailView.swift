@@ -242,7 +242,7 @@ class TeamDetailView: NSView {
 
 			teamAttributeLabelStackView.topAnchor.constraint(equalTo: teamImageView.bottomAnchor, constant: 8),
 			teamAttributeLabelStackView.leftAnchor.constraint(equalTo: teamImageView.leftAnchor),
-			teamAttributeLabelStackView.widthAnchor.constraint(equalToConstant: 120),
+			teamAttributeLabelStackView.widthAnchor.constraint(equalToConstant: 130),
 
 			teamAttributeTextFieldStackView.topAnchor.constraint(equalTo: teamAttributeLabelStackView.topAnchor),
 			teamAttributeTextFieldStackView.leftAnchor.constraint(equalTo: teamAttributeLabelStackView.rightAnchor, constant: 5),

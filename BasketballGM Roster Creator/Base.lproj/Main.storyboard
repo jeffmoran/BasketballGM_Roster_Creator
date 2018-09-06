@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -663,12 +663,13 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainWindowController" customModule="BasketballGM_Roster_Creator" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="BasketballGM Roster Creator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="687" height="401"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="687" height="401"/>
                         <toolbar key="toolbar" implicitIdentifier="B63E9DB7-FF2A-4BB1-A9BF-7F295194ECBE" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Hz7-tp-qJr">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="7428B809-CA1F-4011-830C-280D70801833" label="Open" paletteLabel="Open" tag="-1" image="NSFolder" id="zPo-If-jwG">
@@ -698,31 +699,25 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="IyA-ru-b7S" kind="relationship" relationship="window.shadowedContentViewController" id="pLL-9w-aU3"/>
+                        <segue destination="Vdn-KH-r5x" kind="relationship" relationship="window.shadowedContentViewController" id="ERC-FO-nO9"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="161"/>
+            <point key="canvasLocation" x="75.5" y="160.5"/>
         </scene>
-        <!--Split View Controller-->
-        <scene sceneID="H5F-v0-Sjg">
+        <!--View Controller-->
+        <scene sceneID="EbT-Je-t4g">
             <objects>
-                <splitViewController id="IyA-ru-b7S" sceneMemberID="viewController">
-                    <splitView key="splitView" vertical="YES" id="Sg3-gI-a84">
+                <viewController id="Vdn-KH-r5x" sceneMemberID="viewController">
+                    <view key="view" id="6YZ-Ws-kjw">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <outlet property="delegate" destination="IyA-ru-b7S" id="UdY-yP-Xhp"/>
-                        </connections>
-                    </splitView>
-                    <connections>
-                        <outlet property="splitView" destination="Sg3-gI-a84" id="fhs-dV-9jH"/>
-                    </connections>
-                </splitViewController>
-                <customObject id="e9m-DN-DlW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                    </view>
+                </viewController>
+                <customObject id="G4q-2m-xNA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="704"/>
+            <point key="canvasLocation" x="75" y="689"/>
         </scene>
         <!--Team Detail View Controller-->
         <scene sceneID="4RN-jX-Bpv">
@@ -758,7 +753,7 @@
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="145" minWidth="16" maxWidth="1000" id="85Q-0r-hcO">
+                                                <tableColumn identifier="" width="145" minWidth="16" maxWidth="1000" id="85Q-0r-hcO">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

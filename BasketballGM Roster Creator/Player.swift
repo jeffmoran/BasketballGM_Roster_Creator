@@ -26,7 +26,9 @@ enum Position: String {
 
 struct Player {
 	var playerID: Int?
-	var name: String
+	var name: String?
+	var firstName: String?
+	var lastName: String?
 	var teamID: Int
 	var position: Position?
 	var height: Int
@@ -40,7 +42,9 @@ struct Player {
 	var ratings: Ratings
 
 	init(_ jsonDict: [String: Any]? = nil) {
-		self.name = jsonDict?["name"] as? String ?? ""
+		self.name = jsonDict?["name"] as? String
+		self.firstName = jsonDict?["firstName"] as? String
+		self.lastName = jsonDict?["lastName"] as? String
 		self.height = jsonDict?["hgt"] as? Int ?? 0
 		self.weight = jsonDict?["weight"] as? Int ?? 0
 		self.profileURL = jsonDict?["imgURL"] as? String ?? ""
@@ -65,6 +69,10 @@ struct Player {
 		let ratings = jsonDict?["ratings"] as? [[String: Any]] ?? [[:]]
 
 		self.ratings = Ratings(ratings.first)
+	}
+
+	var fullName: String {
+		return name ?? String(describing: "\(firstName ?? "") \(lastName ?? "")")
 	}
 
 	var team: Team? {
