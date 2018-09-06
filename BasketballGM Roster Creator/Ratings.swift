@@ -19,8 +19,8 @@ struct Ratings {
 	var freeThrow: Int
 	var fieldGoal: Int
 	var threePointer: Int
-	var blocking: Int
-	var stealing: Int
+	var defensiveIq: Int
+	var offensiveIq: Int
 	var dribbling: Int
 	var passing: Int
 	var rebounding: Int
@@ -38,8 +38,8 @@ struct Ratings {
 		freeThrow = ratingsDict?["ft"] as? Int ?? 0
 		fieldGoal = ratingsDict?["fg"] as? Int ?? 0
 		threePointer = ratingsDict?["tp"] as? Int ?? 0
-		blocking = ratingsDict?["blk"] as? Int ?? 0
-		stealing = ratingsDict?["stl"] as? Int ?? 0
+		defensiveIq = ratingsDict?["diq"] as? Int ?? 0
+		offensiveIq = ratingsDict?["oiq"] as? Int ?? 0
 		dribbling = ratingsDict?["drb"] as? Int ?? 0
 		passing = ratingsDict?["pss"] as? Int ?? 0
 		rebounding = ratingsDict?["reb"] as? Int ?? 0

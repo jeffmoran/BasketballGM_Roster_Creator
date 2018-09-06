@@ -62,8 +62,8 @@ class PlayerDetailView: NSView {
 			twoPointersRatingView.intValue = player.ratings.fieldGoal
 			threePointersRatingView.intValue = player.ratings.threePointer
 
-			blocksRatingView.intValue = player.ratings.blocking
-			stealsRatingView.intValue = player.ratings.stealing
+			offensiveIqView.intValue = player.ratings.offensiveIq
+			defensiveIqView.intValue = player.ratings.defensiveIq
 			dribblingRatingView.intValue = player.ratings.dribbling
 			passingRatingView.intValue = player.ratings.passing
 			reboundingRatingView.intValue = player.ratings.rebounding
@@ -407,16 +407,16 @@ class PlayerDetailView: NSView {
 
 	// MARK: - Player Ratings - Skill
 
-	private lazy var blocksRatingView: LabelTextFieldGroupView = {
+	private lazy var offensiveIqView: LabelTextFieldGroupView = {
 		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
-		view.label.stringValue = "Blocks"
+		view.label.stringValue = "Offensive IQ"
 
 		return view
 	}()
 
-	private lazy var stealsRatingView: LabelTextFieldGroupView = {
+	private lazy var defensiveIqView: LabelTextFieldGroupView = {
 		let view = LabelTextFieldGroupView(configuration: .number(placeholder: "0 - 100"))
-		view.label.stringValue = "Steals"
+		view.label.stringValue = "Defensive IQ"
 
 		return view
 	}()
@@ -451,8 +451,8 @@ class PlayerDetailView: NSView {
 
 		stackView.setHuggingPriority(.windowSizeStayPut, for: .horizontal)
 
-		stackView.addArrangedSubview(blocksRatingView)
-		stackView.addArrangedSubview(stealsRatingView)
+		stackView.addArrangedSubview(offensiveIqView)
+		stackView.addArrangedSubview(defensiveIqView)
 		stackView.addArrangedSubview(dribblingRatingView)
 		stackView.addArrangedSubview(passingRatingView)
 		stackView.addArrangedSubview(reboundingRatingView)
@@ -596,8 +596,8 @@ class PlayerDetailView: NSView {
 		player?.ratings.freeThrow = freeThrowsRatingView.intValue
 		player?.ratings.fieldGoal = twoPointersRatingView.intValue
 		player?.ratings.threePointer = threePointersRatingView.intValue
-		player?.ratings.blocking = blocksRatingView.intValue
-		player?.ratings.stealing = stealsRatingView.intValue
+		player?.ratings.offensiveIq = offensiveIqView.intValue
+		player?.ratings.defensiveIq = defensiveIqView.intValue
 		player?.ratings.dribbling = dribblingRatingView.intValue
 		player?.ratings.passing = passingRatingView.intValue
 		player?.ratings.rebounding = reboundingRatingView.intValue
