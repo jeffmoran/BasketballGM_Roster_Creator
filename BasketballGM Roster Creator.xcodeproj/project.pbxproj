@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8A080B9A1E9340D7001815E1 /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080B991E9340D7001815E1 /* Draft.swift */; };
+		8A0D4C6E2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D4C6D2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift */; };
+		8A0D4C772141EC650001933B /* 2018-19.NBA.Roster.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */; };
 		8A0EB8E21E901C0F00EF2BCE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EB8E11E901C0F00EF2BCE /* API.swift */; };
 		8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */; };
 		8A25E4C71E8B46FC005D4940 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */; };
@@ -38,8 +40,22 @@
 		CA0E92DE1F32374B00002D8C /* LabelTextFieldGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E92DD1F32374B00002D8C /* LabelTextFieldGroupView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8A0D4C702141EBDE0001933B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AF5B3641E89F23B00D2048F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8AF5B36B1E89F23B00D2048F;
+			remoteInfo = "BasketballGM Roster Creator";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8A080B991E9340D7001815E1 /* Draft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
+		8A0D4C6B2141EBDE0001933B /* BasketballGM Roster Creator Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BasketballGM Roster Creator Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0D4C6D2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballGM_Roster_Creator_Tests.swift; sourceTree = "<group>"; };
+		8A0D4C6F2141EBDE0001933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "2018-19.NBA.Roster.json"; sourceTree = "<group>"; };
 		8A0EB8E11E901C0F00EF2BCE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -73,6 +89,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8A0D4C682141EBDE0001933B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AF5B3691E89F23B00D2048F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +106,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A0D4C6C2141EBDE0001933B /* BasketballGM Roster Creator Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8A0D4C752141EC580001933B /* TestFiles */,
+				8A0D4C6D2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift */,
+				8A0D4C6F2141EBDE0001933B /* Info.plist */,
+			);
+			path = "BasketballGM Roster Creator Tests";
+			sourceTree = "<group>";
+		};
+		8A0D4C752141EC580001933B /* TestFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */,
+			);
+			path = TestFiles;
+			sourceTree = "<group>";
+		};
 		8A0EB8E01E901BFE00EF2BCE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				8AF5B36E1E89F23B00D2048F /* BasketballGM Roster Creator */,
+				8A0D4C6C2141EBDE0001933B /* BasketballGM Roster Creator Tests */,
 				8AF5B36D1E89F23B00D2048F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				8AF5B36C1E89F23B00D2048F /* BasketballGM Roster Creator.app */,
+				8A0D4C6B2141EBDE0001933B /* BasketballGM Roster Creator Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +247,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8A0D4C6A2141EBDE0001933B /* BasketballGM Roster Creator Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A0D4C742141EBDE0001933B /* Build configuration list for PBXNativeTarget "BasketballGM Roster Creator Tests" */;
+			buildPhases = (
+				8A0D4C672141EBDE0001933B /* Sources */,
+				8A0D4C682141EBDE0001933B /* Frameworks */,
+				8A0D4C692141EBDE0001933B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A0D4C712141EBDE0001933B /* PBXTargetDependency */,
+			);
+			name = "BasketballGM Roster Creator Tests";
+			productName = "BasketballGM Roster Creator Tests";
+			productReference = 8A0D4C6B2141EBDE0001933B /* BasketballGM Roster Creator Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8AF5B36B1E89F23B00D2048F /* BasketballGM Roster Creator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AF5B37B1E89F23B00D2048F /* Build configuration list for PBXNativeTarget "BasketballGM Roster Creator" */;
@@ -228,10 +289,16 @@
 		8AF5B3641E89F23B00D2048F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jeff Moran";
 				TargetAttributes = {
+					8A0D4C6A2141EBDE0001933B = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = TR5WFN5468;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8AF5B36B1E89F23B00D2048F;
+					};
 					8AF5B36B1E89F23B00D2048F = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = TR5WFN5468;
@@ -253,11 +320,20 @@
 			projectRoot = "";
 			targets = (
 				8AF5B36B1E89F23B00D2048F /* BasketballGM Roster Creator */,
+				8A0D4C6A2141EBDE0001933B /* BasketballGM Roster Creator Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8A0D4C692141EBDE0001933B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A0D4C772141EC650001933B /* 2018-19.NBA.Roster.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AF5B36A1E89F23B00D2048F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,6 +365,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8A0D4C672141EBDE0001933B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A0D4C6E2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AF5B3681E89F23B00D2048F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,6 +406,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8A0D4C712141EBDE0001933B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8AF5B36B1E89F23B00D2048F /* BasketballGM Roster Creator */;
+			targetProxy = 8A0D4C702141EBDE0001933B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		8AF5B3751E89F23B00D2048F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -334,6 +426,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8A0D4C722141EBDE0001933B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR5WFN5468;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "BasketballGM Roster Creator Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmoran.BasketballGM-Roster-Creator-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BasketballGM Roster Creator.app/Contents/MacOS/BasketballGM Roster Creator";
+			};
+			name = Debug;
+		};
+		8A0D4C732141EBDE0001933B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR5WFN5468;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "BasketballGM Roster Creator Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmoran.BasketballGM-Roster-Creator-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BasketballGM Roster Creator.app/Contents/MacOS/BasketballGM Roster Creator";
+			};
+			name = Release;
+		};
 		8AF5B3791E89F23B00D2048F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -475,6 +611,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8A0D4C742141EBDE0001933B /* Build configuration list for PBXNativeTarget "BasketballGM Roster Creator Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A0D4C722141EBDE0001933B /* Debug */,
+				8A0D4C732141EBDE0001933B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8AF5B3671E89F23B00D2048F /* Build configuration list for PBXProject "BasketballGM Roster Creator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
