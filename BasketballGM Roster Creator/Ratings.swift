@@ -8,7 +8,27 @@
 
 import Foundation
 
-struct Ratings {
+struct Ratings: Decodable {
+	enum CodingKeys: String, CodingKey {
+		case height = "hgt"
+		case strength = "stre"
+		case speed = "spd"
+		case jumping = "jmp"
+		case endurance = "endu"
+		case inside = "ins"
+		case dunking = "dnk"
+		case freeThrow = "ft"
+		case fieldGoal = "fg"
+		case threePointer = "tp"
+		case defensiveIq = "diq"
+		case offensiveIq = "oiq"
+		case dribbling = "drb"
+		case passing = "pss"
+		case rebounding = "reb"
+//		case potential = "pot"
+//		case skills = "skills"
+	}
+
 	var height: Int
 	var strength: Int
 	var speed: Int
@@ -24,35 +44,15 @@ struct Ratings {
 	var dribbling: Int
 	var passing: Int
 	var rebounding: Int
-	var potential: Int
-	private var skills: [String]
-
-	init(_ ratingsDict: [String: Any]?) {
-		height = ratingsDict?["hgt"] as? Int ?? 0
-		strength = ratingsDict?["stre"] as? Int ?? 0
-		speed = ratingsDict?["spd"] as? Int ?? 0
-		jumping = ratingsDict?["jmp"] as? Int ?? 0
-		endurance = ratingsDict?["endu"] as? Int ?? 0
-		inside = ratingsDict?["ins"] as? Int ?? 0
-		dunking = ratingsDict?["dnk"] as? Int ?? 0
-		freeThrow = ratingsDict?["ft"] as? Int ?? 0
-		fieldGoal = ratingsDict?["fg"] as? Int ?? 0
-		threePointer = ratingsDict?["tp"] as? Int ?? 0
-		defensiveIq = ratingsDict?["diq"] as? Int ?? 0
-		offensiveIq = ratingsDict?["oiq"] as? Int ?? 0
-		dribbling = ratingsDict?["drb"] as? Int ?? 0
-		passing = ratingsDict?["pss"] as? Int ?? 0
-		rebounding = ratingsDict?["reb"] as? Int ?? 0
-		potential = ratingsDict?["pot"] as? Int ?? 0
-		skills = ratingsDict?["skills"] as? [String] ?? [""]
-	}
+//	var potential: Int
+//	private var skills: [String]
 
 	var skillsString: String {
 		get {
-			return skills.joined(separator: ", ")
+			return "" //skills.joined(separator: ", ")
 		}
 		set {
-			skills = newValue.components(separatedBy: ", ")
+//			skills = newValue.components(separatedBy: ", ")
 		}
 	}
 }

@@ -231,7 +231,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 			case .players:
 				playersSearchString = searchString
 
-				filteredPlayers = API.shared.getAllPlayers()?.filter { $0.fullName.uppercased().contains(searchString.uppercased()) || $0.team?.fullTeamName.uppercased().contains(searchString.uppercased()) ?? false }
+				filteredPlayers = API.shared.getAllPlayers()?.filter { $0.name.uppercased().contains(searchString.uppercased()) || $0.team?.fullTeamName.uppercased().contains(searchString.uppercased()) ?? false }
 
 				if searchString.isEmpty { filteredPlayers = API.shared.getAllPlayers() }
 			case .teams:

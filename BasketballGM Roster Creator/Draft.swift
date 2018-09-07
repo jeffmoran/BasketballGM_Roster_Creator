@@ -8,21 +8,14 @@
 
 import Foundation
 
-struct DraftPick {
-	var teamID: Int
+struct DraftPick: Decodable {
+	var tid: Int
 	var round: Int
 	var pick: Int
-	var originalTeamID: Int
-	var season: Int
-
-	init(_ draftDict: [String: Any]?) {
-		self.teamID = draftDict?["tid"] as? Int ?? 0
-		self.round = draftDict?["round"] as? Int ?? 0
-		self.pick = draftDict?["pick"] as? Int ?? 0
-		self.originalTeamID = draftDict?["originalTid"] as? Int ?? 0
-		self.season = draftDict?["season"] as? Int ?? 0
-	}
-
+	var originalTid: Int
+	var season: Int?
+	var year: Int?
+	
 	var descriptionString: String {
 		guard let originalTeam = originalTeam else { return "" }
 		guard let destinationTeam = destinationTeam else { return "" }
@@ -33,10 +26,10 @@ struct DraftPick {
 	}
 
 	var originalTeam: Team! {
-		return API.shared.getTeamAt(originalTeamID)
+		return API.shared.getTeamAt(originalTid)
 	}
 
 	var destinationTeam: Team! {
-		return API.shared.getTeamAt(teamID)
+		return API.shared.getTeamAt(tid)
 	}
 }

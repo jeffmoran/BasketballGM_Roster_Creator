@@ -22,7 +22,7 @@ class PlayerDetailView: NSView {
 			playerImageView.downloadedFrom(link: player.profileURL)
 			playerImageTextField.stringValue = player.profileURL
 
-			playerNameTextField.stringValue = player.fullName
+			playerNameTextField.stringValue = player.name
 			playerNameTextField.becomeFirstResponder()
 
 			playerWeightTextField.stringValue = String(player.weight)
@@ -48,7 +48,7 @@ class PlayerDetailView: NSView {
 
 			// Ratings
 
-			potentialRatingView.intValue = player.ratings.potential
+			potentialRatingView.intValue = 0 //player.ratings.potential
 
 			heightRatingView.intValue = player.ratings.height
 			strengthRatingView.intValue = player.ratings.strength
@@ -578,14 +578,13 @@ class PlayerDetailView: NSView {
 		player?.hometown = playerHometownTextField.stringValue
 		player?.height = Int(playerHeightTextField.stringValue) ?? 0
 		player?.weight = Int(playerWeightTextField.stringValue) ?? 0
-		playerTeamPopUpButton.selectedItem?.title
 		player?.teamID = playerTeamPopUpButton.indexOfSelectedItem - 5 // Minus 5 for free agent, retired, and three draft prospect teams
 		player?.position = Position(rawValue: playerPositionPopUpButton.selectedItem?.title ?? "")
 
 		player?.contract.amountInMillions = playerContractAmountTextField.stringValue
 		player?.contract.expirationString = playerContractExpirationTextField.stringValue
 
-		player?.ratings.potential = potentialRatingView.intValue
+//		player?.ratings.potential = potentialRatingView.intValue
 		player?.ratings.height = heightRatingView.intValue
 		player?.ratings.strength = strengthRatingView.intValue
 		player?.ratings.speed = speedRatingView.intValue

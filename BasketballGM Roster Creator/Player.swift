@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Position: String {
+enum Position: String, Decodable {
 	case pointGuard = "PG"
 	case shootingGuard = "SG"
 	case smallForward = "SF"
@@ -26,9 +26,7 @@ enum Position: String {
 
 struct Player {
 	var playerID: Int?
-	var name: String?
-	var firstName: String?
-	var lastName: String?
+	var name: String
 	var teamID: Int
 	var position: Position?
 	var height: Int
@@ -42,9 +40,9 @@ struct Player {
 	var ratings: Ratings
 
 	init(_ jsonDict: [String: Any]? = nil) {
-		self.name = jsonDict?["name"] as? String
-		self.firstName = jsonDict?["firstName"] as? String
-		self.lastName = jsonDict?["lastName"] as? String
+		let decoder = JSONDecoder()
+
+		self.name = jsonDict?["name"] as? String ?? ""
 		self.height = jsonDict?["hgt"] as? Int ?? 0
 		self.weight = jsonDict?["weight"] as? Int ?? 0
 		self.profileURL = jsonDict?["imgURL"] as? String ?? ""
@@ -57,22 +55,31 @@ struct Player {
 
 		self.college = jsonDict?["college"] as? String ?? ""
 
-		let draft = jsonDict?["draft"] as? [String: Any] ?? [:]
-		self.draft = DraftPick(draft)
+		let draftDict = jsonDict?["draft"] as? [String: Any] ?? [:]
+		let injuryDict = jsonDict?["injury"] as? [String: Any] ?? [:]
+		let contractDict = jsonDict?["contract"] as? [String: Any] ?? [:]
+		let ratingsDict = jsonDict?["ratings"] as? [[String: Any]] ?? [[:]]
 
-		let injury = jsonDict?["injury"] as? [String: Any] ?? [:]
-		self.injury = Injury(injury)
+		do {
+			let draftJsonData = try JSONSerialization.data(withJSONObject: draftDict, options: [])
+			let injuryJsonData = try JSONSerialization.data(withJSONObject: injuryDict, options: [])
+			let contractJsonData = try JSONSerialization.data(withJSONObject: contractDict, options: [])
+			let ratingsJsonData = try JSONSerialization.data(withJSONObject: ratingsDict.first ?? [:], options: [])
 
-		let contract = jsonDict?["contract"] as? [String: Any] ?? [:]
-		self.contract = Contract(contract)
+			let draftPick = try decoder.decode(DraftPick.self, from: draftJsonData)
+			let injury = try decoder.decode(Injury.self, from: injuryJsonData)
+			let ratings = try decoder.decode(Ratings.self, from: ratingsJsonData)
+			let contract = try decoder.decode(Contract.self, from: contractJsonData)
 
-		let ratings = jsonDict?["ratings"] as? [[String: Any]] ?? [[:]]
-
-		self.ratings = Ratings(ratings.first)
-	}
-
-	var fullName: String {
-		return name ?? String(describing: "\(firstName ?? "") \(lastName ?? "")")
+			self.draft = draftPick
+			self.injury = injury
+			self.ratings = ratings
+			self.contract = contract
+		} catch {
+			print(error)
+			print(self.name)
+			fatalError(error.localizedDescription)
+		}
 	}
 
 	var team: Team? {

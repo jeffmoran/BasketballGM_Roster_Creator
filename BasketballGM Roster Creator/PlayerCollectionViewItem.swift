@@ -17,7 +17,7 @@ class PlayerCollectionViewItem: BaseCollectionViewItem {
             let playerTmRegion = player.team?.region ?? "Free"
             let playerTmName = player.team?.name ?? "Agent"
 
-            playerName.stringValue = player.fullName
+            playerName.stringValue = player.name
             playerProfileImageView.downloadedFrom(link: player.profileURL)
             playerTeamName.stringValue = playerTmRegion + " " + playerTmName
         }

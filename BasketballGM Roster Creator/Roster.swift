@@ -13,14 +13,14 @@ struct Roster {
 	var startingSeason: Int = 2018
     var teams: [Team] = [Team]()
     var players: [Player] = [Player]()
-	var draftPicks: [DraftPick] = [DraftPick]()
+	var draftPicks: [DraftPick]?
 
     init(_ jsonDict: [String: Any]) {
 		rawDict = jsonDict
 
-        guard let jsonTeams = jsonDict["teams"] as? [[String: Any]] else { return }
-        guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { return }
-		let jsonDraftPicks = jsonDict["draftPicks"] as? [[String: Any]]
+        guard let jsonTeams = jsonDict["teams"] as? [[String: Any]] else { fatalError("Bad JSON, no teams found?") }
+        guard let jsonPlayers = jsonDict["players"] as? [[String: Any]] else { fatalError("Bad JSON, no players found?") }
+		let jsonDraftPicks = jsonDict["draftPicks"] as? [[String: Any]] ?? []
 
 		if let startingSeason = jsonDict["startingSeason"] as? Int {
 			self.startingSeason = startingSeason
@@ -43,10 +43,15 @@ struct Roster {
             players.append(player)
         }
 
-		if let jsonDraftPicks = jsonDraftPicks {
-			jsonDraftPicks.forEach {
-				draftPicks.append(DraftPick($0))
-			}
+		let decoder = JSONDecoder()
+
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: jsonDraftPicks, options: [])
+			let draftPicks = try decoder.decode([DraftPick].self, from: jsonData)
+
+			self.draftPicks = draftPicks
+		} catch {
+			fatalError(error.localizedDescription)
 		}
     }
 

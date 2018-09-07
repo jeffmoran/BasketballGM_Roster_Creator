@@ -8,12 +8,7 @@
 
 import Foundation
 
-struct Injury {
-	var type: String
-	var gamesRemaining: Int
-
-	init(_ injuryDict: [String: Any]?) {
-		self.type = injuryDict?["tid"] as? String ?? "Healthy"
-		self.gamesRemaining = injuryDict?["round"] as? Int ?? 0
-	}
+struct Injury: Decodable {
+	var type: String?
+	var gamesRemaining: Int?
 }
