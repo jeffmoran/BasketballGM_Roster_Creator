@@ -122,18 +122,24 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		let when = DispatchTime.now() + 0.1
 
 		DispatchQueue.main.asyncAfter(deadline: when) {
-			self.filteredPlayers = API.shared.getAllPlayers()
-			self.filteredTeams = API.shared.getAllTeams(includingFakeTeams: false)
-			self.filteredDraftPicks = API.shared.getAllDraftPicks()
-
-			self.collectionView.reloadData()
+			self.resetFilteredDatasource()
 		}
 	}
 
 	func refreshCollectionViewWith(_ contentMode: ContentMode) {
 		self.contentMode = contentMode
 
+		if API.shared.isLeagueImported {
+			resetFilteredDatasource()
+		}
+
 		collectionView.reloadData()
+	}
+
+	private func resetFilteredDatasource() {
+		filteredPlayers = API.shared.getAllPlayers()
+		filteredTeams = API.shared.getAllTeams(includingFakeTeams: false)
+		filteredDraftPicks = API.shared.getAllDraftPicks()
 	}
 
 	// MARK: - NSCollectionViewDataSource

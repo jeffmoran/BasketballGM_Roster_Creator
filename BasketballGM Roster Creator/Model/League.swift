@@ -22,4 +22,13 @@ struct League: Decodable {
 		teams.insert(Team.nextNextYearDraftProspectTeam(with: startingSeason), at: 3)
 		teams.insert(Team.retiredPlayersTeam, at: 4)
 	}
+
+	mutating func update(_ players: [Player]) {
+		self.players = players.enumerated().map { index, player in
+			var player = player
+			player.playerID = index
+
+			return player
+		}
+	}
 }

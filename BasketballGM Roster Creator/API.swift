@@ -8,11 +8,13 @@
 
 import AppKit
 
-struct API {
+class API {
 
 	// MARK: - Public Properties
 
 	static var shared: API = API()
+
+	var isLeagueImported: Bool = false
 
 	// MARK: - Private Properties
 
@@ -24,11 +26,15 @@ struct API {
 
 	// MARK: - Roster Import/Export
 
-	mutating func getRosterFrom(_ url: URL, completion: () -> Void) {
+	func getRosterFrom(_ url: URL, completion: () -> Void) {
 		do {
 			let leagueData = try Data(contentsOf: url)
 			league = try JSONDecoder().decode(League.self, from: leagueData)
 			league.addFakeTeams()
+			league.update(league.players)
+
+			isLeagueImported = true
+
 			completion()
 		} catch {
 			print(error)
@@ -91,7 +97,6 @@ struct API {
 			try json.write(to: fileUrl)
 		} catch {
 			assertionFailure(error.localizedDescription)
-			return
 		}
 	}
 
@@ -105,24 +110,17 @@ struct API {
 		return getAllPlayers()?[index]
 	}
 
-	mutating func removePlayer(at playerID: Int) {
+	func removePlayer(at playerID: Int) {
 		guard var allPlayers = getAllPlayers() else { return }
 
 		allPlayers.remove(at: playerID)
 
-		let allPlayersAdjusted: [Player] = allPlayers.enumerated().map { index, player in
-			var player = player
-			player.playerID = index
-
-			return player
-		}
-
-		league.players = allPlayersAdjusted
+		league.update(allPlayers)
 
 		mainController?.refreshCollectionViewWith(.players)
 	}
 
-	mutating func replacePlayer(at playerID: Int, with player: Player) {
+	func replacePlayer(at playerID: Int, with player: Player) {
 		guard var roster = league else { return }
 		guard let allPlayers = getAllPlayers() else { return }
 
@@ -148,7 +146,7 @@ struct API {
 
 		// TODO: Fix this
 
-//		saveRosterToDisk(roster.asDictionary())
+		//		saveRosterToDisk(roster.asDictionary())
 
 		mainController?.refreshCollectionViewWith(.players)
 	}
