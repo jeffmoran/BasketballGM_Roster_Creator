@@ -86,16 +86,4 @@ struct Player: Decodable {
 			ratings = [newValue]
 		}
 	}
-
-	func asDictionary() -> [String: Any] {
-		var dict = [String: Any]()
-
-		dict["tid"] = self.tid
-		dict["name"] = self.name
-		dict["pos"] = self.pos.rawValue
-
-		// TODO: - Add rest of player properties here
-
-		return dict
-	}
 }

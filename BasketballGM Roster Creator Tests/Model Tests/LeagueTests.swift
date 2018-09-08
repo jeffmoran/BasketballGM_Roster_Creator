@@ -19,10 +19,11 @@ class LeagueTests: XCTestCase {
 		let leagueData: Data = LeagueImporter.getLeagueJSONData()
 
 		do {
-			guard let jsonDict = try JSONSerialization.jsonObject(with: leagueData, options: []) as? [String: Any] else { return }
-			league = League(jsonDict)
+			league = try JSONDecoder().decode(League.self, from: leagueData)
+			league.addFakeTeams()
 		} catch {
-			return
+			print(error)
+			fatalError(error.localizedDescription)
 		}
     }
 
@@ -35,6 +36,8 @@ class LeagueTests: XCTestCase {
 		XCTAssertFalse(league.players.isEmpty)
 		XCTAssertFalse(league.teams.isEmpty)
 		XCTAssertFalse(league.draftPicks.isEmpty)
+		XCTAssertFalse(league.gameAttributes.isEmpty)
+		XCTAssert(league.startingSeason == 2019)
 	}
 
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A080B9A1E9340D7001815E1 /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080B991E9340D7001815E1 /* Draft.swift */; };
+		8A09D78921436323004DE081 /* GameAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A09D78821436323004DE081 /* GameAttributes.swift */; };
 		8A0D4C772141EC650001933B /* 2018-19.NBA.Roster.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */; };
 		8A0EB8E21E901C0F00EF2BCE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EB8E11E901C0F00EF2BCE /* API.swift */; };
 		8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		8A080B991E9340D7001815E1 /* Draft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
+		8A09D78821436323004DE081 /* GameAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAttributes.swift; sourceTree = "<group>"; };
 		8A0D4C6B2141EBDE0001933B /* BasketballGM Roster Creator Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BasketballGM Roster Creator Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0D4C6F2141EBDE0001933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "2018-19.NBA.Roster.json"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC017881E8C96DA008BB81C /* League.swift */,
+				8A09D78821436323004DE081 /* GameAttributes.swift */,
 				8A7565911E8A0C2D0023C781 /* Team.swift */,
 				8AD1E041214361FC00292B61 /* Player */,
 				8A080B991E9340D7001815E1 /* Draft.swift */,
@@ -413,6 +416,7 @@
 				8AA1636D1F31742D000EF12B /* BaseCollectionViewItem.swift in Sources */,
 				CA0E92DC1F32245B00002D8C /* Ratings.swift in Sources */,
 				8AC4490B1E91AADC000ACDB1 /* PlayerTextField.swift in Sources */,
+				8A09D78921436323004DE081 /* GameAttributes.swift in Sources */,
 				CA04FFCB1F3387AB003BBD4E /* TeamDetailViewController.swift in Sources */,
 				8A7565921E8A0C2D0023C781 /* Team.swift in Sources */,
 				8AF5B3701E89F23B00D2048F /* AppDelegate.swift in Sources */,

@@ -9,11 +9,11 @@
 import Foundation
 
 struct League: Decodable {
-	//	var rawDict: [String: Any]
-	var startingSeason: Int = 2018
-	var teams: [Team] = [Team]()
-	var players: [Player] = [Player]()
-	var draftPicks: [DraftPick] = [DraftPick]()
+	var startingSeason: Int
+	var teams: [Team]
+	var players: [Player]
+	var draftPicks: [DraftPick]
+	var gameAttributes: [GameAttributes]
 
 	mutating func addFakeTeams() {
 		teams.insert(Team.freeAgentTeam, at: 0)
