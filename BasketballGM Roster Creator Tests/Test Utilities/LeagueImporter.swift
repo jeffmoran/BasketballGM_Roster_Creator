@@ -11,7 +11,9 @@ import Foundation
 class LeagueImporter {
 
 	class func getLeagueJSONData () -> Data {
-		let filepath = Bundle(for: self).path(forResource: "2018-19.NBA.Roster", ofType: "json") ?? ""
+//		let filepath = Bundle(for: self).path(forResource: "2018-19.NBA.Roster", ofType: "json") ?? ""
+		let filepath = Bundle(for: self).path(forResource: "2018-19.NBA.Roster-fixed", ofType: "json") ?? ""
+
 		let url = URL(fileURLWithPath: filepath)
 
 		do {

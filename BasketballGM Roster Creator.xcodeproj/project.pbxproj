@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		8A080B9A1E9340D7001815E1 /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080B991E9340D7001815E1 /* Draft.swift */; };
 		8A09D78921436323004DE081 /* GameAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A09D78821436323004DE081 /* GameAttributes.swift */; };
-		8A0D4C772141EC650001933B /* 2018-19.NBA.Roster.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */; };
+		8A09D78E21437CA6004DE081 /* 2018-19.NBA.Roster.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A09D78D21437CA5004DE081 /* 2018-19.NBA.Roster.json */; };
+		8A09D790214438EC004DE081 /* 2018-19.NBA.Roster-fixed.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A09D78F214438EB004DE081 /* 2018-19.NBA.Roster-fixed.json */; };
 		8A0EB8E21E901C0F00EF2BCE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EB8E11E901C0F00EF2BCE /* API.swift */; };
 		8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */; };
 		8A25E4C71E8B46FC005D4940 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */; };
@@ -55,9 +56,10 @@
 /* Begin PBXFileReference section */
 		8A080B991E9340D7001815E1 /* Draft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
 		8A09D78821436323004DE081 /* GameAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAttributes.swift; sourceTree = "<group>"; };
+		8A09D78D21437CA5004DE081 /* 2018-19.NBA.Roster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "2018-19.NBA.Roster.json"; path = "BasketBall-GM-Rosters/2018-19.NBA.Roster.json"; sourceTree = SOURCE_ROOT; };
+		8A09D78F214438EB004DE081 /* 2018-19.NBA.Roster-fixed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "2018-19.NBA.Roster-fixed.json"; sourceTree = "<group>"; };
 		8A0D4C6B2141EBDE0001933B /* BasketballGM Roster Creator Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BasketballGM Roster Creator Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0D4C6F2141EBDE0001933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "2018-19.NBA.Roster.json"; sourceTree = "<group>"; };
 		8A0EB8E11E901C0F00EF2BCE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -148,7 +150,8 @@
 		8A0D4C752141EC580001933B /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
-				8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */,
+				8A09D78F214438EB004DE081 /* 2018-19.NBA.Roster-fixed.json */,
+				8A09D78D21437CA5004DE081 /* 2018-19.NBA.Roster.json */,
 			);
 			path = "Test Data";
 			sourceTree = "<group>";
@@ -352,7 +355,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A0D4C772141EC650001933B /* 2018-19.NBA.Roster.json in Resources */,
+				8A09D790214438EC004DE081 /* 2018-19.NBA.Roster-fixed.json in Resources */,
+				8A09D78E21437CA6004DE081 /* 2018-19.NBA.Roster.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
