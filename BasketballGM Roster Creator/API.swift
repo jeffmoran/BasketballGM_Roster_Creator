@@ -9,15 +9,20 @@
 import AppKit
 
 struct API {
+
+	// MARK: - Public Properties
+
 	static var shared: API = API()
+
+	// MARK: - Private Properties
 
 	private var league: League!
 
-	var mainController: MainWindowController? {
+	private var mainController: MainWindowController? {
 		return NSApp.mainWindow?.windowController as? MainWindowController
 	}
 
-	// MARK: - Main
+	// MARK: - Roster Import/Export
 
 	mutating func getRosterFrom(_ url: URL, completion: () -> Void) {
 		do {
@@ -44,14 +49,13 @@ struct API {
 
 		let directory = documentsUrl.appendingPathComponent("BasketballGM_Rosters")
 
-		try? fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
-
 		let destinationURL = directory.appendingPathComponent(filename)
 
 		do {
+			try fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
 			try fileManager.copyItem(at: sourceURL, to: destinationURL)
 		} catch {
-			print(error.localizedDescription)
+			fatalError(error.localizedDescription)
 		}
 	}
 
@@ -84,12 +88,6 @@ struct API {
 
 		do {
 			json = try JSONSerialization.data(withJSONObject: roster, options: .prettyPrinted)
-		} catch {
-			assertionFailure(error.localizedDescription)
-			return
-		}
-
-		do {
 			try json.write(to: fileUrl)
 		} catch {
 			assertionFailure(error.localizedDescription)
@@ -107,9 +105,8 @@ struct API {
 		return getAllPlayers()?[index]
 	}
 
-	mutating func removePlayer(at playerID: Int?) {
+	mutating func removePlayer(at playerID: Int) {
 		guard var allPlayers = getAllPlayers() else { return }
-		guard let playerID = playerID else { return }
 
 		allPlayers.remove(at: playerID)
 
@@ -125,10 +122,9 @@ struct API {
 		mainController?.refreshCollectionViewWith(.players)
 	}
 
-	mutating func replacePlayer(at playerID: Int?, with player: Player) {
+	mutating func replacePlayer(at playerID: Int, with player: Player) {
 		guard var roster = league else { return }
 		guard let allPlayers = getAllPlayers() else { return }
-		guard let playerID = playerID else { return }
 
 		for index in allPlayers.indices where playerID == index {
 			var allPlayers = allPlayers

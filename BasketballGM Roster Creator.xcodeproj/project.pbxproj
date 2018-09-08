@@ -122,6 +122,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8A09D78A214365DC004DE081 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */,
+				8A75658D1E8A05300023C781 /* OutlineViewController.swift */,
+				8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */,
+				8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */,
+				CA04FFCA1F3387AB003BBD4E /* TeamDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		8A0D4C6C2141EBDE0001933B /* BasketballGM Roster Creator Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,18 +161,6 @@
 				8AC449081E919A35000ACDB1 /* NumberFormatter.swift */,
 			);
 			name = Utils;
-			sourceTree = "<group>";
-		};
-		8A25E4C91E8B47A1005D4940 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */,
-				8A75658D1E8A05300023C781 /* OutlineViewController.swift */,
-				8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */,
-				8A25E4C51E8B46FC005D4940 /* PlayerDetailViewController.swift */,
-				CA04FFCA1F3387AB003BBD4E /* TeamDetailViewController.swift */,
-			);
-			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		8A25E4CA1E8B47DF005D4940 /* Assets */ = {
@@ -259,7 +259,7 @@
 				8A25E4CB1E8B47E6005D4940 /* Storyboards */,
 				8A0EB8E01E901BFE00EF2BCE /* Utils */,
 				8A09D78721436254004DE081 /* Model */,
-				8A25E4C91E8B47A1005D4940 /* View Controllers */,
+				8A09D78A214365DC004DE081 /* View Controllers */,
 				8A35E6F91E8B540100686996 /* Views */,
 				8AF5B3781E89F23B00D2048F /* Info.plist */,
 			);

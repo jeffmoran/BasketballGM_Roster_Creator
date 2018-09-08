@@ -32,7 +32,7 @@ struct Born: Decodable {
 
 struct Player: Decodable {
 	// TODO: CodingKeys
-	var playerID: Int?
+	var playerID: Int!
 	var name: String?
 	var firstName: String?
 	var lastName: String?

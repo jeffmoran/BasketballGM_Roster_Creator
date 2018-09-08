@@ -83,13 +83,16 @@ class PlayerDetailViewController: NSViewController {
 	}
 
 	@objc func deletePlayer() {
-		API.shared.removePlayer(at: self.player?.playerID)
+		guard let player = player else { return }
+		API.shared.removePlayer(at: player.playerID)
 
-		player = nil
+		self.player = nil
 	}
 
 	@objc func savePlayer() {
-		guard let player = playerDetailView.getAdjustedPlayer() else { return }
-		API.shared.replacePlayer(at: self.player?.playerID, with: player)
+		guard let currentPlayer = player else { return }
+		guard let adjustedPlayer = playerDetailView.getAdjustedPlayer() else { return }
+		
+		API.shared.replacePlayer(at: currentPlayer.playerID, with: adjustedPlayer)
 	}
 }
