@@ -17,8 +17,8 @@ class DraftPickCollectionViewItem: BaseCollectionViewItem {
 			guard let destinationTeam = API.shared.getTeamWith(draftPick.tid) else { return }
 			guard let originalTeam = API.shared.getTeamWith(draftPick.originalTid) else { return }
 
-			originalTeamImageView.downloadedFrom(link: originalTeam.imageURL)
-			newTeamImageView.downloadedFrom(link: destinationTeam.imageURL)
+			originalTeamImageView.downloadedFrom(link: originalTeam.imgURL)
+			newTeamImageView.downloadedFrom(link: destinationTeam.imgURL)
 
 			draftPickDescription.stringValue = draftPick.descriptionString
 		}

@@ -9,12 +9,12 @@
 import Foundation
 
 struct Contract: Decodable {
-	private var amount: Double?
-	private var exp: Int?
+	private var amount: Double
+	private var exp: Int
 
 	var amountInMillions: String {
 		get {
-			let millions = amount! * 1000
+			let millions = amount * 1000
 			let numberFormatter = NumberFormatter()
 			numberFormatter.numberStyle = .decimal
 
@@ -28,7 +28,7 @@ struct Contract: Decodable {
 
 	var expirationString: String {
 		get {
-			return String(exp!)
+			return String(exp)
 		}
 		set {
 			exp = Int(newValue) ?? 0

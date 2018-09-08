@@ -16,16 +16,16 @@ class TeamDetailView: NSView {
 				return
 			}
 
-			teamImageView.downloadedFrom(link: team.imageURL)
-			teamImageTextField.stringValue = team.imageURL
+			teamImageView.downloadedFrom(link: team.imgURL)
+			teamImageTextField.stringValue = team.imgURL
 			teamRegionTextField.stringValue = team.region
 			teamNameTextField.stringValue = team.name
-			teamAbbreviationTextField.stringValue = team.abbreviation
+			teamAbbreviationTextField.stringValue = team.abbrev
 			teamPopulationTextField.stringValue = team.populationString
 			teamStrategyTextField.stringValue = team.strategy
-			teamIDTextField.stringValue = String(team.teamID)
-			teamConferenceIDPopUpButton.selectItem(at: team.conferenceID)
-			teamDivisionPopUpButton.selectItem(at: team.divisionID)
+			teamIDTextField.stringValue = String(team.tid)
+			teamConferenceIDPopUpButton.selectItem(at: team.cid)
+			teamDivisionPopUpButton.selectItem(at: team.did)
 		}
 	}
 

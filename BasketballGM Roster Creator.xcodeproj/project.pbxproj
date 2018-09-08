@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8A080B9A1E9340D7001815E1 /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080B991E9340D7001815E1 /* Draft.swift */; };
-		8A0D4C6E2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D4C6D2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift */; };
 		8A0D4C772141EC650001933B /* 2018-19.NBA.Roster.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */; };
 		8A0EB8E21E901C0F00EF2BCE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EB8E11E901C0F00EF2BCE /* API.swift */; };
 		8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25E4C31E8B41E7005D4940 /* MainWindowController.swift */; };
@@ -18,13 +17,15 @@
 		8A2809321EAEE6FD00631321 /* DraftPickCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2809311EAEE6FD00631321 /* DraftPickCollectionViewItem.swift */; };
 		8A2809341EAEE79300631321 /* DraftPickCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2809331EAEE79300631321 /* DraftPickCollectionViewItem.xib */; };
 		8A2F1EF11E90289300F44AF8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F1EF01E90289300F44AF8 /* Extensions.swift */; };
+		8A43E6CB214344F700147EB9 /* LeagueImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A43E6CA214344F700147EB9 /* LeagueImporter.swift */; };
 		8A75658E1E8A05300023C781 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658D1E8A05300023C781 /* OutlineViewController.swift */; };
 		8A7565901E8A0C180023C781 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75658F1E8A0C180023C781 /* Player.swift */; };
 		8A7565921E8A0C2D0023C781 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565911E8A0C2D0023C781 /* Team.swift */; };
 		8A7565971E8A121B0023C781 /* ItemListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */; };
+		8A8CBA2121420C4200FC4CEB /* LeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CBA2021420C4200FC4CEB /* LeagueTests.swift */; };
 		8AA1636D1F31742D000EF12B /* BaseCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1636C1F31742D000EF12B /* BaseCollectionViewItem.swift */; };
 		8AA74BA41E971B4200D721BA /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA74BA31E971B4200D721BA /* PlayerDetailView.swift */; };
-		8AC017891E8C96DA008BB81C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC017881E8C96DA008BB81C /* Roster.swift */; };
+		8AC017891E8C96DA008BB81C /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC017881E8C96DA008BB81C /* League.swift */; };
 		8AC0178C1E8CAE75008BB81C /* TeamCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */; };
 		8AC0178D1E8CAE75008BB81C /* TeamCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */; };
 		8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC449081E919A35000ACDB1 /* NumberFormatter.swift */; };
@@ -53,7 +54,6 @@
 /* Begin PBXFileReference section */
 		8A080B991E9340D7001815E1 /* Draft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
 		8A0D4C6B2141EBDE0001933B /* BasketballGM Roster Creator Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BasketballGM Roster Creator Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A0D4C6D2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballGM_Roster_Creator_Tests.swift; sourceTree = "<group>"; };
 		8A0D4C6F2141EBDE0001933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "2018-19.NBA.Roster.json"; sourceTree = "<group>"; };
 		8A0EB8E11E901C0F00EF2BCE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -64,13 +64,15 @@
 		8A2809311EAEE6FD00631321 /* DraftPickCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftPickCollectionViewItem.swift; sourceTree = "<group>"; };
 		8A2809331EAEE79300631321 /* DraftPickCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraftPickCollectionViewItem.xib; sourceTree = "<group>"; };
 		8A2F1EF01E90289300F44AF8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8A43E6CA214344F700147EB9 /* LeagueImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueImporter.swift; sourceTree = "<group>"; };
 		8A75658D1E8A05300023C781 /* OutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		8A75658F1E8A0C180023C781 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		8A7565911E8A0C2D0023C781 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		8A7565961E8A121B0023C781 /* ItemListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCollectionViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		8A8CBA2021420C4200FC4CEB /* LeagueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTests.swift; sourceTree = "<group>"; };
 		8AA1636C1F31742D000EF12B /* BaseCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewItem.swift; sourceTree = "<group>"; };
 		8AA74BA31E971B4200D721BA /* PlayerDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
-		8AC017881E8C96DA008BB81C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
+		8AC017881E8C96DA008BB81C /* League.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		8AC0178A1E8CAE75008BB81C /* TeamCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewItem.swift; sourceTree = "<group>"; };
 		8AC0178B1E8CAE75008BB81C /* TeamCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewItem.xib; sourceTree = "<group>"; };
 		8AC449081E919A35000ACDB1 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
@@ -109,19 +111,20 @@
 		8A0D4C6C2141EBDE0001933B /* BasketballGM Roster Creator Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8A0D4C752141EC580001933B /* TestFiles */,
-				8A0D4C6D2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift */,
+				8A43E6C92143446100147EB9 /* Test Utilities */,
+				8A0D4C752141EC580001933B /* Test Data */,
+				8A43E6C82143444300147EB9 /* Model Tests */,
 				8A0D4C6F2141EBDE0001933B /* Info.plist */,
 			);
 			path = "BasketballGM Roster Creator Tests";
 			sourceTree = "<group>";
 		};
-		8A0D4C752141EC580001933B /* TestFiles */ = {
+		8A0D4C752141EC580001933B /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
 				8A0D4C762141EC650001933B /* 2018-19.NBA.Roster.json */,
 			);
-			path = TestFiles;
+			path = "Test Data";
 			sourceTree = "<group>";
 		};
 		8A0EB8E01E901BFE00EF2BCE /* Utils */ = {
@@ -174,10 +177,26 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		8A43E6C82143444300147EB9 /* Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8A8CBA2021420C4200FC4CEB /* LeagueTests.swift */,
+			);
+			path = "Model Tests";
+			sourceTree = "<group>";
+		};
+		8A43E6C92143446100147EB9 /* Test Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8A43E6CA214344F700147EB9 /* LeagueImporter.swift */,
+			);
+			path = "Test Utilities";
+			sourceTree = "<group>";
+		};
 		8A7565951E8A11620023C781 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8AC017881E8C96DA008BB81C /* Roster.swift */,
+				8AC017881E8C96DA008BB81C /* League.swift */,
 				8A7565911E8A0C2D0023C781 /* Team.swift */,
 				8AD2513C1E995FC80035693D /* Player */,
 			);
@@ -369,7 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A0D4C6E2141EBDE0001933B /* BasketballGM_Roster_Creator_Tests.swift in Sources */,
+				8A43E6CB214344F700147EB9 /* LeagueImporter.swift in Sources */,
+				8A8CBA2121420C4200FC4CEB /* LeagueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +420,7 @@
 				8AC449091E919A35000ACDB1 /* NumberFormatter.swift in Sources */,
 				8AD2513B1E995F7E0035693D /* Contract.swift in Sources */,
 				8A25E4C41E8B41E7005D4940 /* MainWindowController.swift in Sources */,
-				8AC017891E8C96DA008BB81C /* Roster.swift in Sources */,
+				8AC017891E8C96DA008BB81C /* League.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

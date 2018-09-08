@@ -19,16 +19,16 @@ class PlayerDetailView: NSView {
 				return
 			}
 
-			playerImageView.downloadedFrom(link: player.profileURL)
-			playerImageTextField.stringValue = player.profileURL
+			playerImageView.downloadedFrom(link: player.imgURL)
+			playerImageTextField.stringValue = player.imgURL
 
-			playerNameTextField.stringValue = player.name
+			playerNameTextField.stringValue = player.name ?? ""
 			playerNameTextField.becomeFirstResponder()
 
 			playerWeightTextField.stringValue = String(player.weight)
-			playerHeightTextField.stringValue = String(player.height)
+			playerHeightTextField.stringValue = String(player.hgt)
 
-			playerPositionPopUpButton.selectItem(withTitle: player.position?.rawValue ?? "")
+			playerPositionPopUpButton.selectItem(withTitle: player.pos.rawValue)
 
 			playerAgeTextField.stringValue = String(player.age)
 			playerHometownTextField.stringValue = player.hometown
@@ -48,27 +48,27 @@ class PlayerDetailView: NSView {
 
 			// Ratings
 
-			potentialRatingView.intValue = 0 //player.ratings.potential
+			potentialRatingView.intValue = 0 //player.playerRatings.potential
 
-			heightRatingView.intValue = player.ratings.height
-			strengthRatingView.intValue = player.ratings.strength
-			speedRatingView.intValue = player.ratings.speed
-			jumpingRatingView.intValue = player.ratings.jumping
-			enduranceRatingView.intValue = player.ratings.endurance
+			heightRatingView.intValue = player.playerRatings.height
+			strengthRatingView.intValue = player.playerRatings.strength
+			speedRatingView.intValue = player.playerRatings.speed
+			jumpingRatingView.intValue = player.playerRatings.jumping
+			enduranceRatingView.intValue = player.playerRatings.endurance
 
-			insideRatingView.intValue = player.ratings.inside
-			dunksLayupsRatingView.intValue = player.ratings.dunking
-			freeThrowsRatingView.intValue = player.ratings.freeThrow
-			twoPointersRatingView.intValue = player.ratings.fieldGoal
-			threePointersRatingView.intValue = player.ratings.threePointer
+			insideRatingView.intValue = player.playerRatings.inside
+			dunksLayupsRatingView.intValue = player.playerRatings.dunking
+			freeThrowsRatingView.intValue = player.playerRatings.freeThrow
+			twoPointersRatingView.intValue = player.playerRatings.fieldGoal
+			threePointersRatingView.intValue = player.playerRatings.threePointer
 
-			offensiveIqView.intValue = player.ratings.offensiveIq
-			defensiveIqView.intValue = player.ratings.defensiveIq
-			dribblingRatingView.intValue = player.ratings.dribbling
-			passingRatingView.intValue = player.ratings.passing
-			reboundingRatingView.intValue = player.ratings.rebounding
+			offensiveIqView.intValue = player.playerRatings.offensiveIq
+			defensiveIqView.intValue = player.playerRatings.defensiveIq
+			dribblingRatingView.intValue = player.playerRatings.dribbling
+			passingRatingView.intValue = player.playerRatings.passing
+			reboundingRatingView.intValue = player.playerRatings.rebounding
 
-			skillsView.stringValue = player.ratings.skillsString
+			skillsView.stringValue = player.playerRatings.skillsString
 		}
 	}
 
@@ -572,35 +572,35 @@ class PlayerDetailView: NSView {
 	func getAdjustedPlayer() -> Player? {
 		var player = self.player
 
-		player?.profileURL = playerImageTextField.stringValue
+		player?.imgURL = playerImageTextField.stringValue
 		player?.name = playerNameTextField.stringValue
 		player?.age = Int(playerAgeTextField.stringValue) ?? 0
 		player?.hometown = playerHometownTextField.stringValue
-		player?.height = Int(playerHeightTextField.stringValue) ?? 0
+		player?.hgt = Int(playerHeightTextField.stringValue) ?? 0
 		player?.weight = Int(playerWeightTextField.stringValue) ?? 0
-		player?.teamID = playerTeamPopUpButton.indexOfSelectedItem - 5 // Minus 5 for free agent, retired, and three draft prospect teams
-		player?.position = Position(rawValue: playerPositionPopUpButton.selectedItem?.title ?? "")
+		player?.tid = playerTeamPopUpButton.indexOfSelectedItem - 5 // Minus 5 for free agent, retired, and three draft prospect teams
+		player?.pos = Position(rawValue: playerPositionPopUpButton.selectedItem?.title ?? "") ?? .guard
 
 		player?.contract.amountInMillions = playerContractAmountTextField.stringValue
 		player?.contract.expirationString = playerContractExpirationTextField.stringValue
 
-//		player?.ratings.potential = potentialRatingView.intValue
-		player?.ratings.height = heightRatingView.intValue
-		player?.ratings.strength = strengthRatingView.intValue
-		player?.ratings.speed = speedRatingView.intValue
-		player?.ratings.jumping = jumpingRatingView.intValue
-		player?.ratings.endurance = enduranceRatingView.intValue
-		player?.ratings.inside = insideRatingView.intValue
-		player?.ratings.dunking = dunksLayupsRatingView.intValue
-		player?.ratings.freeThrow = freeThrowsRatingView.intValue
-		player?.ratings.fieldGoal = twoPointersRatingView.intValue
-		player?.ratings.threePointer = threePointersRatingView.intValue
-		player?.ratings.offensiveIq = offensiveIqView.intValue
-		player?.ratings.defensiveIq = defensiveIqView.intValue
-		player?.ratings.dribbling = dribblingRatingView.intValue
-		player?.ratings.passing = passingRatingView.intValue
-		player?.ratings.rebounding = reboundingRatingView.intValue
-		player?.ratings.skillsString = skillsView.stringValue
+//		player?.playerRatings.potential = potentialRatingView.intValue
+		player?.playerRatings.height = heightRatingView.intValue
+		player?.playerRatings.strength = strengthRatingView.intValue
+		player?.playerRatings.speed = speedRatingView.intValue
+		player?.playerRatings.jumping = jumpingRatingView.intValue
+		player?.playerRatings.endurance = enduranceRatingView.intValue
+		player?.playerRatings.inside = insideRatingView.intValue
+		player?.playerRatings.dunking = dunksLayupsRatingView.intValue
+		player?.playerRatings.freeThrow = freeThrowsRatingView.intValue
+		player?.playerRatings.fieldGoal = twoPointersRatingView.intValue
+		player?.playerRatings.threePointer = threePointersRatingView.intValue
+		player?.playerRatings.offensiveIq = offensiveIqView.intValue
+		player?.playerRatings.defensiveIq = defensiveIqView.intValue
+		player?.playerRatings.dribbling = dribblingRatingView.intValue
+		player?.playerRatings.passing = passingRatingView.intValue
+		player?.playerRatings.rebounding = reboundingRatingView.intValue
+		player?.playerRatings.skillsString = skillsView.stringValue
 
 		// TODO: Add rest of player properties here
 

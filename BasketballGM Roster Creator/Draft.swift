@@ -15,14 +15,21 @@ struct DraftPick: Decodable {
 	var originalTid: Int
 	var season: Int?
 	var year: Int?
-	
+
 	var descriptionString: String {
 		guard let originalTeam = originalTeam else { return "" }
 		guard let destinationTeam = destinationTeam else { return "" }
+		guard let season = season else { return "" }
 
 		let suffix: String = round == 1 ? "st" : "nd"
 
-		return "\(originalTeam.abbreviation) \(season) \(round)\(suffix) round pick to \(destinationTeam.abbreviation)"
+		let string = "\(originalTeam.abbrev) \(season) \(round)\(suffix) round pick"
+
+		if originalTeam == destinationTeam {
+			return string
+		} else {
+			return string + " round pick to \(destinationTeam.abbrev)"
+		}
 	}
 
 	var originalTeam: Team! {

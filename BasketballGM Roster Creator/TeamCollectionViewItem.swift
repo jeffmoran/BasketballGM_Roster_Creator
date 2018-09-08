@@ -15,7 +15,7 @@ class TeamCollectionViewItem: BaseCollectionViewItem {
             guard let team = team else { return }
 
             teamName.stringValue = team.fullTeamName
-            teamImageView.downloadedFrom(link: team.imageURL)
+            teamImageView.downloadedFrom(link: team.imgURL)
         }
     }
 

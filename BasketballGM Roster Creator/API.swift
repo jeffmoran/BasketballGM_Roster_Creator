@@ -11,7 +11,7 @@ import AppKit
 struct API {
 	static var shared: API = API()
 
-	var roster: Roster?
+	private var league: League!
 
 	var mainController: MainWindowController? {
 		return NSApp.mainWindow?.windowController as? MainWindowController
@@ -20,16 +20,14 @@ struct API {
 	// MARK: - Main
 
 	mutating func getRosterFrom(_ url: URL, completion: () -> Void) {
-		guard let data = NSData(contentsOf: url) as Data? else { return }
-
 		do {
-			guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
-
-			roster = Roster(jsonData)
-
+			let leagueData = try Data(contentsOf: url)
+			league = try JSONDecoder().decode(League.self, from: leagueData)
+			league.addFakeTeams()
 			completion()
 		} catch {
-			print(error.localizedDescription)
+			print(error)
+			fatalError(error.localizedDescription)
 		}
 	}
 
@@ -102,7 +100,7 @@ struct API {
 	// MARK: - Players
 
 	func getAllPlayers() -> [Player]? {
-		return roster?.players
+		return league.players
 	}
 
 	func getPlayerAt(_ index: Int) -> Player? {
@@ -122,13 +120,13 @@ struct API {
 			return player
 		}
 
-		roster?.players = allPlayersAdjusted
+		league.players = allPlayersAdjusted
 
 		mainController?.refreshCollectionViewWith(.players)
 	}
 
 	mutating func replacePlayer(at playerID: Int?, with player: Player) {
-		guard var roster = roster else { return }
+		guard var roster = league else { return }
 		guard let allPlayers = getAllPlayers() else { return }
 		guard let playerID = playerID else { return }
 
@@ -137,24 +135,24 @@ struct API {
 
 			allPlayers[index] = player
 
-			self.roster?.players = allPlayers
+			self.league.players = allPlayers
 		}
 
-		guard let jsonDictPlayers = roster.rawDict["players"] as? [[String: Any]] else { return }
-
-		for index in jsonDictPlayers.indices where playerID == index {
-			var allPlayers = jsonDictPlayers
-
-			allPlayers[index][""] = player.asDictionary()
-
-			roster.rawDict["players"] = allPlayers
-
-			self.roster = Roster(roster.rawDict)
-		}
+		//		guard let jsonDictPlayers = roster.rawDict["players"] as? [[String: Any]] else { return }
+		//
+		//		for index in jsonDictPlayers.indices where playerID == index {
+		//			var allPlayers = jsonDictPlayers
+		//
+		//			allPlayers[index][""] = player.asDictionary()
+		//
+		//			roster.rawDict["players"] = allPlayers
+		//
+		//			self.roster = League(roster.rawDict)
+		//		}
 
 		// TODO: Fix this
 
-		saveRosterToDisk(roster.asDictionary())
+//		saveRosterToDisk(roster.asDictionary())
 
 		mainController?.refreshCollectionViewWith(.players)
 	}
@@ -162,25 +160,25 @@ struct API {
 	// MARK: - Teams
 
 	func getAllTeams(includingFakeTeams: Bool) -> [Team]? {
-		return includingFakeTeams ? roster?.teams : roster?.teams.filter { $0.teamID >= 0 }
+		return includingFakeTeams ? league.teams : league.teams.filter { $0.tid >= 0 }
 	}
 
 	func getTeamAt(_ index: Int) -> Team? {
 		return getAllTeams(includingFakeTeams: false)?[index]
 	}
 
-//	func getNumberOfTeams() -> Int {
-//		return getAllTeams()?.count ?? 0
-//	}
+	//	func getNumberOfTeams() -> Int {
+	//		return getAllTeams()?.count ?? 0
+	//	}
 
 	func getTeamWith(_ teamID: Int) -> Team? {
-		return getAllTeams(includingFakeTeams: true)?.first { $0.teamID == teamID }
+		return getAllTeams(includingFakeTeams: true)?.first { $0.tid == teamID }
 	}
 
 	// MARK: - Draft Picks
 
 	func getAllDraftPicks() -> [DraftPick]? {
-		return roster?.draftPicks
+		return league.draftPicks
 	}
 
 	func getNumberOfDraftPicks() -> Int {

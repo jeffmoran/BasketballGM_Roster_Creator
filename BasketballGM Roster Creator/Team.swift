@@ -8,27 +8,29 @@
 
 import Foundation
 
-struct Team {
-    var teamID: Int
-    var conferenceID: Int
-    var divisionID: Int
+struct Team: Decodable, Equatable {
+	// TODO: CodingKeys
+
+    var tid: Int // teamId
+    var cid: Int // conferenceId
+    var did: Int // divisionId
     var region: String
     var name: String
-    var abbreviation: String
-    private var population: Double
+    var abbrev: String // abbreviation
+    private var pop: Double // populaiton
     var strategy: String
-    var imageURL: String
+    var imgURL: String
 
-    init(_ jsonDict: [String: Any]) {
-        self.teamID = jsonDict["tid"] as? Int ?? -1
-        self.conferenceID = jsonDict["cid"] as? Int ?? -1
-        self.divisionID = jsonDict["did"] as? Int ?? -1
+    private init(_ jsonDict: [String: Any]) {
+        self.tid = jsonDict["tid"] as? Int ?? -1
+        self.cid = jsonDict["cid"] as? Int ?? -1
+        self.did = jsonDict["did"] as? Int ?? -1
         self.region = jsonDict["region"] as? String ?? ""
         self.name = jsonDict["name"] as? String ?? ""
-        self.abbreviation = jsonDict["abbrev"] as? String ?? ""
-        self.population = jsonDict["pop"] as? Double ?? 0.0
+        self.abbrev = jsonDict["abbrev"] as? String ?? ""
+        self.pop = jsonDict["pop"] as? Double ?? 0.0
         self.strategy = jsonDict["strategy"] as? String ?? ""
-        self.imageURL = jsonDict["imgURL"] as? String ?? ""
+        self.imgURL = jsonDict["imgURL"] as? String ?? ""
     }
 
 	static var freeAgentTeam: Team {
@@ -80,7 +82,7 @@ struct Team {
 	}
 
 	var populationString: String {
-		return String(population * 1000000)
+		return String(pop * 1000000)
 	}
 
 	static var allTeamsString: [String] {
