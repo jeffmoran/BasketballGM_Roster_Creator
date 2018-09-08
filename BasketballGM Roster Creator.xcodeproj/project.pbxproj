@@ -108,6 +108,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A09D78721436254004DE081 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8AC017881E8C96DA008BB81C /* League.swift */,
+				8A7565911E8A0C2D0023C781 /* Team.swift */,
+				8AD1E041214361FC00292B61 /* Player */,
+				8A080B991E9340D7001815E1 /* Draft.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8A0D4C6C2141EBDE0001933B /* BasketballGM Roster Creator Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,16 +204,6 @@
 			path = "Test Utilities";
 			sourceTree = "<group>";
 		};
-		8A7565951E8A11620023C781 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8AC017881E8C96DA008BB81C /* League.swift */,
-				8A7565911E8A0C2D0023C781 /* Team.swift */,
-				8AD2513C1E995FC80035693D /* Player */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		8AA1636B1F317419000EF12B /* Collection View Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,16 +218,15 @@
 			name = "Collection View Items";
 			sourceTree = "<group>";
 		};
-		8AD2513C1E995FC80035693D /* Player */ = {
+		8AD1E041214361FC00292B61 /* Player */ = {
 			isa = PBXGroup;
 			children = (
 				8A75658F1E8A0C180023C781 /* Player.swift */,
 				CA0E92DB1F32245B00002D8C /* Ratings.swift */,
-				8A080B991E9340D7001815E1 /* Draft.swift */,
 				8AF242671E94A06A00908FF7 /* Injury.swift */,
 				8AD2513A1E995F7E0035693D /* Contract.swift */,
 			);
-			name = Player;
+			path = Player;
 			sourceTree = "<group>";
 		};
 		8AF5B3631E89F23B00D2048F = {
@@ -255,7 +255,7 @@
 				8A25E4CA1E8B47DF005D4940 /* Assets */,
 				8A25E4CB1E8B47E6005D4940 /* Storyboards */,
 				8A0EB8E01E901BFE00EF2BCE /* Utils */,
-				8A7565951E8A11620023C781 /* Models */,
+				8A09D78721436254004DE081 /* Model */,
 				8A25E4C91E8B47A1005D4940 /* View Controllers */,
 				8A35E6F91E8B540100686996 /* Views */,
 				8AF5B3781E89F23B00D2048F /* Info.plist */,
