@@ -14,11 +14,8 @@ class DraftPickCollectionViewItem: BaseCollectionViewItem {
 		didSet {
 			guard let draftPick = draftPick else { return }
 
-			guard let destinationTeam = API.shared.getTeamWith(draftPick.tid) else { return }
-			guard let originalTeam = API.shared.getTeamWith(draftPick.originalTid) else { return }
-
-			originalTeamImageView.downloadedFrom(link: originalTeam.imgURL)
-			newTeamImageView.downloadedFrom(link: destinationTeam.imgURL)
+			originalTeamImageView.downloadedFrom(link: draftPick.originalTeam.imgURL)
+			newTeamImageView.downloadedFrom(link: draftPick.destinationTeam.imgURL)
 
 			draftPickDescription.stringValue = draftPick.descriptionString
 		}
@@ -28,7 +25,4 @@ class DraftPickCollectionViewItem: BaseCollectionViewItem {
 	@IBOutlet private weak var originalTeamImageView: NSImageView!
 	@IBOutlet private weak var newTeamImageView: NSImageView!
 
-	override func prepareForReuse() {
-		super.prepareForReuse()
-	}
 }

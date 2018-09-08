@@ -19,12 +19,20 @@ enum ContentMode {
 		}
 	}
 
-	var collectionViewItemID: String {
+	private var collectionViewItem: String {
 		switch self {
 		case .players: return "PlayerCollectionViewItem"
 		case .teams: return "TeamCollectionViewItem"
 		case .draftPicks: return "DraftPickCollectionViewItem"
 		}
+	}
+
+	var itemIdentifier: NSUserInterfaceItemIdentifier {
+		return NSUserInterfaceItemIdentifier(self.collectionViewItem)
+	}
+
+	var nib: NSNib? {
+		return NSNib(nibNamed: NSNib.Name(self.collectionViewItem), bundle: Bundle.main)
 	}
 }
 
@@ -95,6 +103,10 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 		addSubviews()
 		setUpConstraints()
+
+		collectionView.register(ContentMode.players.nib, forItemWithIdentifier: ContentMode.players.itemIdentifier)
+		collectionView.register(ContentMode.teams.nib, forItemWithIdentifier: ContentMode.teams.itemIdentifier)
+		collectionView.register(ContentMode.draftPicks.nib, forItemWithIdentifier: ContentMode.draftPicks.itemIdentifier)
 	}
 
 	private func addSubviews() {
@@ -158,11 +170,11 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 	func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 		var item = NSCollectionViewItem()
 
-		let identifier = NSUserInterfaceItemIdentifier(rawValue: contentMode.collectionViewItemID)
+		let collectionViewItem = collectionView.makeItem(withIdentifier: contentMode.itemIdentifier, for: indexPath)
 
 		switch contentMode {
 		case .players:
-			guard let collectionViewItem = collectionView.makeItem(withIdentifier: identifier, for: indexPath) as? PlayerCollectionViewItem else { return item }
+			guard let collectionViewItem = collectionViewItem as? PlayerCollectionViewItem else { return item }
 
 			if let player = filteredPlayers?[indexPath.item] {
 				collectionViewItem.player = player
@@ -170,7 +182,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 			item = collectionViewItem
 		case .teams:
-			guard let collectionViewItem = collectionView.makeItem(withIdentifier: identifier, for: indexPath) as? TeamCollectionViewItem else { return item }
+			guard let collectionViewItem = collectionViewItem as? TeamCollectionViewItem else { return item }
 
 			if let team = filteredTeams?[indexPath.item] {
 				collectionViewItem.team = team
@@ -178,7 +190,7 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 
 			item = collectionViewItem
 		case .draftPicks:
-			guard let collectionViewItem = collectionView.makeItem(withIdentifier: identifier, for: indexPath) as? DraftPickCollectionViewItem else { return item }
+			guard let collectionViewItem = collectionViewItem as? DraftPickCollectionViewItem else { return item }
 
 			if let draftPick = filteredDraftPicks?[indexPath.item] {
 				collectionViewItem.draftPick = draftPick
