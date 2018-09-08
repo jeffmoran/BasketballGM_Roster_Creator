@@ -68,15 +68,14 @@ class OutlineViewController: NSViewController, NSOutlineViewDelegate, NSOutlineV
 				let playerDetailSplitView = NSSplitViewItem(viewController: window.playerDetailViewController)
 				splitViewController.splitViewItems[2] = playerDetailSplitView
 
-				window?.refreshCollectionViewWith(.players)
+				window.refreshCollectionViewWith(.players)
 			case 1:
 				let teamDetailSplitView = NSSplitViewItem(viewController: window.teamDetailViewController)
 				splitViewController.splitViewItems[2] = teamDetailSplitView
 
-				window?.refreshCollectionViewWith(.teams)
+				window.refreshCollectionViewWith(.teams)
 			case 2:
-				print("Edit draft picks")
-				window?.refreshCollectionViewWith(.draftPicks)
+				window.refreshCollectionViewWith(.draftPicks)
 			default:
 				assertionFailure()
 			}

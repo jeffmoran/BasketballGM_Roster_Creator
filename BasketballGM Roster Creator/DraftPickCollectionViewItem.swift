@@ -24,9 +24,9 @@ class DraftPickCollectionViewItem: BaseCollectionViewItem {
 		}
 	}
 
-	@IBOutlet weak private var draftPickDescription: NSTextField!
-	@IBOutlet weak private var originalTeamImageView: NSImageView!
-	@IBOutlet weak private var newTeamImageView: NSImageView!
+	@IBOutlet private weak var draftPickDescription: NSTextField!
+	@IBOutlet private weak var originalTeamImageView: NSImageView!
+	@IBOutlet private weak var newTeamImageView: NSImageView!
 
 	override func prepareForReuse() {
 		super.prepareForReuse()

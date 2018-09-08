@@ -42,10 +42,10 @@ struct Player: Decodable {
 	var weight: Int
 	var imgURL: String
 	var born: Born
-	var draft: DraftPick!
+	var draft: DraftPick
 	var injury: Injury!
 	var college: String
-	var contract: Contract!
+	var contract: Contract
 	private var ratings: [Ratings]!
 
 	var team: Team? {

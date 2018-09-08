@@ -23,9 +23,9 @@ class PlayerCollectionViewItem: BaseCollectionViewItem {
         }
     }
 
-    @IBOutlet weak private var playerName: NSTextField!
-    @IBOutlet weak private var playerTeamName: NSTextField!
-    @IBOutlet weak private var playerProfileImageView: NSImageView!
+    @IBOutlet private weak var playerName: NSTextField!
+    @IBOutlet private weak var playerTeamName: NSTextField!
+    @IBOutlet private weak var playerProfileImageView: NSImageView!
 
     override func prepareForReuse() {
         super.prepareForReuse()

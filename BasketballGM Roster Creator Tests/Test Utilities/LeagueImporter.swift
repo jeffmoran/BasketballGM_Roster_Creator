@@ -15,9 +15,7 @@ class LeagueImporter {
 		let url = URL(fileURLWithPath: filepath)
 
 		do {
-			let jsonData = try Data(contentsOf: url)
-
-			return jsonData
+			return try Data(contentsOf: url)
 		} catch {
 			fatalError(error.localizedDescription)
 		}

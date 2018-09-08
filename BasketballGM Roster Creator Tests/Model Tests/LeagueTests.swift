@@ -7,6 +7,7 @@
 //
 
 @testable import BasketballGM_Roster_Creator
+
 import XCTest
 
 class LeagueTests: XCTestCase {
@@ -32,7 +33,7 @@ class LeagueTests: XCTestCase {
         super.tearDown()
     }
 
-	func testRosterSomething() {
+	func testLeagueIntegrity() {
 		XCTAssertFalse(league.players.isEmpty)
 		XCTAssertFalse(league.teams.isEmpty)
 		XCTAssertFalse(league.draftPicks.isEmpty)

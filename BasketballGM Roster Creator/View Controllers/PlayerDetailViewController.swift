@@ -92,7 +92,7 @@ class PlayerDetailViewController: NSViewController {
 	@objc func savePlayer() {
 		guard let currentPlayer = player else { return }
 		guard let adjustedPlayer = playerDetailView.getAdjustedPlayer() else { return }
-		
+
 		API.shared.replacePlayer(at: currentPlayer.playerID, with: adjustedPlayer)
 	}
 }

@@ -9,6 +9,6 @@
 import Foundation
 
 struct Injury: Decodable {
-	var type: String?
-	var gamesRemaining: Int?
+	var type: String
+	var gamesRemaining: Int
 }

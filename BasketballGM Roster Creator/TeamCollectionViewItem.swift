@@ -19,8 +19,8 @@ class TeamCollectionViewItem: BaseCollectionViewItem {
         }
     }
 
-    @IBOutlet weak private var teamName: NSTextField!
-    @IBOutlet weak private var teamImageView: NSImageView!
+    @IBOutlet private weak var teamName: NSTextField!
+    @IBOutlet private weak var teamImageView: NSImageView!
 
     override func prepareForReuse() {
         super.prepareForReuse()
