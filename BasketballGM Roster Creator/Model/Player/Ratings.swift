@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Ratings: Decodable {
+struct Ratings: Codable {
 	enum CodingKeys: String, CodingKey {
 		case height = "hgt"
 		case strength = "stre"

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Contract: Decodable {
+struct Contract: Codable {
 	private var amount: Double
 	private var exp: Int
 
@@ -23,7 +23,6 @@ struct Contract: Decodable {
 		set {
 			amount = (Double(newValue) ?? 0) / 1000
 		}
-
 	}
 
 	var expirationString: String {

@@ -65,36 +65,20 @@ class API {
 		}
 	}
 
-	func saveRosterToDisk(_ roster: [String: Any]?, withFileName filename: String? = nil) {
-		guard let roster = roster else { return }
+	func saveLeague(_ fileUrl: URL) {
+		guard let league = league else { return }
 
-		if !JSONSerialization.isValidJSONObject(roster) {
-			assertionFailure("Not a valid JSON object")
-			return
-		}
-
-		let fileManager = FileManager.default
-
-		let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-
-		let directory = documentsUrl.appendingPathComponent("BasketballGM_Rosters")
-
-		try? fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
-
-		let title = NSApp.mainWindow?.title
-
-		let fileUrl = directory.appendingPathComponent("\(filename ?? title ?? "roster.json")")
-
-		var json: Data!
 		var isDirectory: ObjCBool = false
 
-		if !fileManager.fileExists(atPath: fileUrl.absoluteString, isDirectory: &isDirectory) {
-			fileManager.createFile(atPath: fileUrl.absoluteString, contents: nil, attributes: nil)
+		if !FileManager.default.fileExists(atPath: fileUrl.absoluteString, isDirectory: &isDirectory) {
+			FileManager.default.createFile(atPath: fileUrl.absoluteString, contents: nil, attributes: nil)
 		}
 
+		let encoder = JSONEncoder()
+		encoder.outputFormatting = .prettyPrinted
+
 		do {
-			json = try JSONSerialization.data(withJSONObject: roster, options: .prettyPrinted)
-			try json.write(to: fileUrl)
+			try encoder.encode(league).write(to: fileUrl)
 		} catch {
 			assertionFailure(error.localizedDescription)
 		}

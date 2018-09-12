@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct League: Decodable {
+struct League: Codable {
 	var startingSeason: Int
 	var teams: [Team]
 	var players: [Player]

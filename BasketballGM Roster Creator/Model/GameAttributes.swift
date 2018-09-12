@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GameAttributes: Decodable {
+struct GameAttributes: Codable {
 	var key: String
 	var value: Double
 }

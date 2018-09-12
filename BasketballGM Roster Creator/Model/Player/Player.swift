@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Position: String, Decodable {
+enum Position: String, Codable {
 	case pointGuard = "PG"
 	case shootingGuard = "SG"
 	case smallForward = "SF"
@@ -24,13 +24,13 @@ enum Position: String, Decodable {
 	}
 }
 
-struct Born: Decodable {
+struct Born: Codable {
 	// TODO: CodingKeys
 	var year: Int
 	var loc: String
 }
 
-struct Player: Decodable {
+struct Player: Codable {
 	// TODO: CodingKeys
 	var playerID: Int!
 	var name: String?

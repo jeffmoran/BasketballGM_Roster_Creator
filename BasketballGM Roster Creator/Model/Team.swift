@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Team: Decodable, Equatable {
+struct Team: Codable, Equatable {
 	// TODO: CodingKeys
 
     var tid: Int // teamId

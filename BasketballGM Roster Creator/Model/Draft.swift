@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DraftPick: Decodable {
+struct DraftPick: Codable {
 	var tid: Int
 	var round: Int
 	var pick: Int

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Injury: Decodable {
+struct Injury: Codable {
 	var type: String
 	var gamesRemaining: Int
 }

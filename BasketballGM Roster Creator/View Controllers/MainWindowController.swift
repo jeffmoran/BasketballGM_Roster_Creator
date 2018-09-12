@@ -75,7 +75,20 @@ class MainWindowController: NSWindowController {
 	}
 
 	@IBAction private func exportRoster(_ sender: Any?) {
+		let panel = NSSavePanel()
+		panel.allowedFileTypes = ["json"]
+		panel.nameFieldStringValue = "BasketballGM_Roster"
+		panel.isExtensionHidden = false
 
+		guard let window = window else { return }
+
+		panel.beginSheetModal(for: window) { result in
+			if result.rawValue == NSFileHandlingPanelOKButton {
+				guard let fileUrl = panel.url else { return }
+
+				API.shared.saveLeague(fileUrl)
+			}
+		}
 	}
 
 	@IBAction private func openRoster(_ sender: Any?) {
