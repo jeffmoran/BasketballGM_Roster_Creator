@@ -21,7 +21,7 @@ opt_in_rules:
 - force_unwrapping
 - function_default_parameter_at_end
 - implicit_return
-- implicitly_unwrapped_optional
+# - implicitly_unwrapped_optional
 - joined_default_parameter
 - let_var_whitespace
 - modifier_order

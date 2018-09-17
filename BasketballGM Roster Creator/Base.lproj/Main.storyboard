@@ -687,11 +687,19 @@
                                         <action selector="exportRoster:" target="B8D-0N-5wS" id="9on-bG-YEB"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="34D15D41-3E32-411B-B90B-F6145745EE26" label="Add" paletteLabel="Add" tag="-1" image="NSAddTemplate" id="Y9N-tw-V70"/>
+                                <toolbarItem implicitItemIdentifier="19B98D60-B74B-4C88-80FB-1599E0D3A025" label="Refresh" paletteLabel="Refresh" tag="-1" image="NSSynchronize" id="0Cy-Hy-kwe">
+                                    <connections>
+                                        <action selector="refresh:" target="B8D-0N-5wS" id="xLR-yX-FTu"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="zPo-If-jwG"/>
                                 <toolbarItem reference="Zng-Uc-HEy"/>
                                 <toolbarItem reference="HiY-Nb-ciB"/>
+                                <toolbarItem reference="Y9N-tw-V70"/>
+                                <toolbarItem reference="0Cy-Hy-kwe"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -856,8 +864,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSMultipleDocuments" width="32" height="32"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="NSSynchronize" width="128" height="128"/>
     </resources>
 </document>

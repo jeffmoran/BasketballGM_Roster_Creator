@@ -11,27 +11,27 @@ import Foundation
 struct Team: Codable, Equatable {
 	// TODO: CodingKeys
 
-    var tid: Int // teamId
-    var cid: Int // conferenceId
-    var did: Int // divisionId
-    var region: String
-    var name: String
-    var abbrev: String // abbreviation
-    private var pop: Double // populaiton
-    var strategy: String
-    var imgURL: String
+	var tid: Int // teamId
+	var cid: Int // conferenceId
+	var did: Int // divisionId
+	var region: String
+	var name: String
+	var abbrev: String // abbreviation
+	private var pop: Double // populaiton
+	var strategy: String
+	var imgURL: String
 
-    private init(_ jsonDict: [String: Any]) {
-        self.tid = jsonDict["tid"] as? Int ?? -1
-        self.cid = jsonDict["cid"] as? Int ?? -1
-        self.did = jsonDict["did"] as? Int ?? -1
-        self.region = jsonDict["region"] as? String ?? ""
-        self.name = jsonDict["name"] as? String ?? ""
-        self.abbrev = jsonDict["abbrev"] as? String ?? ""
-        self.pop = jsonDict["pop"] as? Double ?? 0.0
-        self.strategy = jsonDict["strategy"] as? String ?? ""
-        self.imgURL = jsonDict["imgURL"] as? String ?? ""
-    }
+	private init(_ jsonDict: [String: Any]) {
+		self.tid = jsonDict["tid"] as? Int ?? -1
+		self.cid = jsonDict["cid"] as? Int ?? -1
+		self.did = jsonDict["did"] as? Int ?? -1
+		self.region = jsonDict["region"] as? String ?? ""
+		self.name = jsonDict["name"] as? String ?? ""
+		self.abbrev = jsonDict["abbrev"] as? String ?? ""
+		self.pop = jsonDict["pop"] as? Double ?? 0.0
+		self.strategy = jsonDict["strategy"] as? String ?? ""
+		self.imgURL = jsonDict["imgURL"] as? String ?? ""
+	}
 
 	static var freeAgentTeam: Team {
 		var teamDict: [String: Any] = [String: Any]()
@@ -83,6 +83,10 @@ struct Team: Codable, Equatable {
 
 	var populationString: String {
 		return String(pop * 1000000)
+	}
+
+	static var allTeams: [Team]? {
+		return API.shared.getAllTeams(includingFakeTeams: true)
 	}
 
 	static var allTeamsString: [String] {

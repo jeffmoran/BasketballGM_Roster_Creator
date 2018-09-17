@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Ratings: Codable {
+@objc class Ratings: NSObject, Codable {
 	enum CodingKeys: String, CodingKey {
 		case height = "hgt"
 		case strength = "stre"
@@ -29,21 +29,21 @@ struct Ratings: Codable {
 //		case skills = "skills"
 	}
 
-	var height: Int
-	var strength: Int
-	var speed: Int
-	var jumping: Int
-	var endurance: Int
-	var inside: Int
-	var dunking: Int
-	var freeThrow: Int
-	var fieldGoal: Int
-	var threePointer: Int
-	var defensiveIq: Int
-	var offensiveIq: Int
-	var dribbling: Int
-	var passing: Int
-	var rebounding: Int
+	private var height: Int!
+	private var strength: Int!
+	private var speed: Int!
+	private var jumping: Int!
+	private var endurance: Int!
+	private var inside: Int!
+	private var dunking: Int!
+	private var freeThrow: Int!
+	private var fieldGoal: Int!
+	private var threePointer: Int!
+	private var defensiveIq: Int!
+	private var offensiveIq: Int!
+	private var dribbling: Int!
+	private var passing: Int!
+	private var rebounding: Int!
 //	var potential: Int
 //	private var skills: [String]
 
@@ -53,6 +53,17 @@ struct Ratings: Codable {
 		}
 		set {
 //			skills = newValue.components(separatedBy: ", ")
+		}
+	}
+
+	// MARK: - Bindings
+
+	@objc var playerHeight: NSNumber {
+		get {
+			return height as NSNumber
+		}
+		set {
+			height = newValue.intValue
 		}
 	}
 }

@@ -138,8 +138,10 @@ class ItemListCollectionViewController: NSViewController, NSCollectionViewDelega
 		}
 	}
 
-	func refreshCollectionViewWith(_ contentMode: ContentMode) {
-		self.contentMode = contentMode
+	func refreshCollectionViewWith(_ contentMode: ContentMode?) {
+		if let contentMode = contentMode {
+			self.contentMode = contentMode
+		}
 
 		if API.shared.isLeagueImported {
 			resetFilteredDatasource()

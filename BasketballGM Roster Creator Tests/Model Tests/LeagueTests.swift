@@ -14,8 +14,8 @@ class LeagueTests: XCTestCase {
 
 	var league: League!
 
-    override func setUp() {
-        super.setUp()
+	override func setUp() {
+		super.setUp()
 
 		let leagueData: Data = LeagueImporter.getLeagueJSONData()
 
@@ -26,12 +26,12 @@ class LeagueTests: XCTestCase {
 			print(error)
 			fatalError(error.localizedDescription)
 		}
-    }
+	}
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+	override func tearDown() {
+		// Put teardown code here. This method is called after the invocation of each test method in the class.
+		super.tearDown()
+	}
 
 	func testLeagueIntegrity() {
 		XCTAssertFalse(league.players.isEmpty)
@@ -39,6 +39,7 @@ class LeagueTests: XCTestCase {
 		XCTAssertFalse(league.draftPicks.isEmpty)
 		XCTAssertFalse(league.gameAttributes.isEmpty)
 		XCTAssert(league.startingSeason == 2019)
+		XCTAssert(league.version == 27)
 	}
 
 }

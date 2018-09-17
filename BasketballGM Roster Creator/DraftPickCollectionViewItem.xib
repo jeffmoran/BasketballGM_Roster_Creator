@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13168.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,16 +44,23 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Zvd-kZ-c7T" customClass="PlayerDetailView" customModule="BasketballGM_Roster_Creator" customModuleProvider="target">
+                    <rect key="frame" x="30" y="0.0" width="163" height="96"/>
+                </customView>
             </subviews>
             <constraints>
                 <constraint firstItem="WbX-L7-GEk" firstAttribute="centerY" secondItem="KF0-Tv-WA4" secondAttribute="centerY" id="1N9-FR-g03"/>
                 <constraint firstAttribute="bottom" secondItem="KF0-Tv-WA4" secondAttribute="bottom" constant="20" symbolic="YES" id="94g-nj-9Fg"/>
                 <constraint firstAttribute="bottom" secondItem="hQL-w3-RnU" secondAttribute="bottom" constant="20" symbolic="YES" id="BG5-eW-7Lz"/>
+                <constraint firstAttribute="trailing" secondItem="Zvd-kZ-c7T" secondAttribute="trailing" constant="134" id="ETU-v2-BWF"/>
+                <constraint firstItem="Zvd-kZ-c7T" firstAttribute="leading" secondItem="NLd-IM-UnW" secondAttribute="leading" constant="30" id="Edx-7u-1hY"/>
                 <constraint firstItem="KF0-Tv-WA4" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="20" symbolic="YES" id="Rqt-OM-TDi"/>
                 <constraint firstAttribute="trailing" secondItem="hQL-w3-RnU" secondAttribute="trailing" constant="20" symbolic="YES" id="StO-Ff-GRF"/>
                 <constraint firstItem="hQL-w3-RnU" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="20" symbolic="YES" id="V5R-OI-mPl"/>
+                <constraint firstAttribute="bottom" secondItem="Zvd-kZ-c7T" secondAttribute="bottom" id="Zii-UD-Q8L"/>
                 <constraint firstItem="WbX-L7-GEk" firstAttribute="leading" secondItem="KF0-Tv-WA4" secondAttribute="trailing" constant="8" symbolic="YES" id="cvV-cP-X0I"/>
                 <constraint firstItem="hQL-w3-RnU" firstAttribute="leading" secondItem="WbX-L7-GEk" secondAttribute="trailing" constant="8" symbolic="YES" id="fho-de-3OJ"/>
+                <constraint firstItem="Zvd-kZ-c7T" firstAttribute="top" secondItem="NLd-IM-UnW" secondAttribute="top" constant="6" id="mgK-DN-2iR"/>
                 <constraint firstItem="KF0-Tv-WA4" firstAttribute="leading" secondItem="NLd-IM-UnW" secondAttribute="leading" constant="20" symbolic="YES" id="wq0-tP-11T"/>
             </constraints>
             <point key="canvasLocation" x="214" y="20"/>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DraftPick: Codable {
+@objc class DraftPick: NSObject, Codable {
 	var tid: Int
 	var round: Int
 	var pick: Int
@@ -38,5 +38,10 @@ struct DraftPick: Codable {
 
 	var destinationTeam: Team! {
 		return API.shared.getTeamAt(tid)
+	}
+
+	@available(*, unavailable)
+	override init() {
+		fatalError("Not implemented.")
 	}
 }

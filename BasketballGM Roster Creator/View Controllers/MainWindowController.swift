@@ -75,6 +75,8 @@ class MainWindowController: NSWindowController {
 	}
 
 	@IBAction private func exportRoster(_ sender: Any?) {
+		guard API.shared.isLeagueImported else { return }
+
 		let panel = NSSavePanel()
 		panel.allowedFileTypes = ["json"]
 		panel.nameFieldStringValue = "BasketballGM_Roster"
@@ -116,7 +118,11 @@ class MainWindowController: NSWindowController {
 		}
 	}
 
-	func refreshCollectionViewWith(_ contentMode: ContentMode) {
+	@IBAction private func refresh(_ sender: Any?) {
+		refreshCollectionViewWith(nil)
+	}
+
+	func refreshCollectionViewWith(_ contentMode: ContentMode?) {
 		((contentViewController as? NSSplitViewController)?.childViewControllers[1] as? ItemListCollectionViewController)?.refreshCollectionViewWith(contentMode)
 	}
 }

@@ -31,7 +31,6 @@ class API {
 			let leagueData = try Data(contentsOf: url)
 			league = try JSONDecoder().decode(League.self, from: leagueData)
 			league.addFakeTeams()
-			league.update(league.players)
 
 			isLeagueImported = true
 
@@ -65,6 +64,10 @@ class API {
 		}
 	}
 
+	func refresh(_ contentMode: ContentMode) {
+		mainController?.refreshCollectionViewWith(contentMode)
+	}
+
 	func saveLeague(_ fileUrl: URL) {
 		guard let league = league else { return }
 
@@ -94,43 +97,10 @@ class API {
 		return getAllPlayers()?[index]
 	}
 
-	func removePlayer(at playerID: Int) {
-		guard var allPlayers = getAllPlayers() else { return }
+	func remove(_ player: Player) {
+		guard let index = league.players.index(of: player) else { return }
 
-		allPlayers.remove(at: playerID)
-
-		league.update(allPlayers)
-
-		mainController?.refreshCollectionViewWith(.players)
-	}
-
-	func replacePlayer(at playerID: Int, with player: Player) {
-		guard var roster = league else { return }
-		guard let allPlayers = getAllPlayers() else { return }
-
-		for index in allPlayers.indices where playerID == index {
-			var allPlayers = allPlayers
-
-			allPlayers[index] = player
-
-			self.league.players = allPlayers
-		}
-
-		//		guard let jsonDictPlayers = roster.rawDict["players"] as? [[String: Any]] else { return }
-		//
-		//		for index in jsonDictPlayers.indices where playerID == index {
-		//			var allPlayers = jsonDictPlayers
-		//
-		//			allPlayers[index][""] = player.asDictionary()
-		//
-		//			roster.rawDict["players"] = allPlayers
-		//
-		//			self.roster = League(roster.rawDict)
-		//		}
-
-		// TODO: Fix this
-
-		//		saveRosterToDisk(roster.asDictionary())
+		league.players.remove(at: index)
 
 		mainController?.refreshCollectionViewWith(.players)
 	}
@@ -138,6 +108,7 @@ class API {
 	// MARK: - Teams
 
 	func getAllTeams(includingFakeTeams: Bool) -> [Team]? {
+		guard let league = league else { return nil }
 		return includingFakeTeams ? league.teams : league.teams.filter { $0.tid >= 0 }
 	}
 

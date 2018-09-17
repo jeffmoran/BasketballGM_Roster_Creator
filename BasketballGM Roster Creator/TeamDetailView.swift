@@ -167,9 +167,6 @@ class TeamDetailView: NSView {
 	private lazy var teamIDTextField: PlayerTextField = {
 		let textField = PlayerTextField()
 
-		let numberFormatter = OnlyIntegerValueFormatter()
-		textField.formatter = numberFormatter
-
 		return textField
 	}()
 
